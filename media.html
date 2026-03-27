@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Media — Box To Box | Batay San Fwontyè</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+    --red: #C41E2A;
+    --red-dark: #8B0000;
+    --red-glow: #FF1A2E;
+    --blue: #00247D;
+    --blue-deep: #001847;
+    --gold: #D4A843;
+    --gold-light: #F0D078;
+    --black: #0A0A0A;
+    --off-white: #F5F3EF;
+    --white: #FFFFFF;
+    --gray-100: #F0EEEA;
+    --gray-200: #E0DDD6;
+    --gray-600: #6B6760;
+    --gray-800: #2A2824;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-heading: 'Oswald', sans-serif;
+    --font-body: 'Source Sans 3', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: var(--font-body);
+    color: var(--white);
+    background: var(--black);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ===== NAVIGATION ===== */
+.nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 0 2rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.3s;
+}
+.nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.nav-links {
+    display: flex;
+    gap: 1.8rem;
+    align-items: center;
+    list-style: none;
+}
+.nav-links a {
+    font-family: var(--font-heading);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a.active { color: var(--white); }
+.nav-cta {
+    background: var(--red);
+    color: var(--white) !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    font-weight: 600 !important;
+    letter-spacing: 1px;
+    transition: background 0.2s, transform 0.2s;
+}
+.nav-cta:hover { background: var(--red-dark); transform: translateY(-1px); }
+.nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+}
+.nav-hamburger span {
+    width: 24px; height: 2px;
+    background: var(--white);
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+/* ===== COMMON ===== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.9rem 2rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+.btn-red {
+    background: var(--red);
+    color: var(--white);
+    box-shadow: 0 4px 20px rgba(196,30,42,0.4);
+}
+.btn-red:hover {
+    background: var(--red-glow);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(255,26,46,0.5);
+}
+.btn-blue {
+    background: var(--blue);
+    color: var(--white);
+    box-shadow: 0 4px 20px rgba(0,36,125,0.3);
+}
+.btn-blue:hover { background: #003399; transform: translateY(-2px); }
+.btn-outline {
+    background: transparent;
+    color: var(--gold);
+    border: 1.5px solid var(--gold);
+}
+.btn-outline:hover {
+    background: var(--gold);
+    color: var(--black);
+    transform: translateY(-2px);
+}
+.btn-whatsapp {
+    background: #25D366;
+    color: var(--white);
+}
+.btn-whatsapp:hover { background: #1da851; }
+
+.section {
+    padding: 6rem 2rem;
+    position: relative;
+}
+.section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.section-label {
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red-glow);
+    margin-bottom: 0.8rem;
+}
+.section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    color: var(--white);
+    letter-spacing: 1px;
+    margin-bottom: 1.2rem;
+}
+.section-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.5);
+    max-width: 600px;
+    line-height: 1.7;
+}
+
+/* ===== PAGE HERO ===== */
+.page-hero {
+    padding-top: 140px;
+    padding-bottom: 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--black);
+}
+.page-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 120% 80% at 50% 30%, rgba(196,30,42,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 80% 60% at 20% 80%, rgba(0,36,125,0.08) 0%, transparent 50%);
+}
+.page-hero::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    bottom: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--red), var(--gold), var(--blue), transparent);
+}
+.page-hero-content {
+    position: relative;
+    z-index: 2;
+}
+.page-hero-label {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+.page-hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    color: var(--white);
+    letter-spacing: 3px;
+    line-height: 0.95;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 80px rgba(196,30,42,0.3);
+}
+.page-hero-subtitle {
+    font-size: 1.15rem;
+    color: rgba(255,255,255,0.45);
+    max-width: 550px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* ===== BROADCASTER ===== */
+.broadcaster {
+    background: #111;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.broadcaster-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-top: 3rem;
+}
+.broadcaster-visual {
+    aspect-ratio: 16/9;
+    background: linear-gradient(135deg, rgba(196,30,42,0.15) 0%, var(--black) 100%);
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+.broadcaster-visual::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.015) 3px, rgba(255,255,255,0.015) 4px);
+}
+.broadcaster-icon {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+.broadcaster-icon svg {
+    width: 64px;
+    height: 64px;
+    fill: var(--red);
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 20px rgba(196,30,42,0.4));
+}
+.broadcaster-icon span {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+}
+.broadcaster-text h3 {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--white);
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+.broadcaster-text p {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+.broadcaster-stats {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+.broadcaster-stat {
+    text-align: center;
+}
+.broadcaster-stat .num {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--gold);
+}
+.broadcaster-stat .unit {
+    font-family: var(--font-heading);
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-top: 0.2rem;
+}
+
+/* ===== LIVESTREAM PARTNERS ===== */
+.livestream-partners {
+    background: var(--black);
+}
+.partner-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+.partner-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    transition: border-color 0.3s, transform 0.3s;
+}
+.partner-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-3px);
+}
+.partner-card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+.partner-card h4 {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--white);
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+.partner-card p {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.6;
+}
+.partner-badge {
+    display: inline-block;
+    margin-top: 1rem;
+    font-family: var(--font-heading);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+    border-radius: 3px;
+}
+.partner-badge.primary {
+    background: rgba(196,30,42,0.15);
+    color: var(--red-glow);
+}
+.partner-badge.secondary {
+    background: rgba(0,36,125,0.15);
+    color: #5580cc;
+}
+.partner-badge.tertiary {
+    background: rgba(212,168,67,0.15);
+    color: var(--gold);
+}
+
+/* ===== MEDIA RIGHTS ===== */
+.media-rights {
+    background: #111;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.rights-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+.rights-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+}
+.rights-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+}
+.rights-card:nth-child(1)::before { background: var(--red); }
+.rights-card:nth-child(2)::before { background: var(--gold); }
+.rights-card:nth-child(3)::before { background: var(--blue); }
+.rights-card:nth-child(4)::before { background: var(--red-glow); }
+.rights-card h4 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--white);
+    letter-spacing: 1px;
+    margin-bottom: 0.8rem;
+}
+.rights-card p {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+.rights-tag {
+    font-family: var(--font-heading);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+
+/* ===== GALLERY ===== */
+.gallery {
+    background: var(--black);
+    overflow: hidden;
+}
+.gallery .section-label { color: var(--gold); }
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 3rem;
+}
+.gallery-item {
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, #1a1a1a 0%, #111 100%);
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.3s, transform 0.3s;
+}
+.gallery-item:hover {
+    border-color: var(--red);
+    transform: scale(1.02);
+}
+.gallery-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(196,30,42,0.06) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.gallery-item:hover::before { opacity: 1; }
+.gallery-item.wide {
+    grid-column: span 2;
+    aspect-ratio: 2/1;
+}
+.gallery-icon {
+    position: relative;
+    z-index: 1;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.gallery-icon svg {
+    width: 18px; height: 18px;
+    stroke: rgba(255,255,255,0.3);
+    fill: none;
+    stroke-width: 2;
+}
+.gallery-caption {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-heading);
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+}
+
+/* ===== PRESS CONTACT ===== */
+.press-contact {
+    background: #111;
+    border-top: 1px solid rgba(255,255,255,0.06);
+}
+.press-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 3rem;
+}
+.press-info h3 {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--white);
+    margin-bottom: 1rem;
+}
+.press-info p {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+.press-detail {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+.press-detail-icon {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(196,30,42,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.press-detail-icon svg {
+    width: 16px; height: 16px;
+    stroke: var(--red);
+    fill: none;
+    stroke-width: 2;
+}
+.press-detail-text {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.6);
+}
+.press-detail-text strong {
+    color: var(--white);
+    display: block;
+    font-size: 0.85rem;
+    font-family: var(--font-heading);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.press-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.press-action-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    transition: border-color 0.3s;
+}
+.press-action-card:hover { border-color: var(--gold); }
+.press-action-card h4 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+}
+.press-action-card p {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+.press-action-card .btn {
+    font-size: 0.75rem;
+    padding: 0.6rem 1.5rem;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    background: var(--black);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 3rem 2rem;
+}
+.footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 2rem;
+}
+.footer-brand .footer-logo {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--white);
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+.footer-brand .footer-tagline {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+.footer-socials {
+    display: flex;
+    gap: 0.8rem;
+}
+.footer-socials a {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: border-color 0.3s, color 0.3s;
+}
+.footer-socials a:hover { border-color: var(--gold); color: var(--gold); }
+.footer-col-title {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+.footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.footer-links a {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--white); }
+.footer-bottom {
+    max-width: 1100px;
+    margin: 2rem auto 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.25);
+}
+.footer-bottom a {
+    color: var(--gold);
+    text-decoration: none;
+}
+
+/* ===== MOBILE FLOATING CTAs ===== */
+.mobile-ctas {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0; right: 0;
+    z-index: 999;
+    padding: 0.6rem;
+    gap: 0.5rem;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+.mobile-ctas .btn {
+    flex: 1;
+    justify-content: center;
+    font-size: 0.72rem;
+    padding: 0.7rem 0.5rem;
+    border-radius: 4px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    .broadcaster-grid { grid-template-columns: 1fr; }
+    .press-inner { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 64px; left: 0; right: 0;
+        background: rgba(10,10,10,0.97);
+        padding: 1.5rem 2rem;
+        gap: 1.2rem;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .partner-cards { grid-template-columns: 1fr; max-width: 420px; }
+    .rights-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-item.wide { grid-column: span 2; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .section { padding: 4rem 1.5rem; }
+    .mobile-ctas { display: flex; }
+    body { padding-bottom: 64px; }
+    .broadcaster-stats { flex-wrap: wrap; }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid { grid-template-columns: 1fr; }
+    .gallery-item.wide { grid-column: span 1; aspect-ratio: 16/9; }
+    .broadcaster-stats { gap: 1rem; }
+}
+
+/* ===== SCROLL ANIMATIONS ===== */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="mainNav">
+    <a href="/" class="nav-logo">BOX TO BOX</a>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="/">Home</a></li>
+        <li><a href="tickets.html">Tickets</a></li>
+        <li><a href="live.html">Live</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+        <li><a href="media.html" class="active">Media</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="tickets.html" class="nav-cta">Acheter Ticket</a></li>
+    </ul>
+    <div class="nav-hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+        <span></span><span></span><span></span>
+    </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+    <div class="page-hero-content">
+        <p class="page-hero-label">Centre Media</p>
+        <h1 class="page-hero-title">MEDIA</h1>
+        <p class="page-hero-subtitle">Couverture officielle, droits de diffusion et ressources presse pour Batay San Fwontyè.</p>
+    </div>
+</section>
+
+<!-- OFFICIAL BROADCASTER -->
+<section class="section broadcaster">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">Diffuseur Officiel</p>
+            <h2 class="section-title">Diffusion en direct mondiale</h2>
+            <p class="section-subtitle">Chaque combat diffusé en direct avec une production professionnelle multi-caméras.</p>
+        </div>
+        <div class="broadcaster-grid">
+            <div class="broadcaster-visual reveal">
+                <div class="broadcaster-icon">
+                    <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    <span>YouTube Live</span>
+                </div>
+            </div>
+            <div class="broadcaster-text reveal">
+                <h3>YouTube &mdash; Chaîne Officielle</h3>
+                <p>Regardez tous les combats en direct sur la chaîne YouTube officielle de Box To Box. Production multi-caméras, commentaires bilingues (Créole / Espagnol), et replays disponibles 24h après l'événement.</p>
+                <p>La diffusion couvre la carte complète : undercard, combats principaux, et le main event Haïti vs République Dominicaine.</p>
+                <div class="broadcaster-stats">
+                    <div class="broadcaster-stat">
+                        <div class="num">6+</div>
+                        <div class="unit">Caméras</div>
+                    </div>
+                    <div class="broadcaster-stat">
+                        <div class="num">2</div>
+                        <div class="unit">Langues</div>
+                    </div>
+                    <div class="broadcaster-stat">
+                        <div class="num">4K</div>
+                        <div class="unit">Qualité</div>
+                    </div>
+                    <div class="broadcaster-stat">
+                        <div class="num">24h</div>
+                        <div class="unit">Replay</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- LIVESTREAM PARTNERS -->
+<section class="section livestream-partners">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">Partenaires de diffusion</p>
+            <h2 class="section-title">Plateformes partenaires</h2>
+            <p class="section-subtitle">Batay San Fwontyè sera disponible sur plusieurs plateformes pour une couverture maximale.</p>
+        </div>
+        <div class="partner-cards">
+            <div class="partner-card reveal">
+                <div class="partner-card-icon">&#9654;</div>
+                <h4>YouTube Live</h4>
+                <p>Diffusion principale en direct. Accès gratuit avec option Super Chat pour supporter les combattants.</p>
+                <span class="partner-badge primary">Diffuseur principal</span>
+            </div>
+            <div class="partner-card reveal">
+                <div class="partner-card-icon">&#128225;</div>
+                <h4>Réseaux Sociaux</h4>
+                <p>Clips en direct, coulisses et highlights sur Instagram, Facebook et TikTok durant l'événement.</p>
+                <span class="partner-badge secondary">Contenu exclusif</span>
+            </div>
+            <div class="partner-card reveal">
+                <div class="partner-card-icon">&#128250;</div>
+                <h4>Télévision Locale</h4>
+                <p>Partenariats en cours avec des chaînes locales haïtiennes et dominicaines pour la retransmission.</p>
+                <span class="partner-badge tertiary">En négociation</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MEDIA RIGHTS -->
+<section class="section media-rights">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">Droits Media</p>
+            <h2 class="section-title">Droits &amp; Accréditations</h2>
+            <p class="section-subtitle">Informations sur les droits de diffusion et l'accréditation presse.</p>
+        </div>
+        <div class="rights-grid">
+            <div class="rights-card reveal">
+                <h4>Droits de diffusion</h4>
+                <p>Les droits de diffusion en direct et en différé sont disponibles pour les médias nationaux et internationaux. Contactez notre équipe média pour les tarifs et conditions.</p>
+                <span class="rights-tag">Disponible pour licence</span>
+            </div>
+            <div class="rights-card reveal">
+                <h4>Accréditation Presse</h4>
+                <p>Les journalistes et photographes accrédités bénéficient d'un accès ringside, à la salle de presse et aux conférences post-combat. Demande à soumettre avant le 15 Mai.</p>
+                <span class="rights-tag">Date limite: 15 Mai 2025</span>
+            </div>
+            <div class="rights-card reveal">
+                <h4>Contenu Éditorial</h4>
+                <p>Photos et vidéos officielles disponibles pour usage éditorial après chaque événement. Crédit obligatoire: "Box To Box / Batay San Fwontyè".</p>
+                <span class="rights-tag">Post-événement</span>
+            </div>
+            <div class="rights-card reveal">
+                <h4>Usage Commercial</h4>
+                <p>Toute utilisation commerciale des images, logos ou contenus de l'événement nécessite une autorisation écrite de Box To Box.</p>
+                <span class="rights-tag">Autorisation requise</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section gallery">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">Galerie</p>
+            <h2 class="section-title">Photos &amp; Vidéos</h2>
+            <p class="section-subtitle">Les moments forts capturés. Galerie complète disponible après l'événement.</p>
+        </div>
+        <div class="gallery-grid reveal">
+            <div class="gallery-item wide">
+                <div class="gallery-icon">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+                </div>
+                <span class="gallery-caption">Ring Setup</span>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-icon">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+                </div>
+                <span class="gallery-caption">Pesée</span>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-icon">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+                </div>
+                <span class="gallery-caption">Entraînement</span>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-icon">
+                    <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </div>
+                <span class="gallery-caption">Bande-annonce</span>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-icon">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+                </div>
+                <span class="gallery-caption">Combattants</span>
+            </div>
+            <div class="gallery-item wide">
+                <div class="gallery-icon">
+                    <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </div>
+                <span class="gallery-caption">Highlights</span>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-icon">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+                </div>
+                <span class="gallery-caption">Conférence</span>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-icon">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+                </div>
+                <span class="gallery-caption">Public</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRESS CONTACT -->
+<section class="section press-contact">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">Contact Presse</p>
+            <h2 class="section-title">Relations Presse</h2>
+        </div>
+        <div class="press-inner">
+            <div class="press-info reveal">
+                <h3>Bureau de presse officiel</h3>
+                <p>Pour toute demande d'accréditation, interview, ou information sur l'événement, contactez notre équipe de relations presse.</p>
+                <div class="press-detail">
+                    <div class="press-detail-icon">
+                        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <div class="press-detail-text">
+                        <strong>Email</strong>
+                        media@boxtobox.ht
+                    </div>
+                </div>
+                <div class="press-detail">
+                    <div class="press-detail-icon">
+                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </div>
+                    <div class="press-detail-text">
+                        <strong>WhatsApp</strong>
+                        +509 XX XX XXXX
+                    </div>
+                </div>
+                <div class="press-detail">
+                    <div class="press-detail-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    </div>
+                    <div class="press-detail-text">
+                        <strong>Site Web</strong>
+                        boxtobox.ht
+                    </div>
+                </div>
+            </div>
+            <div class="press-actions reveal">
+                <div class="press-action-card">
+                    <h4>Media Kit</h4>
+                    <p>Logos, photos haute résolution, biographies des combattants et informations sur l'événement.</p>
+                    <a href="#" class="btn btn-red">Télécharger le Media Kit</a>
+                </div>
+                <div class="press-action-card">
+                    <h4>Accréditation Presse</h4>
+                    <p>Demandez votre accréditation pour accéder au ringside, salle de presse et conférences.</p>
+                    <a href="contact.html" class="btn btn-outline" style="font-size:0.75rem;">Demander accréditation</a>
+                </div>
+                <div class="press-action-card">
+                    <h4>Interviews</h4>
+                    <p>Organisez des interviews avec les combattants, promoteurs ou organisateurs de l'événement.</p>
+                    <a href="contact.html" class="btn btn-outline" style="font-size:0.75rem;border-color:var(--red);color:var(--red);">Demander une interview</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <div class="footer-logo">BOX TO BOX</div>
+            <p class="footer-tagline">Box To Box &amp; 48HoursReady.com Présentent<br>Batay San Fwontyè<br><em>Combat. Culture. Connexion.</em></p>
+            <div class="footer-socials">
+                <a href="#" aria-label="Instagram">IG</a>
+                <a href="#" aria-label="Facebook">FB</a>
+                <a href="#" aria-label="YouTube">YT</a>
+            </div>
+        </div>
+        <div>
+            <div class="footer-col-title">Navigation</div>
+            <ul class="footer-links">
+                <li><a href="/">Accueil</a></li>
+                <li><a href="tickets.html">Tickets</a></li>
+                <li><a href="live.html">Livestream</a></li>
+                <li><a href="sponsors.html">Sponsors</a></li>
+            </ul>
+        </div>
+        <div>
+            <div class="footer-col-title">Informations</div>
+            <ul class="footer-links">
+                <li><a href="media.html">Media</a></li>
+                <li><a href="about.html">À Propos</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div>
+            <div class="footer-col-title">Contact</div>
+            <ul class="footer-links">
+                <li><a href="#">WhatsApp</a></li>
+                <li><a href="#">Email</a></li>
+                <li><a href="#">Instagram</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>&copy; 2025 Box To Box. Tous droits réservés.</span>
+        <span>Powered by <a href="https://48hoursready.com">48HoursReady.com</a></span>
+    </div>
+</footer>
+
+<!-- MOBILE FLOATING CTAs -->
+<div class="mobile-ctas">
+    <a href="tickets.html" class="btn btn-red">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/></svg>
+        Tickets
+    </a>
+    <a href="live.html" class="btn btn-blue">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Live
+    </a>
+    <a href="#" class="btn btn-whatsapp">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.624-1.467A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.666-5.813-1.803l-.417-.263-2.743.87.88-2.683-.287-.44A9.715 9.715 0 0 1 2.25 12c0-5.385 4.365-9.75 9.75-9.75S21.75 6.615 21.75 12s-4.365 9.75-9.75 9.75z"/></svg>
+        WhatsApp
+    </a>
+</div>
+
+<script>
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => entry.target.classList.add('visible'), i * 80);
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

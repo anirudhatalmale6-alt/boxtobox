@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acheter Tickets — Box To Box | Batay San Fwontyè</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+    --red: #C41E2A;
+    --red-dark: #8B0000;
+    --red-glow: #FF1A2E;
+    --blue: #00247D;
+    --blue-deep: #001847;
+    --gold: #D4A843;
+    --gold-light: #F0D078;
+    --black: #0A0A0A;
+    --off-white: #F5F3EF;
+    --white: #FFFFFF;
+    --gray-100: #F0EEEA;
+    --gray-200: #E0DDD6;
+    --gray-600: #6B6760;
+    --gray-800: #2A2824;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-heading: 'Oswald', sans-serif;
+    --font-body: 'Source Sans 3', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font-body);
+    color: var(--gray-800);
+    background: var(--off-white);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ===== NAVIGATION ===== */
+.nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 0 2rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.3s;
+}
+.nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.nav-links {
+    display: flex;
+    gap: 1.8rem;
+    align-items: center;
+    list-style: none;
+}
+.nav-links a {
+    font-family: var(--font-heading);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a.active { color: var(--white); }
+.nav-cta {
+    background: var(--red);
+    color: var(--white) !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    font-weight: 600 !important;
+    letter-spacing: 1px;
+    transition: background 0.2s, transform 0.2s;
+}
+.nav-cta:hover { background: var(--red-dark); transform: translateY(-1px); }
+
+.nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+}
+.nav-hamburger span {
+    width: 24px; height: 2px;
+    background: var(--white);
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.9rem 2rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+.btn-red {
+    background: var(--red);
+    color: var(--white);
+    box-shadow: 0 4px 20px rgba(196,30,42,0.4);
+}
+.btn-red:hover {
+    background: var(--red-glow);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(255,26,46,0.5);
+}
+.btn-gold {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--black);
+    box-shadow: 0 4px 20px rgba(212,168,67,0.3);
+}
+.btn-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(212,168,67,0.5);
+}
+.btn-outline {
+    background: transparent;
+    color: var(--gold);
+    border: 1.5px solid var(--gold);
+}
+.btn-outline:hover {
+    background: var(--gold);
+    color: var(--black);
+    transform: translateY(-2px);
+}
+.btn-whatsapp {
+    background: #25D366;
+    color: var(--white);
+}
+.btn-whatsapp:hover { background: #1da851; }
+
+/* ===== SECTIONS COMMON ===== */
+.section {
+    padding: 6rem 2rem;
+    position: relative;
+}
+.section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.section-label {
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.8rem;
+}
+.section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    color: var(--black);
+    letter-spacing: 1px;
+    margin-bottom: 1.2rem;
+}
+.section-subtitle {
+    font-size: 1.1rem;
+    color: var(--gray-600);
+    max-width: 600px;
+    line-height: 1.7;
+}
+
+/* ===== EVENT BANNER ===== */
+.event-banner {
+    margin-top: 64px;
+    background: var(--black);
+    position: relative;
+    overflow: hidden;
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+}
+.event-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 120% 80% at 50% 30%, rgba(196,30,42,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 70%, rgba(212,168,67,0.06) 0%, transparent 50%);
+}
+.event-banner::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--red), var(--gold), var(--blue));
+}
+.event-banner-noise {
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+/* Ring rope effects */
+.event-banner .rope-top,
+.event-banner .rope-bottom {
+    position: absolute;
+    left: 0; right: 0;
+    height: 2px;
+    z-index: 1;
+}
+.event-banner .rope-top {
+    top: 30%;
+    background: linear-gradient(90deg, transparent, rgba(196,30,42,0.2), rgba(196,30,42,0.35), rgba(196,30,42,0.2), transparent);
+}
+.event-banner .rope-bottom {
+    bottom: 30%;
+    background: linear-gradient(90deg, transparent, rgba(0,36,125,0.2), rgba(0,36,125,0.35), rgba(0,36,125,0.2), transparent);
+}
+.event-banner-content {
+    position: relative;
+    z-index: 2;
+}
+.event-banner .banner-label {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+.event-banner .banner-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 8vw, 5.5rem);
+    color: var(--white);
+    letter-spacing: 3px;
+    line-height: 0.95;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 80px rgba(196,30,42,0.3);
+}
+.event-banner .banner-vs {
+    font-family: var(--font-heading);
+    font-size: clamp(0.8rem, 2vw, 1.1rem);
+    letter-spacing: 12px;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+}
+.banner-meta {
+    display: flex;
+    gap: 2.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.banner-meta-item {
+    text-align: center;
+}
+.banner-meta-item .meta-label {
+    font-family: var(--font-heading);
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 0.25rem;
+}
+.banner-meta-item .meta-value {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--white);
+    letter-spacing: 1px;
+}
+
+/* ===== TICKET OPTIONS ===== */
+.ticket-options {
+    background: var(--white);
+    border-top: 1px solid var(--gray-200);
+}
+.tickets-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+.ticket-card {
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+}
+.ticket-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+}
+.ticket-card.vip { border-color: var(--gold); }
+.ticket-card.vip .ticket-header {
+    background: linear-gradient(135deg, #1a1409 0%, #2a1f0a 100%);
+}
+.ticket-header {
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--black) 0%, #1a1a1a 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.ticket-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+}
+.ticket-card.standard .ticket-header::after { background: var(--red); }
+.ticket-card.vip .ticket-header::after { background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold)); }
+.ticket-type {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray-600);
+    margin-bottom: 0.5rem;
+}
+.ticket-card.vip .ticket-type { color: var(--gold); }
+.ticket-price {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    color: var(--white);
+    letter-spacing: 1px;
+}
+.ticket-price .currency {
+    font-family: var(--font-heading);
+    font-size: 0.4em;
+    vertical-align: super;
+    color: rgba(255,255,255,0.5);
+}
+.ticket-body { padding: 2rem; }
+.ticket-perks {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+}
+.ticket-perks li {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.95rem;
+    color: var(--gray-800);
+}
+.ticket-perks li::before {
+    content: '\2713';
+    flex-shrink: 0;
+    width: 20px; height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    border-radius: 50%;
+}
+.ticket-card.standard .ticket-perks li::before {
+    background: rgba(196,30,42,0.1);
+    color: var(--red);
+}
+.ticket-card.vip .ticket-perks li::before {
+    background: rgba(212,168,67,0.15);
+    color: var(--gold);
+}
+.ticket-select-btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    padding: 1rem;
+}
+
+/* ===== BUYER FORM ===== */
+.checkout-form-section {
+    background: var(--off-white);
+}
+.checkout-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 3rem;
+    margin-top: 3rem;
+    align-items: start;
+}
+.form-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 2.5rem;
+}
+.form-card-title {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--black);
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+.form-card-subtitle {
+    font-size: 0.9rem;
+    color: var(--gray-600);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+.form-group {
+    margin-bottom: 1.5rem;
+}
+.form-label {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray-800);
+    margin-bottom: 0.5rem;
+}
+.form-label .required {
+    color: var(--red);
+    margin-left: 2px;
+}
+.form-input,
+.form-select {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--gray-800);
+    background: var(--gray-100);
+    border: 1.5px solid var(--gray-200);
+    border-radius: 6px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    -webkit-appearance: none;
+}
+.form-input:focus,
+.form-select:focus {
+    border-color: var(--red);
+    box-shadow: 0 0 0 3px rgba(196,30,42,0.1);
+    background: var(--white);
+}
+.form-input.error,
+.form-select.error {
+    border-color: var(--red);
+    background: rgba(196,30,42,0.03);
+}
+.form-error-msg {
+    font-size: 0.78rem;
+    color: var(--red);
+    margin-top: 0.35rem;
+    display: none;
+}
+.form-error-msg.show { display: block; }
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+.phone-input-wrap {
+    display: flex;
+    gap: 0;
+}
+.phone-prefix {
+    padding: 0.85rem 0.8rem;
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--gray-800);
+    background: var(--gray-200);
+    border: 1.5px solid var(--gray-200);
+    border-right: none;
+    border-radius: 6px 0 0 6px;
+    white-space: nowrap;
+}
+.phone-input-wrap .form-input {
+    border-radius: 0 6px 6px 0;
+}
+.form-select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%236B6760' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+}
+
+/* Order Summary Sidebar */
+.order-summary {
+    background: var(--black);
+    border-radius: 8px;
+    padding: 2.5rem;
+    position: sticky;
+    top: 90px;
+}
+.order-summary-title {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--white);
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.order-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7rem 0;
+    font-size: 0.95rem;
+}
+.order-line .order-label {
+    color: rgba(255,255,255,0.5);
+}
+.order-line .order-value {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.5px;
+}
+.order-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+    margin: 0.5rem 0;
+}
+.order-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0 0;
+    margin-top: 0.5rem;
+    border-top: 1px solid rgba(255,255,255,0.12);
+}
+.order-total .order-label {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+.order-total .order-value {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--white);
+}
+.order-total .order-value .currency-small {
+    font-family: var(--font-heading);
+    font-size: 0.45em;
+    color: rgba(255,255,255,0.4);
+    vertical-align: super;
+}
+.order-qr-note {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 6px;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+}
+.order-qr-note svg {
+    flex-shrink: 0;
+    width: 18px; height: 18px;
+    color: var(--gold);
+    margin-top: 2px;
+}
+.order-qr-note p {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.5;
+}
+.order-qr-note strong {
+    color: rgba(255,255,255,0.7);
+}
+
+/* ===== PAYMENT OPTIONS ===== */
+.payment-section {
+    background: var(--white);
+    border-top: 1px solid var(--gray-200);
+}
+.payment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+.payment-card {
+    background: var(--gray-100);
+    border: 1.5px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+}
+.payment-card:hover {
+    border-color: var(--red);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+}
+.payment-card.popular::before {
+    content: 'POPULAIRE';
+    position: absolute;
+    top: -1px; right: 1rem;
+    background: var(--red);
+    color: var(--white);
+    font-family: var(--font-heading);
+    font-size: 0.55rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0 0 4px 4px;
+}
+.payment-icon {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.5rem;
+}
+.payment-name {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gray-800);
+    margin-bottom: 0.3rem;
+}
+.payment-desc {
+    font-size: 0.82rem;
+    color: var(--gray-600);
+    line-height: 1.5;
+}
+.payment-note {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.85rem;
+    color: var(--gray-600);
+}
+.payment-note svg {
+    width: 14px; height: 14px;
+    vertical-align: -2px;
+    margin-right: 4px;
+}
+
+/* ===== QR CODE DELIVERY ===== */
+.qr-delivery {
+    background: var(--black);
+    color: var(--white);
+    overflow: hidden;
+}
+.qr-delivery::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(212,168,67,0.06) 0%, transparent 60%);
+}
+.qr-delivery .section-label { color: var(--gold); }
+.qr-delivery .section-title { color: var(--white); }
+.qr-delivery .section-subtitle { color: rgba(255,255,255,0.5); }
+.qr-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+.qr-step {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px;
+    transition: transform 0.3s, background 0.3s;
+}
+.qr-step:hover {
+    transform: translateY(-3px);
+    background: rgba(255,255,255,0.05);
+}
+.qr-step-num {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+}
+.qr-step-icon {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+    display: block;
+}
+.qr-step-title {
+    font-family: var(--font-heading);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+}
+.qr-step-desc {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.6;
+}
+
+/* ===== FAQ ACCORDION ===== */
+.faq-section {
+    background: var(--off-white);
+}
+.faq-list {
+    margin-top: 3rem;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+.faq-item {
+    border-bottom: 1px solid var(--gray-200);
+}
+.faq-item:first-child {
+    border-top: 1px solid var(--gray-200);
+}
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 1.4rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    cursor: pointer;
+    text-align: left;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--gray-800);
+    transition: color 0.2s;
+}
+.faq-question:hover { color: var(--red); }
+.faq-question .faq-icon {
+    flex-shrink: 0;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: 1.5px solid var(--gray-200);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s, border-color 0.3s, background 0.3s;
+}
+.faq-question .faq-icon svg {
+    width: 12px; height: 12px;
+    transition: transform 0.3s;
+}
+.faq-item.open .faq-question .faq-icon {
+    border-color: var(--red);
+    background: var(--red);
+}
+.faq-item.open .faq-question .faq-icon svg {
+    transform: rotate(45deg);
+    stroke: var(--white);
+}
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+}
+.faq-answer-inner {
+    padding: 0 0 1.4rem;
+    font-size: 0.95rem;
+    color: var(--gray-600);
+    line-height: 1.8;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    background: var(--black);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 3rem 2rem;
+}
+.footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 2rem;
+}
+.footer-brand .footer-logo {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--white);
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+.footer-brand .footer-tagline {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+.footer-socials {
+    display: flex;
+    gap: 0.8rem;
+}
+.footer-socials a {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: border-color 0.3s, color 0.3s;
+}
+.footer-socials a:hover { border-color: var(--gold); color: var(--gold); }
+.footer-col-title {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+.footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.footer-links a {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--white); }
+.footer-bottom {
+    max-width: 1100px;
+    margin: 2rem auto 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.25);
+}
+.footer-bottom a {
+    color: var(--gold);
+    text-decoration: none;
+}
+
+/* ===== MOBILE FLOATING CTAs ===== */
+.mobile-ctas {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0; right: 0;
+    z-index: 999;
+    padding: 0.6rem;
+    gap: 0.5rem;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+.mobile-ctas .btn {
+    flex: 1;
+    justify-content: center;
+    font-size: 0.72rem;
+    padding: 0.7rem 0.5rem;
+    border-radius: 4px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    .checkout-grid { grid-template-columns: 1fr; }
+    .order-summary { position: static; }
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 64px; left: 0; right: 0;
+        background: rgba(10,10,10,0.97);
+        padding: 1.5rem 2rem;
+        gap: 1.2rem;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .tickets-grid { grid-template-columns: 1fr; max-width: 420px; }
+    .payment-grid { grid-template-columns: 1fr; max-width: 400px; }
+    .qr-steps { grid-template-columns: 1fr 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .section { padding: 4rem 1.5rem; }
+    .mobile-ctas { display: flex; }
+    body { padding-bottom: 64px; }
+    .banner-meta { gap: 1.5rem; }
+}
+
+@media (max-width: 480px) {
+    .qr-steps { grid-template-columns: 1fr; }
+    .event-banner { padding: 4rem 1.5rem 3rem; }
+}
+
+/* ===== SCROLL ANIMATIONS ===== */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="mainNav">
+    <a href="/" class="nav-logo">BOX TO BOX</a>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="/">Home</a></li>
+        <li><a href="tickets.html" class="active">Tickets</a></li>
+        <li><a href="live.html">Live</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="tickets.html" class="nav-cta">Acheter Ticket</a></li>
+    </ul>
+    <div class="nav-hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+        <span></span><span></span><span></span>
+    </div>
+</nav>
+
+<!-- EVENT SUMMARY BANNER -->
+<section class="event-banner">
+    <div class="event-banner-noise"></div>
+    <div class="rope-top"></div>
+    <div class="rope-bottom"></div>
+    <div class="event-banner-content">
+        <p class="banner-label">Billetterie Officielle</p>
+        <h1 class="banner-title">BATAY SAN FWONTYÈ</h1>
+        <p class="banner-vs">Haïti &nbsp; vs &nbsp; République Dominicaine</p>
+        <div class="banner-meta">
+            <div class="banner-meta-item">
+                <div class="meta-label">Date</div>
+                <div class="meta-value">30 Mai 2025</div>
+            </div>
+            <div class="banner-meta-item">
+                <div class="meta-label">Heure</div>
+                <div class="meta-value">19h00</div>
+            </div>
+            <div class="banner-meta-item">
+                <div class="meta-label">Lieu</div>
+                <div class="meta-value">Parc Ste-Thérèse</div>
+            </div>
+            <div class="banner-meta-item">
+                <div class="meta-label">À partir de</div>
+                <div class="meta-value">1,000 Gdes</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TICKET OPTIONS -->
+<section class="section ticket-options" id="options">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">Choisissez votre expérience</p>
+            <h2 class="section-title">Options de billets</h2>
+            <p class="section-subtitle">Deux formules pour vivre Batay San Fwontyè selon votre style.</p>
+        </div>
+        <div class="tickets-grid">
+            <div class="ticket-card standard reveal">
+                <div class="ticket-header">
+                    <div class="ticket-type">Standard</div>
+                    <div class="ticket-price">1,000 <span class="currency">GDES</span></div>
+                </div>
+                <div class="ticket-body">
+                    <ul class="ticket-perks">
+                        <li>Accès général à l'événement complet</li>
+                        <li>Vue dégagée sur le ring</li>
+                        <li>Accès zone food village et stands</li>
+                        <li>Zone WiFi gratuite</li>
+                        <li>QR code billet numérique unique</li>
+                        <li>Entrée sécurisée par scan</li>
+                    </ul>
+                    <button class="btn btn-red ticket-select-btn" onclick="selectTicket('standard')">Sélectionner Standard</button>
+                </div>
+            </div>
+            <div class="ticket-card vip reveal">
+                <div class="ticket-header">
+                    <div class="ticket-type">VIP</div>
+                    <div class="ticket-price">2,500 <span class="currency">GDES</span></div>
+                </div>
+                <div class="ticket-body">
+                    <ul class="ticket-perks">
+                        <li>Siège VIP première rangée ringside</li>
+                        <li>Accès lounge VIP privé et exclusif</li>
+                        <li>Boissons premium et snacks inclus</li>
+                        <li>Rencontre avec les combattants après le show</li>
+                        <li>Service de parking dédié</li>
+                        <li>QR code billet numérique unique</li>
+                        <li>Accès prioritaire sans file d'attente</li>
+                    </ul>
+                    <button class="btn btn-gold ticket-select-btn" onclick="selectTicket('vip')">Sélectionner VIP</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CHECKOUT FORM -->
+<section class="section checkout-form-section" id="checkout">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">Réservation</p>
+            <h2 class="section-title">Complétez votre commande</h2>
+            <p class="section-subtitle">Remplissez vos informations pour recevoir votre billet QR code.</p>
+        </div>
+        <div class="checkout-grid">
+            <div class="form-card reveal">
+                <div class="form-card-title">Informations de l'acheteur</div>
+                <div class="form-card-subtitle">Tous les champs marqués * sont obligatoires.</div>
+                <form id="ticketForm" novalidate>
+                    <div class="form-group">
+                        <label class="form-label" for="fullName">Nom complet <span class="required">*</span></label>
+                        <input type="text" id="fullName" class="form-input" placeholder="Ex: Jean-Pierre Augustin" required>
+                        <div class="form-error-msg" id="fullNameError">Veuillez entrer votre nom complet.</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="phone">Téléphone <span class="required">*</span></label>
+                        <div class="phone-input-wrap">
+                            <span class="phone-prefix">+509</span>
+                            <input type="tel" id="phone" class="form-input" placeholder="XXXX XXXX" maxlength="9" required>
+                        </div>
+                        <div class="form-error-msg" id="phoneError">Entrez un numéro haïtien valide (8 chiffres).</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">Adresse e-mail <span class="required">*</span></label>
+                        <input type="email" id="email" class="form-input" placeholder="votre@email.com" required>
+                        <div class="form-error-msg" id="emailError">Veuillez entrer une adresse e-mail valide.</div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="ticketType">Type de billet <span class="required">*</span></label>
+                            <select id="ticketType" class="form-select" required>
+                                <option value="">-- Choisir --</option>
+                                <option value="standard">Standard — 1,000 Gdes</option>
+                                <option value="vip">VIP — 2,500 Gdes</option>
+                            </select>
+                            <div class="form-error-msg" id="ticketTypeError">Sélectionnez un type de billet.</div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="quantity">Quantité <span class="required">*</span></label>
+                            <select id="quantity" class="form-select" required>
+                                <option value="1">1 billet</option>
+                                <option value="2">2 billets</option>
+                                <option value="3">3 billets</option>
+                                <option value="4">4 billets</option>
+                                <option value="5">5 billets</option>
+                                <option value="6">6 billets</option>
+                                <option value="7">7 billets</option>
+                                <option value="8">8 billets</option>
+                                <option value="9">9 billets</option>
+                                <option value="10">10 billets</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-red" style="width:100%;justify-content:center;margin-top:0.5rem;font-size:0.9rem;padding:1.1rem;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        Procéder au paiement
+                    </button>
+                </form>
+            </div>
+            <div class="order-summary reveal">
+                <div class="order-summary-title">Résumé de commande</div>
+                <div class="order-line">
+                    <span class="order-label">Billet</span>
+                    <span class="order-value" id="summaryType">--</span>
+                </div>
+                <div class="order-line">
+                    <span class="order-label">Prix unitaire</span>
+                    <span class="order-value" id="summaryUnit">-- Gdes</span>
+                </div>
+                <div class="order-line">
+                    <span class="order-label">Quantité</span>
+                    <span class="order-value" id="summaryQty">1</span>
+                </div>
+                <div class="order-divider"></div>
+                <div class="order-total">
+                    <span class="order-label">Total</span>
+                    <span class="order-value" id="summaryTotal">-- <span class="currency-small">GDES</span></span>
+                </div>
+                <div class="order-qr-note">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3z"/><path d="M20 14v3h-3"/><path d="M14 20h3"/><path d="M20 20h0"/></svg>
+                    <p><strong>Livraison par QR code</strong><br>Votre billet sera envoyé instantanément par WhatsApp et e-mail après paiement.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PAYMENT OPTIONS -->
+<section class="section payment-section" id="payment">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">Modes de Paiement</p>
+            <h2 class="section-title">Comment payer</h2>
+            <p class="section-subtitle">Choisissez le mode de paiement qui vous convient le mieux.</p>
+        </div>
+        <div class="payment-grid reveal">
+            <div class="payment-card popular">
+                <div class="payment-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </div>
+                <div class="payment-name">MonCash</div>
+                <div class="payment-desc">Payez directement depuis votre portefeuille MonCash. Rapide et sécurisé.</div>
+            </div>
+            <div class="payment-card">
+                <div class="payment-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                </div>
+                <div class="payment-name">Carte bancaire</div>
+                <div class="payment-desc">Visa, Mastercard acceptées. Paiement international sécurisé.</div>
+            </div>
+            <div class="payment-card">
+                <div class="payment-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <div class="payment-name">Transfert / En personne</div>
+                <div class="payment-desc">Contactez-nous via WhatsApp pour un paiement direct ou un transfert bancaire.</div>
+            </div>
+        </div>
+        <p class="payment-note reveal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Paiement 100% sécurisé — Confirmation instantanée par WhatsApp &amp; e-mail
+        </p>
+    </div>
+</section>
+
+<!-- QR CODE DELIVERY -->
+<section class="section qr-delivery" id="qr-info">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">Billet Numérique</p>
+            <h2 class="section-title">Comment recevoir votre billet</h2>
+            <p class="section-subtitle">Plus besoin de billet papier. Tout se fait via votre téléphone.</p>
+        </div>
+        <div class="qr-steps reveal">
+            <div class="qr-step">
+                <div class="qr-step-num">01</div>
+                <span class="qr-step-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/></svg>
+                </span>
+                <div class="qr-step-title">Choisissez</div>
+                <div class="qr-step-desc">Sélectionnez votre type de billet et remplissez le formulaire.</div>
+            </div>
+            <div class="qr-step">
+                <div class="qr-step-num">02</div>
+                <span class="qr-step-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                </span>
+                <div class="qr-step-title">Payez</div>
+                <div class="qr-step-desc">Payez via MonCash, carte bancaire ou transfert direct.</div>
+            </div>
+            <div class="qr-step">
+                <div class="qr-step-num">03</div>
+                <span class="qr-step-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3z"/><path d="M20 14v3h-3"/><path d="M14 20h3"/><path d="M20 20h0"/></svg>
+                </span>
+                <div class="qr-step-title">Recevez</div>
+                <div class="qr-step-desc">Votre QR code unique est envoyé instantanément par WhatsApp et e-mail.</div>
+            </div>
+            <div class="qr-step">
+                <div class="qr-step-num">04</div>
+                <span class="qr-step-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </span>
+                <div class="qr-step-title">Entrez</div>
+                <div class="qr-step-desc">Présentez votre QR code à l'entrée pour un scan rapide et sécurisé.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="section faq-section" id="faq">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">Questions fréquentes</p>
+            <h2 class="section-title">Tout savoir sur les billets</h2>
+        </div>
+        <div class="faq-list reveal">
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Comment vais-je recevoir mon billet ?
+                    <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Après votre paiement, vous recevrez instantanément votre billet sous forme de QR code unique par WhatsApp (au numéro fourni) et par e-mail. Conservez-le sur votre téléphone pour le présenter à l'entrée le jour de l'événement.
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Puis-je acheter plusieurs billets à la fois ?
+                    <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Oui, vous pouvez acheter jusqu'à 10 billets par commande. Chaque billet aura son propre QR code unique. Les QR codes seront tous envoyés au même numéro WhatsApp et à la même adresse e-mail.
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Quelle est la différence entre Standard et VIP ?
+                    <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Le billet Standard (1,000 Gdes) vous donne accès à l'événement avec vue sur le ring et accès au food village. Le billet VIP (2,500 Gdes) inclut un siège première rangée ringside, l'accès au lounge VIP privé, des boissons premium, la rencontre avec les combattants, un parking dédié et une entrée prioritaire sans file d'attente.
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Puis-je me faire rembourser mon billet ?
+                    <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Les billets sont non-remboursables, sauf en cas d'annulation officielle de l'événement. En cas de report, votre billet restera valide pour la nouvelle date. Contactez-nous via WhatsApp pour toute question.
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    À quelle heure ouvrent les portes ?
+                    <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Les portes ouvrent à 17h00 pour les détenteurs de billets VIP et à 18h00 pour les billets Standard. Le main event commence à 19h00. Nous recommandons d'arriver tôt pour profiter du food village et de l'ambiance pré-combat.
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Mon QR code peut-il être partagé ou transféré ?
+                    <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Chaque QR code est unique et ne peut être utilisé qu'une seule fois à l'entrée. Vous pouvez transférer le QR code à une autre personne, mais une fois scanné, il ne sera plus valide. Ne partagez pas votre QR code publiquement pour éviter tout usage frauduleux.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <div class="footer-logo">BOX TO BOX</div>
+            <p class="footer-tagline">Box To Box &amp; 48HoursReady.com Présentent<br>Batay San Fwontyè<br><em>Combat. Culture. Connexion.</em></p>
+            <div class="footer-socials">
+                <a href="#" aria-label="Instagram">IG</a>
+                <a href="#" aria-label="Facebook">FB</a>
+                <a href="#" aria-label="YouTube">YT</a>
+            </div>
+        </div>
+        <div>
+            <div class="footer-col-title">Navigation</div>
+            <ul class="footer-links">
+                <li><a href="/">Accueil</a></li>
+                <li><a href="tickets.html">Tickets</a></li>
+                <li><a href="live.html">Livestream</a></li>
+                <li><a href="sponsors.html">Sponsors</a></li>
+            </ul>
+        </div>
+        <div>
+            <div class="footer-col-title">Informations</div>
+            <ul class="footer-links">
+                <li><a href="media.html">Media</a></li>
+                <li><a href="about.html">À Propos</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div>
+            <div class="footer-col-title">Contact</div>
+            <ul class="footer-links">
+                <li><a href="#">WhatsApp</a></li>
+                <li><a href="#">Email</a></li>
+                <li><a href="#">Instagram</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>&copy; 2025 Box To Box. Tous droits réservés.</span>
+        <span>Powered by <a href="https://48hoursready.com">48HoursReady.com</a></span>
+    </div>
+</footer>
+
+<!-- MOBILE FLOATING CTAs -->
+<div class="mobile-ctas">
+    <a href="#checkout" class="btn btn-red">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/></svg>
+        Acheter
+    </a>
+    <a href="live.html" class="btn" style="background:var(--blue);color:var(--white);">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Live
+    </a>
+    <a href="#" class="btn btn-whatsapp">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.624-1.467A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.666-5.813-1.803l-.417-.263-2.743.87.88-2.683-.287-.44A9.715 9.715 0 0 1 2.25 12c0-5.385 4.365-9.75 9.75-9.75S21.75 6.615 21.75 12s-4.365 9.75-9.75 9.75z"/></svg>
+        WhatsApp
+    </a>
+</div>
+
+<script>
+// Ticket prices
+const PRICES = { standard: 1000, vip: 2500 };
+
+// Select ticket from cards
+function selectTicket(type) {
+    document.getElementById('ticketType').value = type;
+    updateSummary();
+    document.getElementById('checkout').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// Update order summary
+function updateSummary() {
+    const type = document.getElementById('ticketType').value;
+    const qty = parseInt(document.getElementById('quantity').value) || 1;
+
+    if (type && PRICES[type]) {
+        const unitPrice = PRICES[type];
+        const total = unitPrice * qty;
+        document.getElementById('summaryType').textContent = type === 'vip' ? 'VIP' : 'Standard';
+        document.getElementById('summaryUnit').textContent = unitPrice.toLocaleString() + ' Gdes';
+        document.getElementById('summaryQty').textContent = qty;
+        document.getElementById('summaryTotal').innerHTML = total.toLocaleString() + ' <span class="currency-small">GDES</span>';
+    } else {
+        document.getElementById('summaryType').textContent = '--';
+        document.getElementById('summaryUnit').textContent = '-- Gdes';
+        document.getElementById('summaryQty').textContent = qty;
+        document.getElementById('summaryTotal').innerHTML = '-- <span class="currency-small">GDES</span>';
+    }
+}
+
+document.getElementById('ticketType').addEventListener('change', updateSummary);
+document.getElementById('quantity').addEventListener('change', updateSummary);
+
+// Form validation
+document.getElementById('ticketForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    let valid = true;
+
+    // Reset errors
+    document.querySelectorAll('.form-input, .form-select').forEach(el => el.classList.remove('error'));
+    document.querySelectorAll('.form-error-msg').forEach(el => el.classList.remove('show'));
+
+    // Full name
+    const name = document.getElementById('fullName');
+    if (!name.value.trim() || name.value.trim().length < 3) {
+        name.classList.add('error');
+        document.getElementById('fullNameError').classList.add('show');
+        valid = false;
+    }
+
+    // Phone
+    const phone = document.getElementById('phone');
+    const phoneClean = phone.value.replace(/\s/g, '');
+    if (!/^\d{8}$/.test(phoneClean)) {
+        phone.classList.add('error');
+        document.getElementById('phoneError').classList.add('show');
+        valid = false;
+    }
+
+    // Email
+    const email = document.getElementById('email');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
+        email.classList.add('error');
+        document.getElementById('emailError').classList.add('show');
+        valid = false;
+    }
+
+    // Ticket type
+    const ticketType = document.getElementById('ticketType');
+    if (!ticketType.value) {
+        ticketType.classList.add('error');
+        document.getElementById('ticketTypeError').classList.add('show');
+        valid = false;
+    }
+
+    if (valid) {
+        // Placeholder: in production, this would submit to a payment gateway
+        alert('Merci ! Redirection vers le paiement...\n\nNom: ' + name.value.trim() + '\nTéléphone: +509 ' + phoneClean + '\nEmail: ' + email.value.trim() + '\nBillet: ' + ticketType.value.toUpperCase() + ' x' + document.getElementById('quantity').value);
+    } else {
+        // Scroll to first error
+        const firstError = document.querySelector('.form-input.error, .form-select.error');
+        if (firstError) {
+            firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            firstError.focus();
+        }
+    }
+});
+
+// FAQ accordion
+function toggleFaq(btn) {
+    const item = btn.parentElement;
+    const answer = item.querySelector('.faq-answer');
+    const isOpen = item.classList.contains('open');
+
+    // Close all
+    document.querySelectorAll('.faq-item').forEach(fi => {
+        fi.classList.remove('open');
+        fi.querySelector('.faq-answer').style.maxHeight = '0';
+    });
+
+    // Open clicked (if it was closed)
+    if (!isOpen) {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+}
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => entry.target.classList.add('visible'), i * 80);
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => observer.observe(el));
+
+// Nav background on scroll
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+    nav.style.background = window.scrollY > 80
+        ? 'rgba(10,10,10,0.98)'
+        : 'rgba(10,10,10,0.95)';
+});
+
+// Initialize summary on load
+updateSummary();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live — Box To Box | Batay San Fwontyè</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+    --red: #C41E2A;
+    --red-dark: #8B0000;
+    --red-glow: #FF1A2E;
+    --blue: #00247D;
+    --blue-deep: #001847;
+    --gold: #D4A843;
+    --gold-light: #F0D078;
+    --black: #0A0A0A;
+    --off-white: #F5F3EF;
+    --white: #FFFFFF;
+    --gray-100: #F0EEEA;
+    --gray-200: #E0DDD6;
+    --gray-600: #6B6760;
+    --gray-800: #2A2824;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-heading: 'Oswald', sans-serif;
+    --font-body: 'Source Sans 3', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font-body);
+    color: var(--white);
+    background: var(--black);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ===== NAVIGATION ===== */
+.nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 0 2rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.3s;
+}
+.nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.nav-logo .x { color: var(--red); font-size: 1.2rem; }
+.nav-links {
+    display: flex;
+    gap: 1.8rem;
+    align-items: center;
+    list-style: none;
+}
+.nav-links a {
+    font-family: var(--font-heading);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a.active { color: var(--white); }
+.nav-cta {
+    background: var(--red);
+    color: var(--white) !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    font-weight: 600 !important;
+    letter-spacing: 1px;
+    transition: background 0.2s, transform 0.2s;
+}
+.nav-cta:hover { background: var(--red-dark); transform: translateY(-1px); }
+.nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+}
+.nav-hamburger span {
+    width: 24px; height: 2px;
+    background: var(--white);
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.9rem 2rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+.btn-red {
+    background: var(--red);
+    color: var(--white);
+    box-shadow: 0 4px 20px rgba(196,30,42,0.4);
+}
+.btn-red:hover {
+    background: var(--red-glow);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(255,26,46,0.5);
+}
+.btn-blue {
+    background: var(--blue);
+    color: var(--white);
+    box-shadow: 0 4px 20px rgba(0,36,125,0.3);
+}
+.btn-blue:hover {
+    background: #003399;
+    transform: translateY(-2px);
+}
+.btn-outline {
+    background: transparent;
+    color: var(--gold);
+    border: 1.5px solid var(--gold);
+}
+.btn-outline:hover {
+    background: var(--gold);
+    color: var(--black);
+    transform: translateY(-2px);
+}
+.btn-gold {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--black);
+    box-shadow: 0 4px 20px rgba(212,168,67,0.3);
+}
+.btn-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(212,168,67,0.5);
+}
+.btn-whatsapp {
+    background: #25D366;
+    color: var(--white);
+}
+.btn-whatsapp:hover { background: #1da851; }
+
+/* ===== HERO HEADER ===== */
+.live-hero {
+    position: relative;
+    padding: 10rem 2rem 5rem;
+    text-align: center;
+    overflow: hidden;
+    background: var(--black);
+}
+.live-hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 120% 80% at 50% 30%, rgba(196,30,42,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 80% 60% at 20% 80%, rgba(0,36,125,0.12) 0%, transparent 50%),
+        linear-gradient(180deg, var(--black) 0%, #111 50%, var(--black) 100%);
+}
+.live-hero-noise {
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+/* Ring ropes */
+.live-hero::before,
+.live-hero::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    height: 2px;
+    z-index: 1;
+}
+.live-hero::before {
+    top: 30%;
+    background: linear-gradient(90deg, transparent, rgba(196,30,42,0.25), rgba(196,30,42,0.4), rgba(196,30,42,0.25), transparent);
+}
+.live-hero::after {
+    bottom: 15%;
+    background: linear-gradient(90deg, transparent, rgba(0,36,125,0.25), rgba(0,36,125,0.4), rgba(0,36,125,0.25), transparent);
+}
+.live-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.live-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(196,30,42,0.15);
+    border: 1px solid rgba(196,30,42,0.3);
+    padding: 0.4rem 1.2rem;
+    border-radius: 20px;
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--red-glow);
+    margin-bottom: 2rem;
+    animation: fadeUp 0.8s 0.2s forwards;
+    opacity: 0;
+}
+.live-hero-badge .dot {
+    width: 6px; height: 6px;
+    background: var(--red-glow);
+    border-radius: 50%;
+    animation: livePulse 1.5s ease-in-out infinite;
+}
+.live-hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 0.95;
+    color: var(--white);
+    letter-spacing: 3px;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 80px rgba(196,30,42,0.3);
+    animation: fadeUp 0.8s 0.4s forwards;
+    opacity: 0;
+}
+.live-hero-title .accent {
+    color: var(--gold);
+}
+.live-hero-subtitle {
+    font-family: var(--font-heading);
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    font-weight: 400;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: fadeUp 0.8s 0.6s forwards;
+    opacity: 0;
+}
+
+/* ===== SECTION COMMON ===== */
+.section {
+    padding: 5rem 2rem;
+    position: relative;
+}
+.section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.section-label {
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red-glow);
+    margin-bottom: 0.8rem;
+}
+.section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    color: var(--white);
+    letter-spacing: 1px;
+    margin-bottom: 1.2rem;
+}
+.section-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.5);
+    max-width: 600px;
+    line-height: 1.7;
+}
+
+/* ===== COUNTDOWN SECTION (Before Event) ===== */
+.countdown-section {
+    background: var(--black);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+    overflow: hidden;
+}
+.countdown-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(196,30,42,0.06) 0%, transparent 60%);
+}
+.countdown-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    margin-top: 3rem;
+}
+
+/* Countdown timer */
+.countdown-main {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 3rem;
+    text-align: center;
+}
+.countdown-heading {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+}
+.countdown {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+.countdown-block {
+    text-align: center;
+    background: rgba(255,255,255,0.04);
+    border-radius: 8px;
+    padding: 1.5rem 0.5rem;
+    border: 1px solid rgba(255,255,255,0.06);
+}
+.countdown-num {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    color: var(--white);
+    line-height: 1;
+}
+.countdown-unit {
+    font-family: var(--font-heading);
+    font-size: 0.65rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-top: 0.4rem;
+}
+.countdown-date {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 0.5rem;
+}
+.countdown-date strong {
+    color: var(--white);
+    font-weight: 600;
+}
+
+/* Event poster placeholder */
+.event-poster {
+    position: relative;
+    aspect-ratio: 3/4;
+    max-height: 520px;
+    background:
+        radial-gradient(circle at center, rgba(196,30,42,0.12) 0%, transparent 60%),
+        linear-gradient(135deg, var(--blue-deep) 0%, var(--black) 50%, #1a0a0a 100%);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+}
+.event-poster::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 41px),
+        repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 41px);
+}
+.event-poster::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--red), var(--gold), var(--blue));
+}
+.poster-presented {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+}
+.poster-title {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    line-height: 0.95;
+    color: var(--white);
+    letter-spacing: 2px;
+    text-shadow: 0 0 60px rgba(196,30,42,0.3);
+    margin-bottom: 0.5rem;
+}
+.poster-vs {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    letter-spacing: 8px;
+    color: var(--gold);
+    margin: 1rem 0;
+}
+.poster-flags {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin: 1.5rem 0;
+}
+.poster-flag {
+    font-size: 2.5rem;
+}
+.poster-flag-vs {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--gold);
+}
+.poster-date {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* ===== REMINDER FORM ===== */
+.reminder-section {
+    background: #0d0d0d;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+    overflow: hidden;
+}
+.reminder-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 40% at 50% 100%, rgba(0,36,125,0.06) 0%, transparent 60%);
+}
+.reminder-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 3rem;
+}
+.reminder-text h3 {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--white);
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+.reminder-text p {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+.reminder-benefits {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+.reminder-benefits li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.6);
+}
+.reminder-benefits li::before {
+    content: '';
+    flex-shrink: 0;
+    width: 8px; height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+}
+.reminder-form {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 2.5rem;
+}
+.form-title {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--white);
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+.form-subtitle {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 2rem;
+}
+.form-group {
+    margin-bottom: 1.2rem;
+}
+.form-group label {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+}
+.form-group input {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    transition: border-color 0.3s, background 0.3s;
+}
+.form-group input::placeholder {
+    color: rgba(255,255,255,0.25);
+}
+.form-group input:focus {
+    outline: none;
+    border-color: var(--gold);
+    background: rgba(255,255,255,0.07);
+}
+.form-submit {
+    width: 100%;
+    margin-top: 0.5rem;
+    justify-content: center;
+    font-size: 0.85rem;
+    padding: 1rem;
+}
+.form-note {
+    text-align: center;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.25);
+    margin-top: 1rem;
+}
+
+/* ===== SPONSOR BRANDING ===== */
+.sponsors-bar {
+    background: var(--black);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 4rem 2rem;
+}
+.sponsors-bar-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+.sponsors-bar-label {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+}
+.sponsors-logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+.sponsor-slot {
+    width: 150px;
+    height: 70px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.25);
+    text-transform: uppercase;
+    transition: border-color 0.3s;
+}
+.sponsor-slot:hover {
+    border-color: var(--gold);
+}
+.sponsors-cta {
+    font-size: 0.85rem;
+}
+
+/* ===== DURING EVENT (hidden by default) ===== */
+.during-event { display: none; }
+
+.live-player-section {
+    background: var(--black);
+    border-top: 1px solid rgba(255,255,255,0.06);
+}
+.live-player-layout {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+.video-wrapper {
+    position: relative;
+    aspect-ratio: 16/9;
+    background: #111;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+}
+.video-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+.video-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background: radial-gradient(circle at center, rgba(196,30,42,0.1) 0%, transparent 60%), #0a0a0a;
+}
+.video-placeholder .live-badge-lg {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--red);
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--white);
+}
+.video-placeholder .live-badge-lg::before {
+    content: '';
+    width: 8px; height: 8px;
+    background: var(--white);
+    border-radius: 50%;
+    animation: livePulse 1.5s ease-in-out infinite;
+}
+.video-status-text {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+}
+.social-chat-area {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.chat-header {
+    padding: 1rem 1.2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+.chat-body {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+}
+.chat-placeholder-text {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.25);
+    text-align: center;
+    line-height: 1.6;
+}
+.sponsor-banner-area {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+.sponsor-banner {
+    flex: 1;
+    max-width: 350px;
+    height: 90px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.2);
+    text-transform: uppercase;
+}
+
+/* ===== AFTER EVENT (hidden by default) ===== */
+.after-event { display: none; }
+
+.replay-section {
+    background: var(--black);
+    border-top: 1px solid rgba(255,255,255,0.06);
+}
+.replay-layout {
+    margin-top: 3rem;
+}
+.replay-video {
+    position: relative;
+    aspect-ratio: 16/9;
+    max-width: 800px;
+    margin: 0 auto;
+    background: #111;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+}
+.replay-video .video-placeholder .play-icon {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 40px rgba(196,30,42,0.4);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.replay-video .video-placeholder .play-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 60px rgba(196,30,42,0.6);
+}
+.replay-video .play-icon svg { width: 28px; height: 28px; fill: var(--white); margin-left: 4px; }
+
+.highlights-section {
+    background: #0d0d0d;
+    border-top: 1px solid rgba(255,255,255,0.06);
+}
+.highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+.highlight-card {
+    aspect-ratio: 16/9;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    transition: border-color 0.3s, transform 0.3s;
+    cursor: pointer;
+}
+.highlight-card:hover {
+    border-color: var(--red);
+    transform: translateY(-3px);
+}
+.highlight-icon {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: rgba(196,30,42,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.highlight-icon svg {
+    width: 20px; height: 20px;
+    fill: none;
+    stroke: var(--red-glow);
+    stroke-width: 2;
+}
+.highlight-label {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+}
+
+.next-event-section {
+    background: var(--black);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    text-align: center;
+}
+.next-event-section .section-label { color: var(--gold); }
+.next-event-cta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    background: var(--black);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 3rem 2rem;
+}
+.footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 2rem;
+}
+.footer-brand .footer-logo {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--white);
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+.footer-brand .footer-tagline {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+.footer-socials {
+    display: flex;
+    gap: 0.8rem;
+}
+.footer-socials a {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: border-color 0.3s, color 0.3s;
+}
+.footer-socials a:hover { border-color: var(--gold); color: var(--gold); }
+.footer-col-title {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+.footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.footer-links a {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--white); }
+.footer-bottom {
+    max-width: 1100px;
+    margin: 2rem auto 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.25);
+}
+.footer-bottom a {
+    color: var(--gold);
+    text-decoration: none;
+}
+
+/* ===== MOBILE FLOATING CTAs ===== */
+.mobile-ctas {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0; right: 0;
+    z-index: 999;
+    padding: 0.6rem;
+    gap: 0.5rem;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+.mobile-ctas .btn {
+    flex: 1;
+    justify-content: center;
+    font-size: 0.72rem;
+    padding: 0.7rem 0.5rem;
+    border-radius: 4px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    .countdown-layout { grid-template-columns: 1fr; }
+    .event-poster { max-height: 400px; aspect-ratio: auto; min-height: 350px; }
+    .reminder-layout { grid-template-columns: 1fr; }
+    .live-player-layout { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 64px; left: 0; right: 0;
+        background: rgba(10,10,10,0.97);
+        padding: 1.5rem 2rem;
+        gap: 1.2rem;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .section { padding: 4rem 1.5rem; }
+    .highlights-grid { grid-template-columns: 1fr; max-width: 400px; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .mobile-ctas { display: flex; }
+    body { padding-bottom: 64px; }
+    .sponsor-banner-area { flex-direction: column; align-items: center; }
+    .sponsor-banner { max-width: 100%; width: 100%; }
+}
+
+@media (max-width: 480px) {
+    .countdown { grid-template-columns: repeat(2, 1fr); }
+    .sponsors-logos { gap: 0.8rem; }
+    .sponsor-slot { width: 120px; height: 55px; }
+    .live-hero { padding: 8rem 1.5rem 3rem; }
+    .next-event-cta { flex-direction: column; align-items: center; }
+    .next-event-cta .btn { width: 100%; max-width: 300px; justify-content: center; }
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes livePulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="mainNav">
+    <a href="/" class="nav-logo">BOX TO BOX</a>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="/">Home</a></li>
+        <li><a href="tickets.html">Tickets</a></li>
+        <li><a href="live.html" class="active">Live</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="tickets.html" class="nav-cta">Acheter Ticket</a></li>
+    </ul>
+    <div class="nav-hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+        <span></span><span></span><span></span>
+    </div>
+</nav>
+
+<!-- ============================================================
+     STATE 1: BEFORE EVENT (shown by default)
+     ============================================================ -->
+<div class="before-event" id="beforeEvent">
+
+    <!-- HERO -->
+    <section class="live-hero">
+        <div class="live-hero-bg"></div>
+        <div class="live-hero-noise"></div>
+        <div class="live-hero-content">
+            <div class="live-hero-badge">
+                <span class="dot"></span>
+                Diffusion en direct
+            </div>
+            <h1 class="live-hero-title">
+                BATAY SAN <span class="accent">FWONTYÈ</span>
+            </h1>
+            <p class="live-hero-subtitle">30 Mai 2025 &mdash; 7:00 PM &mdash; En Direct sur YouTube</p>
+        </div>
+    </section>
+
+    <!-- COUNTDOWN + POSTER -->
+    <section class="section countdown-section">
+        <div class="section-inner">
+            <div class="reveal">
+                <p class="section-label">Compte a rebours</p>
+                <h2 class="section-title">Le combat approche</h2>
+                <p class="section-subtitle">Suivez chaque round en direct sur YouTube. Le flux sera actif le 30 Mai a 19h (heure d'Haiti).</p>
+            </div>
+            <div class="countdown-layout">
+                <div class="countdown-main reveal">
+                    <div class="countdown-heading">Temps restant avant le live</div>
+                    <div class="countdown" id="countdown">
+                        <div class="countdown-block">
+                            <div class="countdown-num" id="cd-days">--</div>
+                            <div class="countdown-unit">Jours</div>
+                        </div>
+                        <div class="countdown-block">
+                            <div class="countdown-num" id="cd-hours">--</div>
+                            <div class="countdown-unit">Heures</div>
+                        </div>
+                        <div class="countdown-block">
+                            <div class="countdown-num" id="cd-mins">--</div>
+                            <div class="countdown-unit">Minutes</div>
+                        </div>
+                        <div class="countdown-block">
+                            <div class="countdown-num" id="cd-secs">--</div>
+                            <div class="countdown-unit">Secondes</div>
+                        </div>
+                    </div>
+                    <p class="countdown-date"><strong>Vendredi 30 Mai 2025</strong> &mdash; 7:00 PM (Heure d'Haiti, EST)</p>
+                </div>
+                <div class="event-poster reveal">
+                    <div class="poster-presented">Box To Box &amp; 48HoursReady.com</div>
+                    <div class="poster-title">BATAY SAN FWONTYÈ</div>
+                    <div class="poster-vs">VS</div>
+                    <div class="poster-flags">
+                        <span class="poster-flag">&#x1F1ED;&#x1F1F9;</span>
+                        <span class="poster-flag-vs">VS</span>
+                        <span class="poster-flag">&#x1F1E9;&#x1F1F4;</span>
+                    </div>
+                    <div class="poster-date">Parc Sainte-Therese &bull; 30 Mai 2025</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REMINDER SIGNUP -->
+    <section class="section reminder-section">
+        <div class="section-inner">
+            <div class="reveal">
+                <p class="section-label">Ne manquez rien</p>
+                <h2 class="section-title">Recevez un rappel</h2>
+            </div>
+            <div class="reminder-layout">
+                <div class="reminder-text reveal">
+                    <h3>Soyez les premiers informes</h3>
+                    <p>Inscrivez-vous pour recevoir un rappel par WhatsApp ou email avant le debut du livestream. Vous recevrez egalement les mises a jour exclusives sur l'evenement.</p>
+                    <ul class="reminder-benefits">
+                        <li>Notification 1 heure avant le live</li>
+                        <li>Lien direct vers le stream YouTube</li>
+                        <li>Resultats en temps reel par WhatsApp</li>
+                        <li>Acces prioritaire aux prochains evenements</li>
+                    </ul>
+                </div>
+                <form class="reminder-form reveal" onsubmit="handleReminder(event)">
+                    <div class="form-title">Rappel Livestream</div>
+                    <p class="form-subtitle">Remplissez le formulaire pour ne pas manquer le combat.</p>
+                    <div class="form-group">
+                        <label for="reminder-name">Nom complet</label>
+                        <input type="text" id="reminder-name" placeholder="Jean Pierre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reminder-email">Adresse email</label>
+                        <input type="email" id="reminder-email" placeholder="jean@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reminder-whatsapp">Numero WhatsApp</label>
+                        <input type="tel" id="reminder-whatsapp" placeholder="+509 XXXX XXXX" required>
+                    </div>
+                    <button type="submit" class="btn btn-red form-submit">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                        Recevoir le rappel
+                    </button>
+                    <p class="form-note">Nous ne partagerons jamais vos informations. Rappel unique avant l'evenement.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPONSOR BRANDING -->
+    <div class="sponsors-bar">
+        <div class="sponsors-bar-inner reveal">
+            <div class="sponsors-bar-label">Partenaires &amp; Sponsors du Live</div>
+            <div class="sponsors-logos">
+                <div class="sponsor-slot">Sponsor 1</div>
+                <div class="sponsor-slot">Sponsor 2</div>
+                <div class="sponsor-slot">Sponsor 3</div>
+                <div class="sponsor-slot">Sponsor 4</div>
+                <div class="sponsor-slot">Sponsor 5</div>
+            </div>
+            <a href="sponsors.html" class="btn btn-outline sponsors-cta">Devenir Sponsor</a>
+        </div>
+    </div>
+
+</div><!-- /before-event -->
+
+
+<!-- ============================================================
+     STATE 2: DURING EVENT (hidden — uncomment/show when live)
+     ============================================================ -->
+<!--
+<div class="during-event" id="duringEvent" style="display:block;">
+
+    <section class="live-hero" style="padding:8rem 2rem 3rem;">
+        <div class="live-hero-bg"></div>
+        <div class="live-hero-noise"></div>
+        <div class="live-hero-content">
+            <div class="live-hero-badge" style="background:rgba(196,30,42,0.3);border-color:var(--red);color:var(--white);animation:none;opacity:1;">
+                <span class="dot"></span>
+                En direct maintenant
+            </div>
+            <h1 class="live-hero-title" style="animation:none;opacity:1;">
+                BATAY SAN <span class="accent">FWONTYÈ</span>
+            </h1>
+            <p class="live-hero-subtitle" style="animation:none;opacity:1;">En Direct &mdash; Haiti vs Republique Dominicaine</p>
+        </div>
+    </section>
+
+    <section class="section live-player-section">
+        <div class="section-inner">
+            <div class="live-player-layout">
+                <div class="video-wrapper">
+                    <!-- Replace YOUTUBE_VIDEO_ID with the actual YouTube live stream ID -->
+                    <div class="video-placeholder">
+                        <div class="live-badge-lg">
+                            EN DIRECT
+                        </div>
+                        <span class="video-status-text">Chargement du flux...</span>
+                    </div>
+                    <!-- Uncomment and replace with actual embed:
+                    <iframe src="https://www.youtube.com/embed/YOUTUBE_VIDEO_ID?autoplay=1" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+                    -->
+                </div>
+                <div class="social-chat-area">
+                    <div class="chat-header">Chat en direct</div>
+                    <div class="chat-body">
+                        <div class="chat-placeholder-text">
+                            Le chat en direct sera disponible<br>pendant la diffusion.
+                            <!-- Replace with YouTube live chat embed:
+                            <iframe src="https://www.youtube.com/live_chat?v=YOUTUBE_VIDEO_ID&embed_domain=YOUR_DOMAIN" style="width:100%;height:100%;border:none;"></iframe>
+                            -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sponsor-banner-area">
+                <div class="sponsor-banner">Sponsor Banner 1</div>
+                <div class="sponsor-banner">Sponsor Banner 2</div>
+                <div class="sponsor-banner">Sponsor Banner 3</div>
+            </div>
+        </div>
+    </section>
+
+</div>
+-->
+<!-- /during-event -->
+
+
+<!-- ============================================================
+     STATE 3: AFTER EVENT (hidden — uncomment/show after event)
+     ============================================================ -->
+<!--
+<div class="after-event" id="afterEvent" style="display:block;">
+
+    <section class="live-hero" style="padding:8rem 2rem 3rem;">
+        <div class="live-hero-bg"></div>
+        <div class="live-hero-noise"></div>
+        <div class="live-hero-content">
+            <div class="live-hero-badge" style="background:rgba(212,168,67,0.15);border-color:rgba(212,168,67,0.3);color:var(--gold);animation:none;opacity:1;">
+                Evenement termine
+            </div>
+            <h1 class="live-hero-title" style="animation:none;opacity:1;">
+                BATAY SAN <span class="accent">FWONTYÈ</span>
+            </h1>
+            <p class="live-hero-subtitle" style="animation:none;opacity:1;">Regardez le replay et les temps forts</p>
+        </div>
+    </section>
+
+    <section class="section replay-section">
+        <div class="section-inner">
+            <div class="reveal">
+                <p class="section-label">Replay</p>
+                <h2 class="section-title">Regardez le combat complet</h2>
+                <p class="section-subtitle">Vous avez manque le live ? Regardez l'integralite de l'evenement ici.</p>
+            </div>
+            <div class="replay-layout">
+                <div class="replay-video reveal">
+                    <div class="video-placeholder">
+                        <div class="play-icon">
+                            <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                        </div>
+                        <span class="video-status-text">Regarder le replay complet</span>
+                    </div>
+                    <!-- Uncomment and replace with actual embed:
+                    <iframe src="https://www.youtube.com/embed/YOUTUBE_VIDEO_ID" allowfullscreen></iframe>
+                    -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section highlights-section">
+        <div class="section-inner">
+            <div class="reveal">
+                <p class="section-label">Temps forts</p>
+                <h2 class="section-title">Les meilleurs moments</h2>
+                <p class="section-subtitle">Revivez les moments cles de Batay San Fwontyè.</p>
+            </div>
+            <div class="highlights-grid reveal">
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    </div>
+                    <div class="highlight-label">Highlight 1</div>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    </div>
+                    <div class="highlight-label">Highlight 2</div>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    </div>
+                    <div class="highlight-label">Highlight 3</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section next-event-section">
+        <div class="section-inner">
+            <div class="reveal">
+                <p class="section-label">Prochain evenement</p>
+                <h2 class="section-title">La suite arrive bientot</h2>
+                <p class="section-subtitle" style="margin:0 auto;">Batay San Fwontyè revient. Restez connectes pour le prochain combat international.</p>
+            </div>
+            <div class="next-event-cta reveal">
+                <a href="tickets.html" class="btn btn-red">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/></svg>
+                    Prochain Evenement
+                </a>
+                <a href="/" class="btn btn-outline">Retour a l'accueil</a>
+            </div>
+        </div>
+    </section>
+
+</div>
+-->
+<!-- /after-event -->
+
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <div class="footer-logo">BOX TO BOX</div>
+            <p class="footer-tagline">Box To Box &amp; 48HoursReady.com Pr&eacute;sentent<br>Batay San Fwonty&egrave;re<br><em>Combat. Culture. Connexion.</em></p>
+            <div class="footer-socials">
+                <a href="#" aria-label="Instagram">IG</a>
+                <a href="#" aria-label="Facebook">FB</a>
+                <a href="#" aria-label="YouTube">YT</a>
+            </div>
+        </div>
+        <div>
+            <div class="footer-col-title">Navigation</div>
+            <ul class="footer-links">
+                <li><a href="/">Accueil</a></li>
+                <li><a href="tickets.html">Tickets</a></li>
+                <li><a href="live.html">Livestream</a></li>
+                <li><a href="sponsors.html">Sponsors</a></li>
+            </ul>
+        </div>
+        <div>
+            <div class="footer-col-title">Informations</div>
+            <ul class="footer-links">
+                <li><a href="media.html">Media</a></li>
+                <li><a href="about.html">&Agrave; Propos</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div>
+            <div class="footer-col-title">Contact</div>
+            <ul class="footer-links">
+                <li><a href="#">WhatsApp</a></li>
+                <li><a href="#">Email</a></li>
+                <li><a href="#">Instagram</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>&copy; 2025 Box To Box. Tous droits r&eacute;serv&eacute;s.</span>
+        <span>Powered by <a href="https://48hoursready.com">48HoursReady.com</a></span>
+    </div>
+</footer>
+
+<!-- MOBILE FLOATING CTAs -->
+<div class="mobile-ctas">
+    <a href="tickets.html" class="btn btn-red">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/></svg>
+        Tickets
+    </a>
+    <a href="live.html" class="btn btn-blue">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Live
+    </a>
+    <a href="#" class="btn btn-whatsapp">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.624-1.467A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.666-5.813-1.803l-.417-.263-2.743.87.88-2.683-.287-.44A9.715 9.715 0 0 1 2.25 12c0-5.385 4.365-9.75 9.75-9.75S21.75 6.615 21.75 12s-4.365 9.75-9.75 9.75z"/></svg>
+        WhatsApp
+    </a>
+</div>
+
+<script>
+// ===== COUNTDOWN TIMER =====
+// Event: May 30, 2025 at 7:00 PM Haiti time (EST = UTC-5)
+function updateCountdown() {
+    const eventDate = new Date('2025-05-30T19:00:00-05:00');
+    const now = new Date();
+    const diff = eventDate - now;
+
+    if (diff <= 0) {
+        document.getElementById('cd-days').textContent = '00';
+        document.getElementById('cd-hours').textContent = '00';
+        document.getElementById('cd-mins').textContent = '00';
+        document.getElementById('cd-secs').textContent = '00';
+        return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+    document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+    document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
+    document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+// ===== REMINDER FORM HANDLER =====
+function handleReminder(e) {
+    e.preventDefault();
+    const name = document.getElementById('reminder-name').value;
+    const email = document.getElementById('reminder-email').value;
+    const whatsapp = document.getElementById('reminder-whatsapp').value;
+
+    // TODO: Replace with actual API endpoint (e.g., Google Sheets, Mailchimp, custom backend)
+    console.log('Reminder signup:', { name, email, whatsapp });
+
+    // Show success feedback
+    const form = e.target;
+    const btn = form.querySelector('.form-submit');
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Inscription confirmee!';
+    btn.style.background = '#25D366';
+    btn.disabled = true;
+
+    setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.style.background = '';
+        btn.disabled = false;
+        form.reset();
+    }, 3000);
+}
+
+// ===== SCROLL REVEAL =====
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => entry.target.classList.add('visible'), i * 80);
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => observer.observe(el));
+
+// ===== NAV BACKGROUND ON SCROLL =====
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+    nav.style.background = window.scrollY > 80
+        ? 'rgba(10,10,10,0.95)'
+        : 'rgba(10,10,10,0.85)';
+});
+</script>
+
+</body>
+</html>

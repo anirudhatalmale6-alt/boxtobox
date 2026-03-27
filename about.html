@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>À Propos — Box To Box | Batay San Fwontyè</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+    --red: #C41E2A;
+    --red-dark: #8B0000;
+    --red-glow: #FF1A2E;
+    --blue: #00247D;
+    --blue-deep: #001847;
+    --gold: #D4A843;
+    --gold-light: #F0D078;
+    --black: #0A0A0A;
+    --off-white: #F5F3EF;
+    --white: #FFFFFF;
+    --gray-100: #F0EEEA;
+    --gray-200: #E0DDD6;
+    --gray-600: #6B6760;
+    --gray-800: #2A2824;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-heading: 'Oswald', sans-serif;
+    --font-body: 'Source Sans 3', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: var(--font-body);
+    color: var(--gray-800);
+    background: var(--off-white);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ===== NAVIGATION ===== */
+.nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 0 2rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.3s;
+}
+.nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.nav-links {
+    display: flex;
+    gap: 1.8rem;
+    align-items: center;
+    list-style: none;
+}
+.nav-links a {
+    font-family: var(--font-heading);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a.active { color: var(--white); }
+.nav-cta {
+    background: var(--red);
+    color: var(--white) !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    font-weight: 600 !important;
+    letter-spacing: 1px;
+    transition: background 0.2s, transform 0.2s;
+}
+.nav-cta:hover { background: var(--red-dark); transform: translateY(-1px); }
+.nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+}
+.nav-hamburger span {
+    width: 24px; height: 2px;
+    background: var(--white);
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+/* ===== COMMON ===== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.9rem 2rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+.btn-red {
+    background: var(--red);
+    color: var(--white);
+    box-shadow: 0 4px 20px rgba(196,30,42,0.4);
+}
+.btn-red:hover {
+    background: var(--red-glow);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(255,26,46,0.5);
+}
+.btn-blue {
+    background: var(--blue);
+    color: var(--white);
+    box-shadow: 0 4px 20px rgba(0,36,125,0.3);
+}
+.btn-blue:hover { background: #003399; transform: translateY(-2px); }
+.btn-outline {
+    background: transparent;
+    color: var(--gold);
+    border: 1.5px solid var(--gold);
+}
+.btn-outline:hover {
+    background: var(--gold);
+    color: var(--black);
+    transform: translateY(-2px);
+}
+.btn-whatsapp {
+    background: #25D366;
+    color: var(--white);
+}
+.btn-whatsapp:hover { background: #1da851; }
+
+.section {
+    padding: 6rem 2rem;
+    position: relative;
+}
+.section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.section-label {
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.8rem;
+}
+.section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    color: var(--black);
+    letter-spacing: 1px;
+    margin-bottom: 1.2rem;
+}
+.section-subtitle {
+    font-size: 1.1rem;
+    color: var(--gray-600);
+    max-width: 600px;
+    line-height: 1.7;
+}
+
+/* ===== PAGE HERO ===== */
+.page-hero {
+    padding-top: 140px;
+    padding-bottom: 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--black);
+}
+.page-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 120% 80% at 50% 30%, rgba(196,30,42,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 80% 60% at 20% 80%, rgba(0,36,125,0.08) 0%, transparent 50%);
+}
+.page-hero::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    bottom: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--red), var(--gold), var(--blue), transparent);
+}
+.page-hero-content {
+    position: relative;
+    z-index: 2;
+}
+.page-hero-label {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+.page-hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    color: var(--white);
+    letter-spacing: 3px;
+    line-height: 0.95;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 80px rgba(196,30,42,0.3);
+}
+.page-hero-subtitle {
+    font-size: 1.15rem;
+    color: rgba(255,255,255,0.45);
+    max-width: 550px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* ===== ABOUT BOX TO BOX ===== */
+.about-org {
+    background: var(--off-white);
+}
+.about-org-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 3rem;
+}
+.about-org-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--gray-600);
+    margin-bottom: 1.5rem;
+}
+.about-org-text p:last-child { margin-bottom: 0; }
+.about-org-visual {
+    position: relative;
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, var(--blue-deep) 0%, var(--black) 100%);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.about-org-visual::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.02) 40px, rgba(255,255,255,0.02) 41px),
+        repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.02) 40px, rgba(255,255,255,0.02) 41px);
+}
+.org-badge {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+.org-badge-name {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    color: var(--white);
+    letter-spacing: 3px;
+    text-shadow: 0 0 60px rgba(196,30,42,0.3);
+}
+.org-badge-sub {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 0.5rem;
+}
+
+/* ===== 48HOURSREADY ===== */
+.tech-partner {
+    background: var(--white);
+    border-top: 1px solid var(--gray-200);
+}
+.tech-partner-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 3rem;
+}
+.tech-partner-visual {
+    position: relative;
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, #0a1628 0%, var(--black) 100%);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.tech-partner-visual::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 30% 40%, rgba(0,36,125,0.15) 0%, transparent 50%),
+        radial-gradient(circle at 70% 60%, rgba(212,168,67,0.08) 0%, transparent 50%);
+}
+.tech-badge {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+.tech-badge-name {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--white);
+    letter-spacing: 2px;
+}
+.tech-badge-url {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 0.5rem;
+}
+.tech-partner-text h3 {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--black);
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+.tech-partner-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--gray-600);
+    margin-bottom: 1.5rem;
+}
+.tech-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+.tech-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    font-size: 0.95rem;
+    color: var(--gray-800);
+    font-weight: 600;
+}
+.tech-features li::before {
+    content: '';
+    flex-shrink: 0;
+    width: 8px; height: 8px;
+    margin-top: 0.45rem;
+    background: var(--blue);
+    border-radius: 50%;
+}
+
+/* ===== MISSION ===== */
+.mission {
+    background: var(--black);
+    color: var(--white);
+    text-align: center;
+    overflow: hidden;
+}
+.mission::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 100% 70% at 50% 50%, rgba(196,30,42,0.08) 0%, transparent 60%);
+}
+.mission .section-label { color: var(--gold); }
+.mission .section-title { color: var(--white); }
+.mission-quote {
+    position: relative;
+    max-width: 800px;
+    margin: 3rem auto 0;
+    padding: 3rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+}
+.mission-quote::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--red), var(--gold), var(--blue));
+}
+.mission-text {
+    font-family: var(--font-body);
+    font-size: 1.3rem;
+    font-style: italic;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 1.5rem;
+}
+.mission-pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.mission-pillar {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: rgba(255,255,255,0.03);
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.06);
+}
+.mission-pillar-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.8rem;
+}
+.mission-pillar h4 {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--white);
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+.mission-pillar p {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.6;
+}
+
+/* ===== EVENT HISTORY ===== */
+.event-history {
+    background: var(--off-white);
+}
+.history-card {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--gray-200);
+}
+.history-visual {
+    background: linear-gradient(135deg, var(--black) 0%, #1a1a1a 100%);
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.history-visual::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 50% 50%, rgba(196,30,42,0.1) 0%, transparent 60%);
+}
+.history-event-num {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-display);
+    font-size: 6rem;
+    color: var(--white);
+    line-height: 1;
+    text-shadow: 0 0 40px rgba(196,30,42,0.3);
+}
+.history-event-label {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 0.5rem;
+}
+.history-flags {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+.history-flag {
+    font-size: 2.5rem;
+}
+.history-vs {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--gold);
+}
+.history-details {
+    padding: 3rem;
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.history-details h3 {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--black);
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+.history-details p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--gray-600);
+    margin-bottom: 1.5rem;
+}
+.history-meta {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+.history-meta-item {
+    padding: 1rem;
+    background: var(--gray-100);
+    border-radius: 6px;
+    text-align: center;
+}
+.history-meta-item .label {
+    font-family: var(--font-heading);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray-600);
+    margin-bottom: 0.3rem;
+}
+.history-meta-item .value {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--black);
+}
+
+/* ===== FOUNDERS ===== */
+.founders {
+    background: var(--white);
+    border-top: 1px solid var(--gray-200);
+}
+.founders-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+.founder-card {
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.founder-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+}
+.founder-header {
+    padding: 2.5rem 2rem;
+    background: linear-gradient(135deg, var(--black) 0%, #1a1a1a 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.founder-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--red), var(--gold));
+}
+.founder-avatar {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    border: 2px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 2rem;
+}
+.founder-name {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--white);
+    letter-spacing: 1px;
+}
+.founder-title {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 0.3rem;
+}
+.founder-body {
+    padding: 2rem;
+}
+.founder-body p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--gray-600);
+    margin-bottom: 1rem;
+}
+.founder-credentials {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--gray-200);
+}
+.founder-credentials li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.9rem;
+    color: var(--gray-800);
+    font-weight: 600;
+}
+.founder-credentials li::before {
+    content: '';
+    flex-shrink: 0;
+    width: 6px; height: 6px;
+    background: var(--red);
+    border-radius: 50%;
+}
+
+/* ===== ACADEMY FUTURE ===== */
+.academy {
+    background: var(--off-white);
+    border-top: 1px solid var(--gray-200);
+}
+.academy-content {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+.academy-text h3 {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--black);
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+.academy-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--gray-600);
+    margin-bottom: 1.5rem;
+}
+.academy-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.academy-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    font-size: 1rem;
+    color: var(--gray-800);
+    font-weight: 600;
+}
+.academy-features li::before {
+    content: '';
+    flex-shrink: 0;
+    width: 8px; height: 8px;
+    margin-top: 0.45rem;
+    background: var(--gold);
+    border-radius: 50%;
+}
+.academy-visual {
+    position: relative;
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, #0d1a0d 0%, var(--black) 100%);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.academy-visual::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(212,168,67,0.08) 0%, transparent 60%);
+}
+.academy-year {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-display);
+    font-size: 5rem;
+    color: var(--white);
+    text-shadow: 0 0 40px rgba(212,168,67,0.3);
+}
+.academy-label {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 0.5rem;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    background: var(--black);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 3rem 2rem;
+}
+.footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 2rem;
+}
+.footer-brand .footer-logo {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--white);
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+.footer-brand .footer-tagline {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+.footer-socials {
+    display: flex;
+    gap: 0.8rem;
+}
+.footer-socials a {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: border-color 0.3s, color 0.3s;
+}
+.footer-socials a:hover { border-color: var(--gold); color: var(--gold); }
+.footer-col-title {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+.footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.footer-links a {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--white); }
+.footer-bottom {
+    max-width: 1100px;
+    margin: 2rem auto 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.25);
+}
+.footer-bottom a {
+    color: var(--gold);
+    text-decoration: none;
+}
+
+/* ===== MOBILE FLOATING CTAs ===== */
+.mobile-ctas {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0; right: 0;
+    z-index: 999;
+    padding: 0.6rem;
+    gap: 0.5rem;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+.mobile-ctas .btn {
+    flex: 1;
+    justify-content: center;
+    font-size: 0.72rem;
+    padding: 0.7rem 0.5rem;
+    border-radius: 4px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    .about-org-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .tech-partner-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .academy-content { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 64px; left: 0; right: 0;
+        background: rgba(10,10,10,0.97);
+        padding: 1.5rem 2rem;
+        gap: 1.2rem;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .history-card { grid-template-columns: 1fr; }
+    .founders-grid { grid-template-columns: 1fr; max-width: 480px; }
+    .mission-pillars { grid-template-columns: 1fr; max-width: 360px; margin-left: auto; margin-right: auto; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .section { padding: 4rem 1.5rem; }
+    .mobile-ctas { display: flex; }
+    body { padding-bottom: 64px; }
+    .history-meta { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+    .history-meta { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ===== SCROLL ANIMATIONS ===== */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="mainNav">
+    <a href="/" class="nav-logo">BOX TO BOX</a>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="/">Home</a></li>
+        <li><a href="tickets.html">Tickets</a></li>
+        <li><a href="live.html">Live</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="tickets.html" class="nav-cta">Acheter Ticket</a></li>
+    </ul>
+    <div class="nav-hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+        <span></span><span></span><span></span>
+    </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+    <div class="page-hero-content">
+        <p class="page-hero-label">Notre Histoire</p>
+        <h1 class="page-hero-title">À PROPOS</h1>
+        <p class="page-hero-subtitle">Découvrez l'organisation derrière Batay San Fwontyè et notre vision pour le sport de combat en Haïti.</p>
+    </div>
+</section>
+
+<!-- ABOUT BOX TO BOX -->
+<section class="section about-org">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">L'Organisation</p>
+            <h2 class="section-title">Box To Box</h2>
+            <p class="section-subtitle">Plus qu'une promotion de boxe — un mouvement culturel et sportif.</p>
+        </div>
+        <div class="about-org-grid">
+            <div class="about-org-text reveal">
+                <p>Box To Box est une organisation de promotion d'événements de combat basée en Haïti. Fondée avec la conviction que le sport de combat peut transformer des vies, créer des opportunités, et projeter Haïti sur la scène internationale.</p>
+                <p>Notre approche combine production professionnelle, technologie de pointe, et authenticité culturelle pour créer des événements qui vont bien au-delà du ring. Chaque combat est une histoire, chaque événement une célébration de la résilience et de la fierté nationale.</p>
+                <p>En partenariat avec 48HoursReady.com, nous apportons une infrastructure technologique de niveau mondial à chaque aspect de l'expérience — de la billetterie numérique à la diffusion en direct.</p>
+            </div>
+            <div class="about-org-visual reveal">
+                <div class="org-badge">
+                    <div class="org-badge-name">BOX TO BOX</div>
+                    <div class="org-badge-sub">Combat. Culture. Connexion.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 48HOURSREADY -->
+<section class="section tech-partner">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">Partenaire Technologique</p>
+            <h2 class="section-title">48HoursReady.com</h2>
+        </div>
+        <div class="tech-partner-grid">
+            <div class="tech-partner-visual reveal">
+                <div class="tech-badge">
+                    <div class="tech-badge-name">48HOURSREADY</div>
+                    <div class="tech-badge-url">.com</div>
+                </div>
+            </div>
+            <div class="tech-partner-text reveal">
+                <h3>La technologie derrière l'événement</h3>
+                <p>48HoursReady.com est la plateforme technologique qui alimente tous les aspects numériques de Batay San Fwontyè. De la conception web à la billetterie, en passant par la gestion des données et la diffusion en direct.</p>
+                <p>Leur expertise en développement rapide et leur capacité à livrer des solutions complètes en un temps record en font le partenaire idéal pour Box To Box.</p>
+                <ul class="tech-features">
+                    <li>Billetterie numérique avec QR codes</li>
+                    <li>Site web et plateforme de streaming</li>
+                    <li>Infrastructure de paiement sécurisée</li>
+                    <li>Gestion des données et analytics</li>
+                    <li>Support technique en direct le jour J</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MISSION -->
+<section class="section mission">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">Notre Mission</p>
+            <h2 class="section-title">Ce que nous défendons</h2>
+        </div>
+        <div class="mission-quote reveal">
+            <p class="mission-text">"Utiliser le sport de combat comme vecteur de fierté nationale, de discipline et de connexion entre les peuples. Haïti mérite une scène sportive internationale, et nous la construisons — combat après combat."</p>
+        </div>
+        <div class="mission-pillars reveal">
+            <div class="mission-pillar">
+                <div class="mission-pillar-icon">&#129354;</div>
+                <h4>COMBAT</h4>
+                <p>Des événements de boxe et MMA de classe mondiale, produits avec les plus hauts standards professionnels.</p>
+            </div>
+            <div class="mission-pillar">
+                <div class="mission-pillar-icon">&#127752;</div>
+                <h4>CULTURE</h4>
+                <p>Célébrer l'identité haïtienne à travers le sport, la musique, la gastronomie et la communauté.</p>
+            </div>
+            <div class="mission-pillar">
+                <div class="mission-pillar-icon">&#129309;</div>
+                <h4>CONNEXION</h4>
+                <p>Rapprocher les nations par le respect mutuel et la compétition sportive saine.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EVENT HISTORY -->
+<section class="section event-history">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">Premier Événement</p>
+            <h2 class="section-title">Batay San Fwontyè</h2>
+            <p class="section-subtitle">Le combat qui lance le mouvement. Le premier d'une longue série.</p>
+        </div>
+        <div class="history-card reveal">
+            <div class="history-visual">
+                <div class="history-event-num">#1</div>
+                <div class="history-event-label">Premier Événement</div>
+                <div class="history-flags">
+                    <span class="history-flag">&#x1F1ED;&#x1F1F9;</span>
+                    <span class="history-vs">VS</span>
+                    <span class="history-flag">&#x1F1E9;&#x1F1F4;</span>
+                </div>
+            </div>
+            <div class="history-details">
+                <h3>Haïti vs République Dominicaine</h3>
+                <p>Le tout premier événement Box To Box met en scène un affrontement historique entre les boxeurs et combattants MMA d'Haïti et de la République Dominicaine. Un événement qui symbolise le respect mutuel et l'excellence sportive entre deux nations voisines.</p>
+                <div class="history-meta">
+                    <div class="history-meta-item">
+                        <div class="label">Date</div>
+                        <div class="value">30 Mai 2025</div>
+                    </div>
+                    <div class="history-meta-item">
+                        <div class="label">Lieu</div>
+                        <div class="value">Parc Ste-Thérèse</div>
+                    </div>
+                    <div class="history-meta-item">
+                        <div class="label">Discipline</div>
+                        <div class="value">Boxe &amp; MMA</div>
+                    </div>
+                    <div class="history-meta-item">
+                        <div class="label">Diffusion</div>
+                        <div class="value">YouTube Live</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOUNDERS -->
+<section class="section founders">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">Les Fondateurs</p>
+            <h2 class="section-title">Les visionnaires derrière le mouvement</h2>
+            <p class="section-subtitle">Une combinaison unique d'expertise en sport de combat et en technologie.</p>
+        </div>
+        <div class="founders-grid">
+            <div class="founder-card reveal">
+                <div class="founder-header">
+                    <div class="founder-avatar">&#129354;</div>
+                    <div class="founder-name">JEFFERY DREAD</div>
+                    <div class="founder-title">Co-Fondateur &amp; Promoteur</div>
+                </div>
+                <div class="founder-body">
+                    <p>Passionné de sport de combat depuis toujours, Jeffery Dread est le visionnaire derrière le concept de Batay San Fwontyè. Sa connaissance profonde de la boxe et du MMA, combinée à son amour pour Haïti, l'ont poussé à créer un événement qui positionne le pays sur la scène sportive internationale.</p>
+                    <ul class="founder-credentials">
+                        <li>Expert en promotion d'événements de combat</li>
+                        <li>Réseau international de combattants</li>
+                        <li>Vision long terme pour le sport haïtien</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="founder-card reveal">
+                <div class="founder-header">
+                    <div class="founder-avatar">&#128187;</div>
+                    <div class="founder-name">BOYARD</div>
+                    <div class="founder-title">Co-Fondateur &amp; Directeur Technique</div>
+                </div>
+                <div class="founder-body">
+                    <p>Fondateur de 48HoursReady.com, Boyard apporte l'expertise technologique nécessaire pour transformer la vision de Box To Box en réalité. De la plateforme de billetterie au système de diffusion en direct, il est l'architecte de l'infrastructure numérique de l'événement.</p>
+                    <ul class="founder-credentials">
+                        <li>Fondateur de 48HoursReady.com</li>
+                        <li>Expert en développement web et plateformes</li>
+                        <li>Spécialiste en solutions de paiement numérique</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ACADEMY FUTURE -->
+<section class="section academy">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">Vision 2027</p>
+            <h2 class="section-title">L'Académie de Combat</h2>
+            <p class="section-subtitle">Former la prochaine génération de champions haïtiens.</p>
+        </div>
+        <div class="academy-content">
+            <div class="academy-text reveal">
+                <h3>Investir dans le futur</h3>
+                <p>D'ici 2027, Box To Box prévoit d'ouvrir la première académie professionnelle de combat en Haïti. Un centre de formation dédié à la boxe et au MMA, offrant aux jeunes talents haïtiens les moyens de réaliser leur potentiel.</p>
+                <p>L'académie sera bien plus qu'un gymnase — c'est un programme complet qui combine entraînement physique, éducation, mentorat et opportunités de carrière professionnelle.</p>
+                <ul class="academy-features">
+                    <li>Entraînement professionnel en boxe et MMA</li>
+                    <li>Programme d'éducation et de mentorat</li>
+                    <li>Compétitions nationales et internationales</li>
+                    <li>Partenariats avec des gyms internationaux</li>
+                    <li>Bourses pour jeunes talents</li>
+                    <li>Connexions avec le circuit professionnel mondial</li>
+                </ul>
+            </div>
+            <div class="academy-visual reveal">
+                <div class="academy-year">2027</div>
+                <div class="academy-label">Académie de Combat</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <div class="footer-logo">BOX TO BOX</div>
+            <p class="footer-tagline">Box To Box &amp; 48HoursReady.com Présentent<br>Batay San Fwontyè<br><em>Combat. Culture. Connexion.</em></p>
+            <div class="footer-socials">
+                <a href="#" aria-label="Instagram">IG</a>
+                <a href="#" aria-label="Facebook">FB</a>
+                <a href="#" aria-label="YouTube">YT</a>
+            </div>
+        </div>
+        <div>
+            <div class="footer-col-title">Navigation</div>
+            <ul class="footer-links">
+                <li><a href="/">Accueil</a></li>
+                <li><a href="tickets.html">Tickets</a></li>
+                <li><a href="live.html">Livestream</a></li>
+                <li><a href="sponsors.html">Sponsors</a></li>
+            </ul>
+        </div>
+        <div>
+            <div class="footer-col-title">Informations</div>
+            <ul class="footer-links">
+                <li><a href="media.html">Media</a></li>
+                <li><a href="about.html">À Propos</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div>
+            <div class="footer-col-title">Contact</div>
+            <ul class="footer-links">
+                <li><a href="#">WhatsApp</a></li>
+                <li><a href="#">Email</a></li>
+                <li><a href="#">Instagram</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>&copy; 2025 Box To Box. Tous droits réservés.</span>
+        <span>Powered by <a href="https://48hoursready.com">48HoursReady.com</a></span>
+    </div>
+</footer>
+
+<!-- MOBILE FLOATING CTAs -->
+<div class="mobile-ctas">
+    <a href="tickets.html" class="btn btn-red">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/></svg>
+        Tickets
+    </a>
+    <a href="live.html" class="btn btn-blue">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Live
+    </a>
+    <a href="#" class="btn btn-whatsapp">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.624-1.467A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.666-5.813-1.803l-.417-.263-2.743.87.88-2.683-.287-.44A9.715 9.715 0 0 1 2.25 12c0-5.385 4.365-9.75 9.75-9.75S21.75 6.615 21.75 12s-4.365 9.75-9.75 9.75z"/></svg>
+        WhatsApp
+    </a>
+</div>
+
+<script>
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => entry.target.classList.add('visible'), i * 80);
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

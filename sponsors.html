@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sponsors &amp; Partenaires — Box To Box | Batay San Fwontyè</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+    --red: #C41E2A;
+    --red-dark: #8B0000;
+    --red-glow: #FF1A2E;
+    --blue: #00247D;
+    --blue-deep: #001847;
+    --gold: #D4A843;
+    --gold-light: #F0D078;
+    --black: #0A0A0A;
+    --off-white: #F5F3EF;
+    --white: #FFFFFF;
+    --gray-100: #F0EEEA;
+    --gray-200: #E0DDD6;
+    --gray-600: #6B6760;
+    --gray-800: #2A2824;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-heading: 'Oswald', sans-serif;
+    --font-body: 'Source Sans 3', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font-body);
+    color: var(--gray-800);
+    background: var(--off-white);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ===== NAVIGATION ===== */
+.nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 0 2rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.3s;
+}
+.nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.nav-logo .x { color: var(--red); font-size: 1.2rem; }
+.nav-links {
+    display: flex;
+    gap: 1.8rem;
+    align-items: center;
+    list-style: none;
+}
+.nav-links a {
+    font-family: var(--font-heading);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a.active { color: var(--white); }
+.nav-cta {
+    background: var(--red);
+    color: var(--white) !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    font-weight: 600 !important;
+    letter-spacing: 1px;
+    transition: background 0.2s, transform 0.2s;
+}
+.nav-cta:hover { background: var(--red-dark); transform: translateY(-1px); }
+
+.nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+}
+.nav-hamburger span {
+    width: 24px; height: 2px;
+    background: var(--white);
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.9rem 2rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+.btn-red {
+    background: var(--red);
+    color: var(--white);
+    box-shadow: 0 4px 20px rgba(196,30,42,0.4);
+}
+.btn-red:hover {
+    background: var(--red-glow);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(255,26,46,0.5);
+}
+.btn-blue {
+    background: var(--blue);
+    color: var(--white);
+    box-shadow: 0 4px 20px rgba(0,36,125,0.3);
+}
+.btn-blue:hover {
+    background: #003399;
+    transform: translateY(-2px);
+}
+.btn-outline {
+    background: transparent;
+    color: var(--gold);
+    border: 1.5px solid var(--gold);
+}
+.btn-outline:hover {
+    background: var(--gold);
+    color: var(--black);
+    transform: translateY(-2px);
+}
+.btn-gold {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--black);
+    box-shadow: 0 4px 20px rgba(212,168,67,0.3);
+}
+.btn-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(212,168,67,0.5);
+}
+.btn-whatsapp {
+    background: #25D366;
+    color: var(--white);
+}
+.btn-whatsapp:hover { background: #1da851; }
+
+/* ===== HERO ===== */
+.hero {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    background: var(--black);
+}
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 120% 80% at 50% 30%, rgba(212,168,67,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 80% 60% at 20% 80%, rgba(196,30,42,0.08) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 80% 70%, rgba(0,36,125,0.08) 0%, transparent 50%),
+        linear-gradient(180deg, var(--black) 0%, #111 50%, var(--black) 100%);
+}
+.hero-noise {
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.hero::before,
+.hero::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    height: 2px;
+    z-index: 1;
+}
+.hero::before {
+    top: 30%;
+    background: linear-gradient(90deg, transparent, rgba(212,168,67,0.25), rgba(212,168,67,0.4), rgba(212,168,67,0.25), transparent);
+}
+.hero::after {
+    top: 70%;
+    background: linear-gradient(90deg, transparent, rgba(196,30,42,0.25), rgba(196,30,42,0.4), rgba(196,30,42,0.25), transparent);
+}
+.hero-spotlight {
+    position: absolute;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    top: -100px; left: 50%;
+    transform: translateX(-50%);
+    background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+    animation: spotlightPulse 4s ease-in-out infinite;
+}
+@keyframes spotlightPulse {
+    0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
+    50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 6rem 2rem 4rem;
+    max-width: 900px;
+}
+.hero-presented {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.3s forwards;
+}
+.hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 0.95;
+    color: var(--white);
+    letter-spacing: 3px;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.5s forwards;
+    text-shadow: 0 0 80px rgba(212,168,67,0.2);
+}
+.hero-subtitle {
+    font-family: var(--font-heading);
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-weight: 400;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.7s forwards;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+}
+.hero-tagline {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.9s forwards;
+}
+.hero-ctas {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s 1.1s forwards;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== SECTIONS COMMON ===== */
+.section {
+    padding: 6rem 2rem;
+    position: relative;
+}
+.section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.section-label {
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.8rem;
+}
+.section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    color: var(--black);
+    letter-spacing: 1px;
+    margin-bottom: 1.2rem;
+}
+.section-subtitle {
+    font-size: 1.1rem;
+    color: var(--gray-600);
+    max-width: 600px;
+    line-height: 1.7;
+}
+
+/* ===== WHY SPONSOR - STATS GRID ===== */
+.why-sponsor { background: var(--off-white); }
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+.stat-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--red), var(--gold));
+}
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+}
+.stat-number {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    color: var(--black);
+    letter-spacing: 1px;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+.stat-label {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray-600);
+    margin-bottom: 0.5rem;
+}
+.stat-desc {
+    font-size: 0.88rem;
+    color: var(--gray-600);
+    line-height: 1.5;
+}
+
+/* ===== SPONSOR CATEGORIES ===== */
+.categories { background: var(--white); border-top: 1px solid var(--gray-200); }
+.cat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+.cat-card {
+    background: var(--gray-100);
+    border-radius: 8px;
+    padding: 2rem 1.5rem;
+    transition: transform 0.3s, background 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+.cat-card:hover {
+    transform: translateY(-3px);
+    background: var(--gray-200);
+}
+.cat-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+.cat-name {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--black);
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+.cat-desc {
+    font-size: 0.95rem;
+    color: var(--gray-600);
+    line-height: 1.6;
+}
+.cat-placements {
+    margin-top: 1rem;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+.cat-placements li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--gray-800);
+}
+.cat-placements li::before {
+    content: '';
+    flex-shrink: 0;
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+}
+
+/* ===== SPONSOR TIERS ===== */
+.tiers {
+    background: var(--black);
+    color: var(--white);
+    overflow: hidden;
+    position: relative;
+}
+.tiers::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(212,168,67,0.06) 0%, transparent 60%);
+}
+.tiers .section-label { color: var(--gold); }
+.tiers .section-title { color: var(--white); }
+.tiers .section-subtitle { color: rgba(255,255,255,0.5); }
+.tiers-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+    position: relative;
+}
+.tier-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+.tier-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 50px rgba(0,0,0,0.3);
+}
+.tier-card.bronze { border-color: #CD7F32; }
+.tier-card.bronze:hover { box-shadow: 0 16px 50px rgba(205,127,50,0.15); }
+.tier-card.silver { border-color: #A0A0A0; }
+.tier-card.silver:hover { box-shadow: 0 16px 50px rgba(160,160,160,0.15); }
+.tier-card.gold-tier { border-color: var(--gold); }
+.tier-card.gold-tier:hover { box-shadow: 0 16px 50px rgba(212,168,67,0.2); }
+.tier-card.exclusive { border-color: var(--red); }
+.tier-card.exclusive:hover { box-shadow: 0 16px 50px rgba(196,30,42,0.2); }
+
+.tier-header {
+    padding: 2rem 1.5rem;
+    text-align: center;
+    position: relative;
+}
+.tier-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 1rem; right: 1rem;
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+}
+.tier-badge {
+    font-family: var(--font-heading);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+}
+.tier-card.bronze .tier-badge { color: #CD7F32; }
+.tier-card.silver .tier-badge { color: #C0C0C0; }
+.tier-card.gold-tier .tier-badge { color: var(--gold); }
+.tier-card.exclusive .tier-badge { color: var(--red-glow); }
+
+.tier-name {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--white);
+    letter-spacing: 1px;
+    margin-bottom: 0.3rem;
+}
+.tier-price {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 1px;
+}
+
+.tier-body {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.tier-benefits {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    flex: 1;
+    margin-bottom: 1.5rem;
+}
+.tier-benefits li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.4;
+}
+.tier-benefits li::before {
+    content: '\2713';
+    flex-shrink: 0;
+    width: 18px; height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    font-weight: 700;
+    border-radius: 50%;
+    margin-top: 1px;
+}
+.tier-card.bronze .tier-benefits li::before {
+    background: rgba(205,127,50,0.15);
+    color: #CD7F32;
+}
+.tier-card.silver .tier-benefits li::before {
+    background: rgba(192,192,192,0.15);
+    color: #C0C0C0;
+}
+.tier-card.gold-tier .tier-benefits li::before {
+    background: rgba(212,168,67,0.15);
+    color: var(--gold);
+}
+.tier-card.exclusive .tier-benefits li::before {
+    background: rgba(196,30,42,0.15);
+    color: var(--red-glow);
+}
+
+.tier-cta {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    padding: 0.9rem;
+}
+.btn-bronze {
+    background: #CD7F32;
+    color: var(--white);
+}
+.btn-bronze:hover { background: #B8722E; transform: translateY(-2px); }
+.btn-silver {
+    background: #A0A0A0;
+    color: var(--black);
+}
+.btn-silver:hover { background: #B8B8B8; transform: translateY(-2px); }
+
+/* ===== PLACEMENTS MOCKUP ===== */
+.placements { background: var(--off-white); }
+.placements-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+.placement-card {
+    aspect-ratio: 16/10;
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.placement-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+}
+.placement-visual {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+.placement-visual.ring-bg {
+    background: linear-gradient(135deg, #1a0a0a 0%, #0a0a0a 100%);
+}
+.placement-visual.broadcast-bg {
+    background: linear-gradient(135deg, #0a0a1a 0%, #0a0a0a 100%);
+}
+.placement-visual.venue-bg {
+    background: linear-gradient(135deg, #0a1a0a 0%, #0a0a0a 100%);
+}
+.placement-visual.digital-bg {
+    background: linear-gradient(135deg, #1a0a1a 0%, #0a0a0a 100%);
+}
+.placement-icon {
+    font-size: 3rem;
+    opacity: 0.6;
+}
+.placement-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.placeholder-box {
+    border: 2px dashed rgba(255,255,255,0.15);
+    border-radius: 6px;
+    padding: 1rem 2rem;
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+}
+.placement-label {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--gray-200);
+}
+.placement-name {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gray-800);
+    margin-bottom: 0.2rem;
+}
+.placement-desc {
+    font-size: 0.85rem;
+    color: var(--gray-600);
+}
+
+/* ===== DOWNLOAD CTA ===== */
+.download-cta {
+    background: var(--white);
+    border-top: 1px solid var(--gray-200);
+    text-align: center;
+}
+.download-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* ===== INQUIRY FORM ===== */
+.inquiry {
+    background: var(--black);
+    color: var(--white);
+    overflow: hidden;
+    position: relative;
+}
+.inquiry::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 80% 60% at 50% 100%, rgba(196,30,42,0.06) 0%, transparent 60%);
+}
+.inquiry .section-label { color: var(--gold); }
+.inquiry .section-title { color: var(--white); }
+.inquiry .section-subtitle { color: rgba(255,255,255,0.5); }
+
+.form-wrapper {
+    margin-top: 3rem;
+    max-width: 700px;
+    position: relative;
+}
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+.form-group.full {
+    grid-column: 1 / -1;
+}
+.form-label {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+.form-input,
+.form-select,
+.form-textarea {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--white);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 4px;
+    padding: 0.8rem 1rem;
+    transition: border-color 0.3s, background 0.3s;
+    outline: none;
+}
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+    border-color: var(--gold);
+    background: rgba(255,255,255,0.08);
+}
+.form-input::placeholder,
+.form-textarea::placeholder {
+    color: rgba(255,255,255,0.25);
+}
+.form-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23D4A843' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+    cursor: pointer;
+}
+.form-select option {
+    background: var(--black);
+    color: var(--white);
+}
+.form-textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+.form-submit {
+    margin-top: 1.5rem;
+}
+.form-submit .btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.85rem;
+    padding: 1rem;
+}
+.form-note {
+    margin-top: 1rem;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.3);
+    text-align: center;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    background: var(--black);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 3rem 2rem;
+}
+.footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 2rem;
+}
+.footer-brand .footer-logo {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--white);
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+.footer-brand .footer-tagline {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+.footer-socials {
+    display: flex;
+    gap: 0.8rem;
+}
+.footer-socials a {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: border-color 0.3s, color 0.3s;
+}
+.footer-socials a:hover { border-color: var(--gold); color: var(--gold); }
+.footer-col-title {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+.footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.footer-links a {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--white); }
+.footer-bottom {
+    max-width: 1100px;
+    margin: 2rem auto 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.25);
+}
+.footer-bottom a {
+    color: var(--gold);
+    text-decoration: none;
+}
+
+/* ===== MOBILE FLOATING CTAs ===== */
+.mobile-ctas {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0; right: 0;
+    z-index: 999;
+    padding: 0.6rem;
+    gap: 0.5rem;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+.mobile-ctas .btn {
+    flex: 1;
+    justify-content: center;
+    font-size: 0.72rem;
+    padding: 0.7rem 0.5rem;
+    border-radius: 4px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    .tiers-grid { grid-template-columns: repeat(2, 1fr); }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 64px; left: 0; right: 0;
+        background: rgba(10,10,10,0.97);
+        padding: 1.5rem 2rem;
+        gap: 1.2rem;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .cat-grid { grid-template-columns: 1fr; }
+    .tiers-grid { grid-template-columns: 1fr; max-width: 420px; }
+    .placements-grid { grid-template-columns: 1fr; }
+    .form-grid { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .section { padding: 4rem 1.5rem; }
+    .mobile-ctas { display: flex; }
+    body { padding-bottom: 64px; }
+}
+
+@media (max-width: 480px) {
+    .stats-grid { grid-template-columns: 1fr; }
+    .hero-ctas { flex-direction: column; align-items: center; }
+    .hero-ctas .btn { width: 100%; max-width: 280px; justify-content: center; }
+}
+
+/* ===== SCROLL ANIMATIONS ===== */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="mainNav">
+    <a href="/" class="nav-logo">BOX TO BOX</a>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="/">Home</a></li>
+        <li><a href="tickets.html">Tickets</a></li>
+        <li><a href="live.html">Live</a></li>
+        <li><a href="sponsors.html" class="active">Sponsors</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="tickets.html" class="nav-cta">Acheter Ticket</a></li>
+    </ul>
+    <div class="nav-hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+        <span></span><span></span><span></span>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-noise"></div>
+    <div class="hero-spotlight"></div>
+    <div class="hero-content">
+        <p class="hero-presented">Batay San Fwontyè</p>
+        <h1 class="hero-title">Devenez Partenaire</h1>
+        <p class="hero-subtitle">Positionnez votre marque devant des milliers de spectateurs en personne et des dizaines de milliers en ligne lors du plus grand événement de combat en Haïti.</p>
+        <p class="hero-tagline">30 Mai 2025 — Parc Sainte-Thérèse</p>
+        <div class="hero-ctas">
+            <a href="#inquiry" class="btn btn-red">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                Nous Contacter
+            </a>
+            <a href="#tiers" class="btn btn-outline">Voir les Forfaits</a>
+        </div>
+    </div>
+</section>
+
+<!-- WHY SPONSOR - AUDIENCE STATS -->
+<section class="section why-sponsor" id="why">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">Pourquoi sponsoriser</p>
+            <h2 class="section-title">Une audience captive et engagée</h2>
+            <p class="section-subtitle">Batay San Fwontyè offre une visibilité exceptionnelle à travers plusieurs canaux simultanés.</p>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-card reveal">
+                <div class="stat-number">5,000+</div>
+                <div class="stat-label">Spectateurs sur place</div>
+                <div class="stat-desc">Audience en personne au Parc Sainte-Thérèse avec exposition directe aux marques partenaires.</div>
+            </div>
+            <div class="stat-card reveal">
+                <div class="stat-number">50,000+</div>
+                <div class="stat-label">Viewers Livestream</div>
+                <div class="stat-desc">Diffusion en direct sur YouTube avec intégrations de marque visibles à chaque round.</div>
+            </div>
+            <div class="stat-card reveal">
+                <div class="stat-number">200K+</div>
+                <div class="stat-label">Portée Réseaux Sociaux</div>
+                <div class="stat-desc">Campagnes sur Instagram, Facebook, TikTok et Twitter avec mentions et tags sponsors.</div>
+            </div>
+            <div class="stat-card reveal">
+                <div class="stat-number">6+</div>
+                <div class="stat-label">Heures de contenu</div>
+                <div class="stat-desc">Combats, interviews, animations et replays garantissant une exposition prolongée.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SPONSOR CATEGORIES -->
+<section class="section categories" id="categories">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">Catégories de partenariat</p>
+            <h2 class="section-title">Secteurs recherchés</h2>
+            <p class="section-subtitle">Nous recherchons des partenaires stratégiques dans les secteurs suivants pour créer une expérience complète.</p>
+        </div>
+        <div class="cat-grid">
+            <div class="cat-card reveal">
+                <span class="cat-icon">📶</span>
+                <div class="cat-name">Connectivité</div>
+                <div class="cat-desc">Fournisseurs de télécom et internet assurant la connectivité de l'événement et du livestream.</div>
+                <ul class="cat-placements">
+                    <li>Zone WiFi gratuite brandée</li>
+                    <li>Logo sur écrans de diffusion</li>
+                    <li>Mentions commentateurs</li>
+                </ul>
+            </div>
+            <div class="cat-card reveal">
+                <span class="cat-icon">📺</span>
+                <div class="cat-name">Diffusion</div>
+                <div class="cat-desc">Partenaires médias et plateformes de streaming pour la diffusion locale et internationale.</div>
+                <ul class="cat-placements">
+                    <li>Logo overlay livestream</li>
+                    <li>Interstitiels entre rounds</li>
+                    <li>Replay co-brandé</li>
+                </ul>
+            </div>
+            <div class="cat-card reveal">
+                <span class="cat-icon">🏦</span>
+                <div class="cat-name">Banque / Finance</div>
+                <div class="cat-desc">Institutions financières et services de paiement pour les transactions sur place et en ligne.</div>
+                <ul class="cat-placements">
+                    <li>Logo sur billets et QR codes</li>
+                    <li>Stand VIP co-brandé</li>
+                    <li>Mentions paiement sécurisé</li>
+                </ul>
+            </div>
+            <div class="cat-card reveal">
+                <span class="cat-icon">🎰</span>
+                <div class="cat-name">Betting</div>
+                <div class="cat-desc">Plateformes de paris sportifs pour engager l'audience avec des prédictions en temps réel.</div>
+                <ul class="cat-placements">
+                    <li>Zone betting dédiée</li>
+                    <li>Cotes affichées sur écrans</li>
+                    <li>Intégration livestream</li>
+                </ul>
+            </div>
+            <div class="cat-card reveal">
+                <span class="cat-icon">🍺</span>
+                <div class="cat-name">Beverage</div>
+                <div class="cat-desc">Marques de boissons pour les bars, lounge VIP et points de vente sur l'ensemble du site.</div>
+                <ul class="cat-placements">
+                    <li>Bars brandés sur site</li>
+                    <li>Boissons lounge VIP</li>
+                    <li>Logo tapis de ring</li>
+                </ul>
+            </div>
+            <div class="cat-card reveal">
+                <span class="cat-icon">🍖</span>
+                <div class="cat-name">Food / Concessions</div>
+                <div class="cat-desc">Restauration et food trucks pour le village gastronomique de l'événement.</div>
+                <ul class="cat-placements">
+                    <li>Food village co-brandé</li>
+                    <li>Menus spéciaux BSF</li>
+                    <li>Signalétique sur site</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SPONSOR TIERS -->
+<section class="section tiers" id="tiers">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">Forfaits Sponsors</p>
+            <h2 class="section-title">Choisissez votre niveau</h2>
+            <p class="section-subtitle">Quatre niveaux de partenariat adaptés à chaque objectif et budget.</p>
+        </div>
+        <div class="tiers-grid">
+            <!-- BRONZE -->
+            <div class="tier-card bronze reveal">
+                <div class="tier-header">
+                    <div class="tier-badge">Niveau 1</div>
+                    <div class="tier-name">Bronze</div>
+                    <div class="tier-price">Contactez-nous</div>
+                </div>
+                <div class="tier-body">
+                    <ul class="tier-benefits">
+                        <li>Logo sur le site web officiel</li>
+                        <li>Mention sur les réseaux sociaux (x2)</li>
+                        <li>Logo sur bannière venue</li>
+                        <li>2 billets VIP inclus</li>
+                        <li>Certificat de partenariat</li>
+                    </ul>
+                    <a href="#inquiry" class="btn btn-bronze tier-cta">Choisir Bronze</a>
+                </div>
+            </div>
+            <!-- SILVER -->
+            <div class="tier-card silver reveal">
+                <div class="tier-header">
+                    <div class="tier-badge">Niveau 2</div>
+                    <div class="tier-name">Silver</div>
+                    <div class="tier-price">Contactez-nous</div>
+                </div>
+                <div class="tier-body">
+                    <ul class="tier-benefits">
+                        <li>Tout Bronze inclus</li>
+                        <li>Logo sur écran LED du ring</li>
+                        <li>Mentions commentateurs (x3)</li>
+                        <li>Post dédié sur réseaux sociaux</li>
+                        <li>Stand d'activation sur site</li>
+                        <li>4 billets VIP inclus</li>
+                    </ul>
+                    <a href="#inquiry" class="btn btn-silver tier-cta">Choisir Silver</a>
+                </div>
+            </div>
+            <!-- GOLD -->
+            <div class="tier-card gold-tier reveal">
+                <div class="tier-header">
+                    <div class="tier-badge">Niveau 3</div>
+                    <div class="tier-name">Gold</div>
+                    <div class="tier-price">Contactez-nous</div>
+                </div>
+                <div class="tier-body">
+                    <ul class="tier-benefits">
+                        <li>Tout Silver inclus</li>
+                        <li>Logo sur tapis de ring</li>
+                        <li>Overlay logo sur livestream</li>
+                        <li>Interview sponsor on-camera</li>
+                        <li>Naming d'un combat</li>
+                        <li>Lounge VIP co-brandé</li>
+                        <li>8 billets VIP inclus</li>
+                    </ul>
+                    <a href="#inquiry" class="btn btn-gold tier-cta">Choisir Gold</a>
+                </div>
+            </div>
+            <!-- EXCLUSIVE -->
+            <div class="tier-card exclusive reveal">
+                <div class="tier-header">
+                    <div class="tier-badge">Partenaire Titre</div>
+                    <div class="tier-name">Exclusive</div>
+                    <div class="tier-price">Sur invitation</div>
+                </div>
+                <div class="tier-body">
+                    <ul class="tier-benefits">
+                        <li>Tout Gold inclus</li>
+                        <li>Naming de l'événement complet</li>
+                        <li>Logo sur tous les supports (print + digital)</li>
+                        <li>Segment dédié dans le livestream</li>
+                        <li>Accès backstage et combattants</li>
+                        <li>Contenu vidéo personnalisé post-event</li>
+                        <li>Droits de premier refus pour les prochains événements</li>
+                        <li>12 billets VIP inclus</li>
+                    </ul>
+                    <a href="#inquiry" class="btn btn-red tier-cta">Devenir Partenaire Exclusif</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PLACEMENT MOCKUPS -->
+<section class="section placements" id="placements">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">Visibilité</p>
+            <h2 class="section-title">Où apparaît votre marque</h2>
+            <p class="section-subtitle">Emplacements stratégiques garantissant une exposition maximale pendant tout l'événement.</p>
+        </div>
+        <div class="placements-grid">
+            <div class="placement-card reveal">
+                <div class="placement-visual ring-bg">
+                    <span class="placement-icon">🥊</span>
+                    <div class="placement-placeholder">
+                        <div class="placeholder-box">Votre Logo Ici</div>
+                    </div>
+                </div>
+                <div class="placement-label">
+                    <div class="placement-name">Ring &amp; Tapis</div>
+                    <div class="placement-desc">Logo sur le tapis de ring, les cordes et les poteaux — visible à chaque round.</div>
+                </div>
+            </div>
+            <div class="placement-card reveal">
+                <div class="placement-visual broadcast-bg">
+                    <span class="placement-icon">📡</span>
+                    <div class="placement-placeholder">
+                        <div class="placeholder-box">Votre Logo Ici</div>
+                    </div>
+                </div>
+                <div class="placement-label">
+                    <div class="placement-name">Diffusion &amp; Livestream</div>
+                    <div class="placement-desc">Overlay logo, interstitiels entre rounds et mentions commentateurs en direct.</div>
+                </div>
+            </div>
+            <div class="placement-card reveal">
+                <div class="placement-visual venue-bg">
+                    <span class="placement-icon">🏟️</span>
+                    <div class="placement-placeholder">
+                        <div class="placeholder-box">Votre Logo Ici</div>
+                    </div>
+                </div>
+                <div class="placement-label">
+                    <div class="placement-name">Venue &amp; Signalétique</div>
+                    <div class="placement-desc">Bannières, stands d'activation, écrans LED et signalétique sur tout le site.</div>
+                </div>
+            </div>
+            <div class="placement-card reveal">
+                <div class="placement-visual digital-bg">
+                    <span class="placement-icon">📱</span>
+                    <div class="placement-placeholder">
+                        <div class="placeholder-box">Votre Logo Ici</div>
+                    </div>
+                </div>
+                <div class="placement-label">
+                    <div class="placement-name">Digital &amp; Réseaux Sociaux</div>
+                    <div class="placement-desc">Logo sur le site web, posts dédiés, stories et contenu vidéo post-événement.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- DOWNLOAD DECK CTA -->
+<section class="section download-cta">
+    <div class="section-inner">
+        <div class="download-inner reveal">
+            <p class="section-label">Dossier Complet</p>
+            <h2 class="section-title">Téléchargez le dossier sponsor</h2>
+            <p class="section-subtitle" style="text-align:center;">Recevez notre deck complet avec les détails de chaque forfait, les statistiques d'audience et les conditions de partenariat.</p>
+            <a href="#" class="btn btn-red" style="margin-top:0.5rem;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Télécharger le Deck (PDF)
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- INQUIRY FORM -->
+<section class="section inquiry" id="inquiry">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">Contact Sponsors</p>
+            <h2 class="section-title">Devenez partenaire</h2>
+            <p class="section-subtitle">Remplissez le formulaire ci-dessous et notre équipe vous contactera sous 24h.</p>
+        </div>
+        <div class="form-wrapper reveal">
+            <form id="sponsorForm" onsubmit="handleSubmit(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="company">Nom de l'entreprise</label>
+                        <input type="text" id="company" name="company" class="form-input" placeholder="Votre entreprise" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="contact">Nom du contact</label>
+                        <input type="text" id="contact" name="contact" class="form-input" placeholder="Prénom et nom" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="phone">Téléphone</label>
+                        <input type="tel" id="phone" name="phone" class="form-input" placeholder="+509 0000 0000">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="vous@entreprise.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="tier">Forfait d'intérêt</label>
+                        <select id="tier" name="tier" class="form-select" required>
+                            <option value="" disabled selected>Sélectionnez un forfait</option>
+                            <option value="bronze">Bronze</option>
+                            <option value="silver">Silver</option>
+                            <option value="gold">Gold</option>
+                            <option value="exclusive">Partenaire Exclusif</option>
+                            <option value="custom">Forfait personnalisé</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="category">Secteur</label>
+                        <select id="category" name="category" class="form-select">
+                            <option value="" disabled selected>Sélectionnez un secteur</option>
+                            <option value="connectivity">Connectivité</option>
+                            <option value="broadcast">Diffusion</option>
+                            <option value="finance">Banque / Finance</option>
+                            <option value="betting">Betting</option>
+                            <option value="beverage">Beverage</option>
+                            <option value="food">Food / Concessions</option>
+                            <option value="other">Autre</option>
+                        </select>
+                    </div>
+                    <div class="form-group full">
+                        <label class="form-label" for="message">Message</label>
+                        <textarea id="message" name="message" class="form-textarea" placeholder="Décrivez vos objectifs de partenariat, questions ou commentaires..."></textarea>
+                    </div>
+                </div>
+                <div class="form-submit">
+                    <button type="submit" class="btn btn-gold">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                        Envoyer ma Demande
+                    </button>
+                </div>
+                <p class="form-note">Nous répondons à toutes les demandes sous 24 heures ouvrables.</p>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <div class="footer-logo">BOX TO BOX</div>
+            <p class="footer-tagline">Box To Box &amp; 48HoursReady.com Présentent<br>Batay San Fwontyè<br><em>Combat. Culture. Connexion.</em></p>
+            <div class="footer-socials">
+                <a href="#" aria-label="Instagram">IG</a>
+                <a href="#" aria-label="Facebook">FB</a>
+                <a href="#" aria-label="YouTube">YT</a>
+            </div>
+        </div>
+        <div>
+            <div class="footer-col-title">Navigation</div>
+            <ul class="footer-links">
+                <li><a href="/">Accueil</a></li>
+                <li><a href="tickets.html">Tickets</a></li>
+                <li><a href="live.html">Livestream</a></li>
+                <li><a href="sponsors.html">Sponsors</a></li>
+            </ul>
+        </div>
+        <div>
+            <div class="footer-col-title">Informations</div>
+            <ul class="footer-links">
+                <li><a href="media.html">Media</a></li>
+                <li><a href="about.html">À Propos</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div>
+            <div class="footer-col-title">Contact</div>
+            <ul class="footer-links">
+                <li><a href="#">WhatsApp</a></li>
+                <li><a href="#">Email</a></li>
+                <li><a href="#">Instagram</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>&copy; 2025 Box To Box. Tous droits réservés.</span>
+        <span>Powered by <a href="https://48hoursready.com">48HoursReady.com</a></span>
+    </div>
+</footer>
+
+<!-- MOBILE FLOATING CTAs -->
+<div class="mobile-ctas">
+    <a href="tickets.html" class="btn btn-red">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/></svg>
+        Tickets
+    </a>
+    <a href="live.html" class="btn btn-blue">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Live
+    </a>
+    <a href="#" class="btn btn-whatsapp">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.624-1.467A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.666-5.813-1.803l-.417-.263-2.743.87.88-2.683-.287-.44A9.715 9.715 0 0 1 2.25 12c0-5.385 4.365-9.75 9.75-9.75S21.75 6.615 21.75 12s-4.365 9.75-9.75 9.75z"/></svg>
+        WhatsApp
+    </a>
+</div>
+
+<script>
+// Form handler
+function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('button[type="submit"]');
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Demande Envoyée!';
+    btn.style.background = '#25D366';
+    btn.style.pointerEvents = 'none';
+    setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.style.background = '';
+        btn.style.pointerEvents = '';
+        form.reset();
+    }, 3000);
+}
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => entry.target.classList.add('visible'), i * 80);
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => observer.observe(el));
+
+// Nav background on scroll
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+    nav.style.background = window.scrollY > 80
+        ? 'rgba(10,10,10,0.95)'
+        : 'rgba(10,10,10,0.85)';
+});
+</script>
+
+</body>
+</html>
