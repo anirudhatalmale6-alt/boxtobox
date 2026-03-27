@@ -121,8 +121,23 @@ body {
     position: absolute;
     inset: 0;
     background:
-        linear-gradient(180deg, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.15) 40%, rgba(10,10,10,0.5) 80%, var(--black) 100%),
-        url('img/fight-poster.jpg') center center / cover no-repeat;
+        radial-gradient(ellipse 120% 80% at 50% 30%, rgba(196,30,42,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 80% 60% at 20% 80%, rgba(0,36,125,0.12) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 80% 70%, rgba(212,168,67,0.08) 0%, transparent 50%),
+        linear-gradient(180deg, var(--black) 0%, #111 50%, var(--black) 100%);
+}
+.hero-poster {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 45%;
+    max-width: 550px;
+    height: 100%;
+    background: url('img/fight-poster.jpg') right center / cover no-repeat;
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.6) 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.6) 100%);
+    opacity: 0.35;
+    z-index: 0;
 }
 .hero-noise {
     position: absolute;
@@ -1025,6 +1040,9 @@ body {
 }
 
 @media (max-width: 768px) {
+    .hero-poster { display: none; }
+    .hero::before, .hero::after { display: none; }
+    .hero-noise { display: none; }
     .nav-links { display: none; }
     .nav-hamburger { display: flex; }
     .nav-links.open {
@@ -1095,6 +1113,7 @@ body {
 <!-- HERO -->
 <section class="hero">
     <div class="hero-bg"></div>
+    <div class="hero-poster"></div>
     <div class="hero-noise"></div>
     <div class="hero-spotlight"></div>
     <div class="hero-content">
