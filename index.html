@@ -100,21 +100,46 @@ body {
 /* ===== HERO ===== */
 .hero {
     padding-top: 64px;
-    background: var(--white);
+    background: var(--blue-deep);
     overflow: hidden;
+    position: relative;
+}
+.hero-bg {
+    position: absolute;
+    top: 64px; left: 0; right: 0; bottom: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.35;
 }
 .hero-inner {
-    max-width: 1200px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 3rem 2rem 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    padding: 3rem 2rem 2.5rem;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+.hero-logo {
+    width: min(360px, 80vw);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+    filter: drop-shadow(0 4px 20px rgba(0,0,0,0.4));
+}
+.hero-poster-img {
+    width: min(520px, 90vw);
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
 }
 .hero-text {
     opacity: 0;
-    animation: fadeUp 0.8s 0.3s forwards;
+    animation: fadeUp 0.8s 0.5s forwards;
 }
 .hero-presented {
     font-family: var(--font-heading);
@@ -122,30 +147,31 @@ body {
     font-weight: 600;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 1rem;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
 }
 .hero-title {
     font-family: var(--font-display);
-    font-size: clamp(3rem, 6vw, 5rem);
+    font-size: clamp(2.5rem, 5vw, 4rem);
     line-height: 0.95;
-    color: var(--black);
+    color: var(--white);
     letter-spacing: 2px;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 .hero-title .vs {
     display: block;
     font-family: var(--font-heading);
-    font-size: 0.28em;
+    font-size: 0.3em;
     letter-spacing: 4px;
     color: var(--red);
     margin: 0.4em 0;
     font-weight: 900;
     white-space: nowrap;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.4);
 }
 .hero-subtitle {
     font-size: 1.15rem;
-    color: var(--gray-600);
+    color: rgba(255,255,255,0.8);
     line-height: 1.7;
     margin-bottom: 0.5rem;
 }
@@ -155,15 +181,16 @@ body {
     font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--blue);
+    color: var(--gold);
     margin-bottom: 2rem;
 }
 .hero-ctas {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+    justify-content: center;
     opacity: 0;
-    animation: fadeUp 0.8s 0.6s forwards;
+    animation: fadeUp 0.8s 0.7s forwards;
 }
 .btn {
     display: inline-flex;
@@ -754,9 +781,9 @@ body {
         border-bottom: 1px solid var(--gray-200);
         box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
-    .hero-inner { grid-template-columns: 1fr; text-align: center; padding: 2rem 1.5rem 0; }
-    .hero-ctas { justify-content: center; }
-    .hero-poster { max-width: 500px; margin: 0 auto; }
+    .hero-inner { padding: 2rem 1.5rem 2rem; }
+    .hero-logo { width: min(280px, 75vw); }
+    .hero-poster-img { width: min(400px, 88vw); }
     .info-bar-inner { grid-template-columns: repeat(3, 1fr); }
     .about-grid { grid-template-columns: 1fr; gap: 2rem; }
     .tickets-grid { grid-template-columns: 1fr; max-width: 420px; }
@@ -810,16 +837,17 @@ body {
 
 <!-- HERO -->
 <section class="hero">
+    <div class="hero-bg" style="background-image:url('img/fight-poster.jpg');"></div>
     <div class="hero-inner">
+        <img src="img/boxetoboxe-logo.png" alt="Boxe To Boxe" class="hero-logo">
+        <img src="img/fight-poster.jpg" alt="Batay San Fwontyè - Caribbean Fight Night" class="hero-poster-img">
         <div class="hero-text">
-            <p class="hero-presented">Box To Box & 48HoursReady.com Présentent</p>
             <h1 class="hero-title">
-                BATAY SAN
+                BATAY SAN FWONTYÈ
                 <span class="vs">Haïti &nbsp; vs &nbsp; Dominican Republic</span>
-                FWONTYÈ
             </h1>
-            <p class="hero-subtitle">Combat international. Culture. Connexion.</p>
-            <p class="hero-date">30 Mai 2026 — Parc Sainte-Thérèse</p>
+            <p class="hero-subtitle">De kwen. Yon verite.</p>
+            <p class="hero-date">Samedi 30 Mai 2026 — Parc Sainte-Thérèse</p>
             <div class="hero-ctas">
                 <a href="tickets.html" class="btn btn-red">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/></svg>
@@ -829,11 +857,8 @@ body {
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
                     Regarder en Live
                 </a>
-                <a href="sponsors.html" class="btn btn-outline">Devenir Sponsor</a>
+                <a href="sponsors.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.3);color:var(--white);">Devenir Sponsor</a>
             </div>
-        </div>
-        <div class="hero-poster">
-            <img src="img/fight-poster.jpg" alt="Batay San Fwontyè - Caribbean Fight Night">
         </div>
     </div>
 </section>
