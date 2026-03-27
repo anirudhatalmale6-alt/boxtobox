@@ -394,6 +394,39 @@ body {
     padding: 1rem;
 }
 
+/* ===== PAYMENT METHOD SELECTOR ===== */
+.payment-method-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+}
+.payment-method-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 0.8rem 0.5rem;
+    border: 2px solid var(--gray-200);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+    background: var(--white);
+}
+.payment-method-option:hover { border-color: var(--blue); }
+.payment-method-option.selected {
+    border-color: var(--red);
+    background: rgba(196,30,42,0.04);
+    box-shadow: 0 0 0 1px var(--red);
+}
+.payment-method-option input[type="radio"] { display: none; }
+.pm-icon { font-size: 1.5rem; }
+.pm-label { font-family: var(--font-heading); font-size: 0.85rem; font-weight: 600; color: var(--gray-800); }
+.pm-sub { font-size: 0.7rem; color: var(--gray-600); }
+.pay-loading { display: none; align-items: center; justify-content: center; gap: 0.5rem; }
+.pay-spinner { width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.6s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
 /* ===== BUYER FORM ===== */
 .checkout-form-section {
     background: var(--off-white);
@@ -1107,7 +1140,36 @@ body {
                             </select>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-red" style="width:100%;justify-content:center;margin-top:0.5rem;font-size:0.9rem;padding:1.1rem;">
+                    <div class="form-group">
+                        <label class="form-label">Mode de paiement <span class="required">*</span></label>
+                        <div class="payment-method-grid">
+                            <label class="payment-method-option selected" data-method="all">
+                                <input type="radio" name="paymentMethod" value="all" checked>
+                                <span class="pm-icon">💳</span>
+                                <span class="pm-label">Tous</span>
+                                <span class="pm-sub">MonCash, NatCash, Carte</span>
+                            </label>
+                            <label class="payment-method-option" data-method="moncash">
+                                <input type="radio" name="paymentMethod" value="moncash">
+                                <span class="pm-icon">📱</span>
+                                <span class="pm-label">MonCash</span>
+                                <span class="pm-sub">Paiement mobile</span>
+                            </label>
+                            <label class="payment-method-option" data-method="natcash">
+                                <input type="radio" name="paymentMethod" value="natcash">
+                                <span class="pm-icon">📲</span>
+                                <span class="pm-label">NatCash</span>
+                                <span class="pm-sub">Paiement mobile</span>
+                            </label>
+                            <label class="payment-method-option" data-method="kashpaw">
+                                <input type="radio" name="paymentMethod" value="kashpaw">
+                                <span class="pm-icon">🏦</span>
+                                <span class="pm-label">KashPaw</span>
+                                <span class="pm-sub">Portefeuille digital</span>
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" id="payBtn" class="btn btn-red" style="width:100%;justify-content:center;margin-top:0.5rem;font-size:0.9rem;padding:1.1rem;">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                         Procéder au paiement
                     </button>
@@ -1439,8 +1501,43 @@ document.getElementById('ticketForm').addEventListener('submit', function(e) {
     }
 
     if (valid) {
-        // Placeholder: in production, this would submit to a payment gateway
-        alert('Merci ! Redirection vers le paiement...\n\nNom: ' + name.value.trim() + '\nTéléphone: +509 ' + phoneClean + '\nEmail: ' + email.value.trim() + '\nBillet: ' + ticketType.value.toUpperCase() + ' x' + document.getElementById('quantity').value);
+        const payBtn = document.getElementById('payBtn');
+        const btnText = payBtn.innerHTML;
+        payBtn.innerHTML = '<span class="pay-spinner" style="display:inline-block;width:18px;height:18px;border:2px solid rgba(255,255,255,0.3);border-top-color:white;border-radius:50%;animation:spin 0.6s linear infinite;"></span> Traitement en cours...';
+        payBtn.disabled = true;
+
+        const method = document.querySelector('input[name="paymentMethod"]:checked').value;
+        const qty = parseInt(document.getElementById('quantity').value) || 1;
+        const total = PRICES[ticketType.value] * qty;
+
+        fetch('/wp-json/boxtobox/v1/create-payment', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                montant: total,
+                payment_method: method,
+                name: name.value.trim(),
+                email: email.value.trim(),
+                phone: phoneClean,
+                ticket_type: ticketType.value,
+                quantity: qty
+            })
+        })
+        .then(r => r.json())
+        .then(data => {
+            if (data.status && data.url) {
+                window.location.href = data.url;
+            } else {
+                alert('Erreur: ' + (data.message || 'Veuillez réessayer.'));
+                payBtn.innerHTML = btnText;
+                payBtn.disabled = false;
+            }
+        })
+        .catch(err => {
+            alert('Erreur de connexion. Veuillez réessayer.');
+            payBtn.innerHTML = btnText;
+            payBtn.disabled = false;
+        });
     } else {
         // Scroll to first error
         const firstError = document.querySelector('.form-input.error, .form-select.error');
@@ -1449,6 +1546,14 @@ document.getElementById('ticketForm').addEventListener('submit', function(e) {
             firstError.focus();
         }
     }
+});
+
+// Payment method selection
+document.querySelectorAll('.payment-method-option').forEach(opt => {
+    opt.addEventListener('click', function() {
+        document.querySelectorAll('.payment-method-option').forEach(o => o.classList.remove('selected'));
+        this.classList.add('selected');
+    });
 });
 
 // FAQ accordion
