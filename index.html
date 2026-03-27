@@ -121,10 +121,8 @@ body {
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(ellipse 120% 80% at 50% 30%, rgba(196,30,42,0.15) 0%, transparent 60%),
-        radial-gradient(ellipse 80% 60% at 20% 80%, rgba(0,36,125,0.12) 0%, transparent 50%),
-        radial-gradient(ellipse 60% 40% at 80% 70%, rgba(212,168,67,0.08) 0%, transparent 50%),
-        linear-gradient(180deg, var(--black) 0%, #111 50%, var(--black) 100%);
+        linear-gradient(180deg, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.15) 40%, rgba(10,10,10,0.5) 80%, var(--black) 100%),
+        url('img/fight-poster.jpg') center center / cover no-repeat;
 }
 .hero-noise {
     position: absolute;
@@ -1078,7 +1076,7 @@ body {
 
 <!-- NAVIGATION -->
 <nav class="nav" id="mainNav">
-    <a href="/" class="nav-logo">BOX TO BOX</a>
+    <a href="/" class="nav-logo"><img src="img/boxtobox-logo.jpg" alt="Boxe To Boxe" style="height:40px;border-radius:4px;"></a>
     <ul class="nav-links" id="navLinks">
         <li><a href="/">Home</a></li>
         <li><a href="tickets.html">Tickets</a></li>
@@ -1107,7 +1105,7 @@ body {
             FWONTYÈ
         </h1>
         <p class="hero-subtitle">Combat international. Culture. Connexion.</p>
-        <p class="hero-tagline">30 Mai 2025 — Parc Sainte-Thérèse</p>
+        <p class="hero-tagline">30 Mai 2026 — Parc Sainte-Thérèse</p>
         <div class="hero-ctas">
             <a href="tickets.html" class="btn btn-red">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/></svg>
@@ -1170,18 +1168,8 @@ body {
                     <li>Académie de combat prévue pour 2027</li>
                 </ul>
             </div>
-            <div class="about-visual reveal">
-                <div class="about-flag">
-                    <div class="flag-block">
-                        <span class="flag-emoji">🇭🇹</span>
-                        <span class="flag-name">Haïti</span>
-                    </div>
-                    <span class="flag-vs">VS</span>
-                    <div class="flag-block">
-                        <span class="flag-emoji">🇩🇴</span>
-                        <span class="flag-name">Rep. Dom.</span>
-                    </div>
-                </div>
+            <div class="about-visual reveal" style="background:none;">
+                <img src="img/arena.jpg" alt="Batay San Fwontyè Arena" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
             </div>
         </div>
     </div>
@@ -1375,7 +1363,7 @@ body {
         <div class="timeline reveal">
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
-                <div class="timeline-date">30 Mai 2025</div>
+                <div class="timeline-date">30 Mai 2026</div>
                 <div class="timeline-title">Événement 1 — Batay San Fwontyè</div>
                 <div class="timeline-desc">Le premier combat international Haïti vs République Dominicaine au Parc Sainte-Thérèse.</div>
             </div>
@@ -1405,7 +1393,7 @@ body {
 <footer class="footer">
     <div class="footer-inner">
         <div class="footer-brand">
-            <div class="footer-logo">BOX TO BOX</div>
+            <div class="footer-logo"><img src="img/boxtobox-logo.jpg" alt="Boxe To Boxe" style="height:50px;border-radius:4px;"></div>
             <p class="footer-tagline">Box To Box &amp; 48HoursReady.com Présentent<br>Batay San Fwontyè<br><em>Combat. Culture. Connexion.</em></p>
             <div class="footer-socials">
                 <a href="#" aria-label="Instagram">IG</a>
@@ -1440,8 +1428,8 @@ body {
         </div>
     </div>
     <div class="footer-bottom">
-        <span>&copy; 2025 Box To Box. Tous droits réservés.</span>
-        <span>Powered by <a href="https://48hoursready.com">48HoursReady.com</a></span>
+        <span>&copy; 2026 Box To Box. Tous droits réservés.</span>
+        <span style="display:flex;align-items:center;gap:8px;">Powered by <a href="https://48hoursready.com"><img src="img/48hoursready-logo.jpg" alt="48HoursReady" style="height:28px;border-radius:3px;vertical-align:middle;"></a></span>
     </div>
 </footer>
 
@@ -1464,7 +1452,7 @@ body {
 <script>
 // Countdown timer
 function updateCountdown() {
-    const eventDate = new Date('2025-05-30T19:00:00-04:00');
+    const eventDate = new Date('2026-05-30T19:00:00-04:00');
     const now = new Date();
     const diff = eventDate - now;
 
