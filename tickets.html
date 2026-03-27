@@ -1143,11 +1143,11 @@ body {
                     <div class="form-group">
                         <label class="form-label">Mode de paiement <span class="required">*</span></label>
                         <div class="payment-method-grid">
-                            <label class="payment-method-option selected" data-method="all">
-                                <input type="radio" name="paymentMethod" value="all" checked>
+                            <label class="payment-method-option selected" data-method="stripe">
+                                <input type="radio" name="paymentMethod" value="stripe" checked>
                                 <span class="pm-icon">💳</span>
-                                <span class="pm-label">Tous</span>
-                                <span class="pm-sub">MonCash, NatCash, Carte</span>
+                                <span class="pm-label">Carte</span>
+                                <span class="pm-sub">Visa, Mastercard</span>
                             </label>
                             <label class="payment-method-option" data-method="moncash">
                                 <input type="radio" name="paymentMethod" value="moncash">
@@ -1510,25 +1510,27 @@ document.getElementById('ticketForm').addEventListener('submit', function(e) {
         const qty = parseInt(document.getElementById('quantity').value) || 1;
         const total = PRICES[ticketType.value] * qty;
 
-        fetch('/wp-json/boxtobox/v1/create-payment', {
+        // Route to Stripe or Peyem based on payment method
+        const isStripe = (method === 'stripe');
+        const endpoint = isStripe
+            ? '/wp-json/boxtobox/v1/create-stripe-session'
+            : '/wp-json/boxtobox/v1/create-payment';
+
+        const payload = isStripe
+            ? { ticket_type: ticketType.value, quantity: qty, name: name.value.trim(), email: email.value.trim(), phone: phoneClean }
+            : { montant: total, payment_method: method, name: name.value.trim(), email: email.value.trim(), phone: phoneClean, ticket_type: ticketType.value, quantity: qty };
+
+        fetch(endpoint, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                montant: total,
-                payment_method: method,
-                name: name.value.trim(),
-                email: email.value.trim(),
-                phone: phoneClean,
-                ticket_type: ticketType.value,
-                quantity: qty
-            })
+            body: JSON.stringify(payload)
         })
         .then(r => r.json())
         .then(data => {
             if (data.status && data.url) {
                 window.location.href = data.url;
             } else {
-                alert('Erreur: ' + (data.message || 'Veuillez réessayer.'));
+                alert('Erreur: ' + (data.error || data.message || 'Veuillez réessayer.'));
                 payBtn.innerHTML = btnText;
                 payBtn.disabled = false;
             }
@@ -1597,6 +1599,25 @@ window.addEventListener('scroll', () => {
 
 // Initialize summary on load
 updateSummary();
+
+// Handle Stripe return
+(function() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('payment') === 'success') {
+        const ref = params.get('ref') || '';
+        const overlay = document.createElement('div');
+        overlay.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.85);display:flex;align-items:center;justify-content:center;';
+        overlay.innerHTML = '<div style="background:#fff;border-radius:12px;padding:3rem 2.5rem;text-align:center;max-width:440px;margin:1rem;">'
+            + '<div style="font-size:3.5rem;margin-bottom:1rem;">&#10003;</div>'
+            + '<h2 style="font-family:Bebas Neue,sans-serif;font-size:1.8rem;margin-bottom:0.5rem;color:#0A0A0A;">Paiement Confirme!</h2>'
+            + '<p style="color:#6B6760;line-height:1.7;margin-bottom:1.5rem;">Merci! Votre billet QR code sera envoye par WhatsApp et e-mail sous peu.' + (ref ? '<br><small style="color:#999;">Ref: ' + ref + '</small>' : '') + '</p>'
+            + '<a href="/boxtobox/" style="display:inline-block;background:#C41E2A;color:#fff;padding:0.8rem 2rem;border-radius:6px;text-decoration:none;font-family:Oswald,sans-serif;font-weight:600;letter-spacing:1px;text-transform:uppercase;">Retour a l\'accueil</a>'
+            + '</div>';
+        document.body.appendChild(overlay);
+    } else if (params.get('payment') === 'cancelled') {
+        alert('Paiement annule. Vous pouvez reessayer quand vous voulez.');
+    }
+})();
 </script>
 
 </body>
