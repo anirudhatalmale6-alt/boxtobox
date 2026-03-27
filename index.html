@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Box To Box — Batay San Fwontyè | Haïti vs République Dominicaine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+    --red: #C41E2A;
+    --red-dark: #8B0000;
+    --red-glow: #FF1A2E;
+    --blue: #00247D;
+    --blue-deep: #001847;
+    --gold: #D4A843;
+    --gold-light: #F0D078;
+    --black: #0A0A0A;
+    --off-white: #F5F3EF;
+    --white: #FFFFFF;
+    --gray-100: #F0EEEA;
+    --gray-200: #E0DDD6;
+    --gray-600: #6B6760;
+    --gray-800: #2A2824;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-heading: 'Oswald', sans-serif;
+    --font-body: 'Source Sans 3', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font-body);
+    color: var(--gray-800);
+    background: var(--off-white);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ===== NAVIGATION ===== */
+.nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 0 2rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.3s;
+}
+.nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.nav-logo .x { color: var(--red); font-size: 1.2rem; }
+.nav-links {
+    display: flex;
+    gap: 1.8rem;
+    align-items: center;
+    list-style: none;
+}
+.nav-links a {
+    font-family: var(--font-heading);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-cta {
+    background: var(--red);
+    color: var(--white) !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    font-weight: 600 !important;
+    letter-spacing: 1px;
+    transition: background 0.2s, transform 0.2s;
+}
+.nav-cta:hover { background: var(--red-dark); transform: translateY(-1px); }
+
+.nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+}
+.nav-hamburger span {
+    width: 24px; height: 2px;
+    background: var(--white);
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+/* ===== HERO ===== */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    background: var(--black);
+}
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 120% 80% at 50% 30%, rgba(196,30,42,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 80% 60% at 20% 80%, rgba(0,36,125,0.12) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 80% 70%, rgba(212,168,67,0.08) 0%, transparent 50%),
+        linear-gradient(180deg, var(--black) 0%, #111 50%, var(--black) 100%);
+}
+.hero-noise {
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+/* Ring ropes effect */
+.hero::before,
+.hero::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    height: 2px;
+    z-index: 1;
+}
+.hero::before {
+    top: 30%;
+    background: linear-gradient(90deg, transparent, rgba(196,30,42,0.25), rgba(196,30,42,0.4), rgba(196,30,42,0.25), transparent);
+}
+.hero::after {
+    top: 70%;
+    background: linear-gradient(90deg, transparent, rgba(0,36,125,0.25), rgba(0,36,125,0.4), rgba(0,36,125,0.25), transparent);
+}
+.hero-spotlight {
+    position: absolute;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    top: -100px; left: 50%;
+    transform: translateX(-50%);
+    background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+    animation: spotlightPulse 4s ease-in-out infinite;
+}
+@keyframes spotlightPulse {
+    0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
+    50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+    max-width: 900px;
+}
+.hero-presented {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.3s forwards;
+}
+.hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 10vw, 8rem);
+    line-height: 0.95;
+    color: var(--white);
+    letter-spacing: 3px;
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.5s forwards;
+    text-shadow: 0 0 80px rgba(196,30,42,0.3);
+}
+.hero-title .vs {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 0.25em;
+    letter-spacing: 12px;
+    color: var(--gold);
+    margin: 0.3em 0;
+}
+.hero-subtitle {
+    font-family: var(--font-heading);
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    font-weight: 400;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.7s forwards;
+}
+.hero-tagline {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.9s forwards;
+}
+.hero-ctas {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s 1.1s forwards;
+}
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.9rem 2rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+.btn-red {
+    background: var(--red);
+    color: var(--white);
+    box-shadow: 0 4px 20px rgba(196,30,42,0.4);
+}
+.btn-red:hover {
+    background: var(--red-glow);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(255,26,46,0.5);
+}
+.btn-blue {
+    background: var(--blue);
+    color: var(--white);
+    box-shadow: 0 4px 20px rgba(0,36,125,0.3);
+}
+.btn-blue:hover {
+    background: #003399;
+    transform: translateY(-2px);
+}
+.btn-outline {
+    background: transparent;
+    color: var(--gold);
+    border: 1.5px solid var(--gold);
+}
+.btn-outline:hover {
+    background: var(--gold);
+    color: var(--black);
+    transform: translateY(-2px);
+}
+.hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    opacity: 0;
+    animation: fadeUp 0.8s 1.5s forwards;
+}
+.hero-scroll span {
+    display: block;
+    width: 20px; height: 32px;
+    border: 2px solid rgba(255,255,255,0.25);
+    border-radius: 12px;
+    position: relative;
+}
+.hero-scroll span::after {
+    content: '';
+    position: absolute;
+    top: 6px; left: 50%;
+    width: 3px; height: 8px;
+    margin-left: -1.5px;
+    background: var(--gold);
+    border-radius: 2px;
+    animation: scrollDot 1.8s ease-in-out infinite;
+}
+@keyframes scrollDot {
+    0% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(10px); }
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== EVENT INFO BAR ===== */
+.info-bar {
+    background: var(--black);
+    border-top: 3px solid var(--red);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+}
+.info-bar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(196,30,42,0.05), transparent 30%, transparent 70%, rgba(0,36,125,0.05));
+}
+.info-bar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    position: relative;
+}
+.info-item {
+    padding: 1.5rem 1rem;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.3s;
+}
+.info-item:last-child { border-right: none; }
+.info-item:hover { background: rgba(255,255,255,0.03); }
+.info-item .label {
+    font-family: var(--font-heading);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+}
+.info-item .value {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--white);
+    letter-spacing: 1px;
+}
+
+/* ===== SECTIONS COMMON ===== */
+.section {
+    padding: 6rem 2rem;
+    position: relative;
+}
+.section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.section-label {
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.8rem;
+}
+.section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    color: var(--black);
+    letter-spacing: 1px;
+    margin-bottom: 1.2rem;
+}
+.section-subtitle {
+    font-size: 1.1rem;
+    color: var(--gray-600);
+    max-width: 600px;
+    line-height: 1.7;
+}
+
+/* ===== ABOUT ===== */
+.about { background: var(--off-white); }
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 3rem;
+}
+.about-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--gray-600);
+    margin-bottom: 1.5rem;
+}
+.about-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.about-bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    font-size: 1rem;
+    color: var(--gray-800);
+    font-weight: 600;
+}
+.about-bullets li::before {
+    content: '';
+    flex-shrink: 0;
+    width: 8px; height: 8px;
+    margin-top: 0.45rem;
+    background: var(--red);
+    border-radius: 50%;
+}
+.about-visual {
+    position: relative;
+    aspect-ratio: 4/3;
+    background:
+        linear-gradient(135deg, var(--blue-deep) 0%, var(--black) 100%);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.about-visual::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.02) 40px, rgba(255,255,255,0.02) 41px),
+        repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.02) 40px, rgba(255,255,255,0.02) 41px);
+}
+.about-flag {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+.flag-block {
+    text-align: center;
+}
+.flag-emoji {
+    font-size: 3.5rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+.flag-name {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.8);
+    text-transform: uppercase;
+}
+.flag-vs {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--gold);
+}
+
+/* ===== TICKETS ===== */
+.tickets {
+    background: var(--white);
+    border-top: 1px solid var(--gray-200);
+}
+.tickets-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+.ticket-card {
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+}
+.ticket-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+}
+.ticket-card.vip {
+    border-color: var(--gold);
+}
+.ticket-card.vip .ticket-header {
+    background: linear-gradient(135deg, #1a1409 0%, #2a1f0a 100%);
+}
+.ticket-header {
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--black) 0%, #1a1a1a 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.ticket-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+}
+.ticket-card.standard .ticket-header::after { background: var(--red); }
+.ticket-card.vip .ticket-header::after { background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold)); }
+.ticket-type {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray-600);
+    margin-bottom: 0.5rem;
+}
+.ticket-card.vip .ticket-type { color: var(--gold); }
+.ticket-price {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    color: var(--white);
+    letter-spacing: 1px;
+}
+.ticket-price .currency {
+    font-family: var(--font-heading);
+    font-size: 0.4em;
+    vertical-align: super;
+    color: rgba(255,255,255,0.5);
+}
+.ticket-body {
+    padding: 2rem;
+}
+.ticket-perks {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+}
+.ticket-perks li {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.95rem;
+    color: var(--gray-800);
+}
+.ticket-perks li::before {
+    content: '✓';
+    flex-shrink: 0;
+    width: 20px; height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    border-radius: 50%;
+}
+.ticket-card.standard .ticket-perks li::before {
+    background: rgba(196,30,42,0.1);
+    color: var(--red);
+}
+.ticket-card.vip .ticket-perks li::before {
+    background: rgba(212,168,67,0.15);
+    color: var(--gold);
+}
+.ticket-btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    padding: 1rem;
+}
+.btn-gold {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--black);
+    box-shadow: 0 4px 20px rgba(212,168,67,0.3);
+}
+.btn-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(212,168,67,0.5);
+}
+.ticket-note {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.85rem;
+    color: var(--gray-600);
+}
+.ticket-note svg {
+    width: 14px; height: 14px;
+    vertical-align: -2px;
+    margin-right: 4px;
+}
+
+/* ===== LIVESTREAM ===== */
+.livestream {
+    background: var(--black);
+    color: var(--white);
+    overflow: hidden;
+    position: relative;
+}
+.livestream::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(196,30,42,0.08) 0%, transparent 60%);
+}
+.livestream .section-label { color: var(--red-glow); }
+.livestream .section-title { color: var(--white); }
+.livestream .section-subtitle { color: rgba(255,255,255,0.5); }
+
+.livestream-content {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 3rem;
+    align-items: start;
+}
+.video-wrapper {
+    position: relative;
+    aspect-ratio: 16/9;
+    background: #111;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+}
+.video-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background:
+        radial-gradient(circle at center, rgba(196,30,42,0.1) 0%, transparent 60%),
+        #0a0a0a;
+}
+.play-icon {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 40px rgba(196,30,42,0.4);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+.play-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 60px rgba(196,30,42,0.6);
+}
+.play-icon svg { width: 28px; height: 28px; fill: var(--white); margin-left: 4px; }
+.video-status {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+}
+.live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--red);
+    padding: 0.3rem 0.8rem;
+    border-radius: 3px;
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--white);
+}
+.live-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--white);
+    border-radius: 50%;
+    animation: livePulse 1.5s ease-in-out infinite;
+}
+@keyframes livePulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+.countdown-panel {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 2rem;
+}
+.countdown-label {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+.countdown {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.6rem;
+    margin-bottom: 2rem;
+}
+.countdown-block {
+    text-align: center;
+    background: rgba(255,255,255,0.04);
+    border-radius: 6px;
+    padding: 1rem 0.5rem;
+}
+.countdown-num {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--white);
+    line-height: 1;
+}
+.countdown-unit {
+    font-family: var(--font-heading);
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-top: 0.3rem;
+}
+.stream-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+.stream-actions .btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.8rem;
+    padding: 0.8rem;
+}
+
+/* ===== SPONSORS ===== */
+.sponsors { background: var(--off-white); }
+.sponsor-categories {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+.sponsor-cat-label {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gray-600);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--gray-200);
+}
+.sponsor-logos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+}
+.sponsor-logo {
+    aspect-ratio: 16/9;
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    color: var(--gray-600);
+    text-transform: uppercase;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+.sponsor-logo:hover {
+    border-color: var(--gold);
+    box-shadow: 0 2px 12px rgba(212,168,67,0.15);
+}
+.sponsor-ctas {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+}
+
+/* ===== EXPERIENCE ===== */
+.experience {
+    background: var(--white);
+    border-top: 1px solid var(--gray-200);
+}
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+.exp-card {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: var(--gray-100);
+    border-radius: 8px;
+    transition: transform 0.3s, background 0.3s;
+}
+.exp-card:hover {
+    transform: translateY(-3px);
+    background: var(--gray-200);
+}
+.exp-icon {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+    display: block;
+}
+.exp-name {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gray-800);
+}
+
+/* ===== FUTURE ===== */
+.future {
+    background: var(--black);
+    color: var(--white);
+    overflow: hidden;
+}
+.future::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 40% at 80% 50%, rgba(0,36,125,0.1) 0%, transparent 60%);
+}
+.future .section-label { color: var(--gold); }
+.future .section-title { color: var(--white); }
+.future .section-subtitle { color: rgba(255,255,255,0.5); }
+.timeline {
+    margin-top: 4rem;
+    position: relative;
+    padding-left: 3rem;
+}
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 11px;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--red), var(--gold), var(--blue));
+}
+.timeline-item {
+    position: relative;
+    padding-bottom: 3rem;
+    padding-left: 1.5rem;
+}
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-dot {
+    position: absolute;
+    left: -3rem;
+    top: 0;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    border: 2px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--black);
+}
+.timeline-dot::after {
+    content: '';
+    width: 8px; height: 8px;
+    border-radius: 50%;
+}
+.timeline-item:nth-child(1) .timeline-dot { border-color: var(--red); }
+.timeline-item:nth-child(1) .timeline-dot::after { background: var(--red); }
+.timeline-item:nth-child(2) .timeline-dot { border-color: var(--gold); }
+.timeline-item:nth-child(2) .timeline-dot::after { background: var(--gold); }
+.timeline-item:nth-child(3) .timeline-dot { border-color: var(--gold); }
+.timeline-item:nth-child(3) .timeline-dot::after { background: var(--gold); }
+.timeline-item:nth-child(4) .timeline-dot { border-color: var(--blue); }
+.timeline-item:nth-child(4) .timeline-dot::after { background: var(--blue); }
+
+.timeline-date {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+}
+.timeline-title {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+}
+.timeline-desc {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.6;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    background: var(--black);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 3rem 2rem;
+}
+.footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 2rem;
+}
+.footer-brand .footer-logo {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--white);
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+.footer-brand .footer-tagline {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+.footer-socials {
+    display: flex;
+    gap: 0.8rem;
+}
+.footer-socials a {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: border-color 0.3s, color 0.3s;
+}
+.footer-socials a:hover { border-color: var(--gold); color: var(--gold); }
+.footer-col-title {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+.footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.footer-links a {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--white); }
+.footer-bottom {
+    max-width: 1100px;
+    margin: 2rem auto 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.25);
+}
+.footer-bottom a {
+    color: var(--gold);
+    text-decoration: none;
+}
+
+/* ===== MOBILE FLOATING CTAs ===== */
+.mobile-ctas {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0; right: 0;
+    z-index: 999;
+    padding: 0.6rem;
+    gap: 0.5rem;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+.mobile-ctas .btn {
+    flex: 1;
+    justify-content: center;
+    font-size: 0.72rem;
+    padding: 0.7rem 0.5rem;
+    border-radius: 4px;
+}
+.btn-whatsapp {
+    background: #25D366;
+    color: var(--white);
+}
+.btn-whatsapp:hover { background: #1da851; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    .livestream-content { grid-template-columns: 1fr; }
+    .countdown-panel { max-width: 500px; }
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 64px; left: 0; right: 0;
+        background: rgba(10,10,10,0.97);
+        padding: 1.5rem 2rem;
+        gap: 1.2rem;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .info-bar-inner {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .tickets-grid { grid-template-columns: 1fr; max-width: 420px; }
+    .experience-grid { grid-template-columns: repeat(3, 1fr); }
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .section { padding: 4rem 1.5rem; }
+    .mobile-ctas { display: flex; }
+    body { padding-bottom: 64px; }
+    .sponsor-ctas { flex-direction: column; }
+    .sponsor-ctas .btn { width: 100%; justify-content: center; }
+}
+
+@media (max-width: 480px) {
+    .info-bar-inner { grid-template-columns: repeat(2, 1fr); }
+    .experience-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero-ctas { flex-direction: column; align-items: center; }
+    .hero-ctas .btn { width: 100%; max-width: 280px; justify-content: center; }
+    .countdown { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ===== SCROLL ANIMATIONS ===== */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="mainNav">
+    <a href="/" class="nav-logo">BOX TO BOX</a>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="/">Home</a></li>
+        <li><a href="tickets.html">Tickets</a></li>
+        <li><a href="live.html">Live</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="tickets.html" class="nav-cta">Acheter Ticket</a></li>
+    </ul>
+    <div class="nav-hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+        <span></span><span></span><span></span>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-noise"></div>
+    <div class="hero-spotlight"></div>
+    <div class="hero-content">
+        <p class="hero-presented">Box To Box &amp; 48HoursReady.com Présentent</p>
+        <h1 class="hero-title">
+            BATAY SAN
+            <span class="vs">Haïti &nbsp; vs &nbsp; République Dominicaine</span>
+            FWONTYÈ
+        </h1>
+        <p class="hero-subtitle">Combat international. Culture. Connexion.</p>
+        <p class="hero-tagline">30 Mai 2025 — Parc Sainte-Thérèse</p>
+        <div class="hero-ctas">
+            <a href="tickets.html" class="btn btn-red">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/></svg>
+                Acheter Ticket
+            </a>
+            <a href="live.html" class="btn btn-blue">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                Regarder en Live
+            </a>
+            <a href="sponsors.html" class="btn btn-outline">Devenir Sponsor</a>
+        </div>
+    </div>
+    <div class="hero-scroll"><span></span></div>
+</section>
+
+<!-- EVENT INFO BAR -->
+<div class="info-bar">
+    <div class="info-bar-inner">
+        <div class="info-item">
+            <div class="label">Date</div>
+            <div class="value">30 Mai</div>
+        </div>
+        <div class="info-item">
+            <div class="label">Lieu</div>
+            <div class="value">Parc Ste-Thérèse</div>
+        </div>
+        <div class="info-item">
+            <div class="label">Tickets</div>
+            <div class="value">1,000 Gdes</div>
+        </div>
+        <div class="info-item">
+            <div class="label">VIP</div>
+            <div class="value">2,500 Gdes</div>
+        </div>
+        <div class="info-item">
+            <div class="label">Live</div>
+            <div class="value">YouTube</div>
+        </div>
+        <div class="info-item">
+            <div class="label">Main Event</div>
+            <div class="value">Haïti vs RD</div>
+        </div>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<section class="section about">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">L'Événement</p>
+            <h2 class="section-title">Un mouvement, pas seulement un événement</h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-text reveal">
+                <p>Batay San Fwontyè est bien plus qu'un simple événement sportif. C'est une vitrine internationale pour Haïti, utilisant la boxe et le MMA comme vecteurs de fierté nationale, de discipline et de connexion entre les peuples.</p>
+                <ul class="about-bullets">
+                    <li>Boxe et MMA international — Haïti vs République Dominicaine</li>
+                    <li>Haïti positionnée à travers le sport sur la scène mondiale</li>
+                    <li>Événements tous les 6 mois — un circuit grandissant</li>
+                    <li>Académie de combat prévue pour 2027</li>
+                </ul>
+            </div>
+            <div class="about-visual reveal">
+                <div class="about-flag">
+                    <div class="flag-block">
+                        <span class="flag-emoji">🇭🇹</span>
+                        <span class="flag-name">Haïti</span>
+                    </div>
+                    <span class="flag-vs">VS</span>
+                    <div class="flag-block">
+                        <span class="flag-emoji">🇩🇴</span>
+                        <span class="flag-name">Rep. Dom.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TICKETS -->
+<section class="section tickets" id="tickets">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">Billetterie</p>
+            <h2 class="section-title">Réservez votre place</h2>
+            <p class="section-subtitle">Chaque billet inclut un QR code unique pour une entrée rapide et sécurisée.</p>
+        </div>
+        <div class="tickets-grid">
+            <div class="ticket-card standard reveal">
+                <div class="ticket-header">
+                    <div class="ticket-type">Standard</div>
+                    <div class="ticket-price">1,000 <span class="currency">GDES</span></div>
+                </div>
+                <div class="ticket-body">
+                    <ul class="ticket-perks">
+                        <li>Accès général à l'événement</li>
+                        <li>Vue sur le ring</li>
+                        <li>Accès zone food village</li>
+                        <li>QR code billet numérique</li>
+                    </ul>
+                    <a href="tickets.html" class="btn btn-red ticket-btn">Acheter Standard</a>
+                </div>
+            </div>
+            <div class="ticket-card vip reveal">
+                <div class="ticket-header">
+                    <div class="ticket-type">VIP</div>
+                    <div class="ticket-price">2,500 <span class="currency">GDES</span></div>
+                </div>
+                <div class="ticket-body">
+                    <ul class="ticket-perks">
+                        <li>Siège VIP première rangée</li>
+                        <li>Accès lounge VIP privé</li>
+                        <li>Boissons et snacks inclus</li>
+                        <li>Rencontre avec les combattants</li>
+                        <li>QR code billet numérique</li>
+                    </ul>
+                    <a href="tickets.html" class="btn btn-gold ticket-btn">Acheter VIP</a>
+                </div>
+            </div>
+        </div>
+        <p class="ticket-note reveal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Paiement sécurisé — Confirmation instantanée par WhatsApp
+        </p>
+    </div>
+</section>
+
+<!-- LIVESTREAM -->
+<section class="section livestream" id="live">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">Diffusion en direct</p>
+            <h2 class="section-title">Regarder en direct</h2>
+            <p class="section-subtitle">Suivez chaque round en direct sur YouTube. Replay disponible après l'événement.</p>
+        </div>
+        <div class="livestream-content">
+            <div class="video-wrapper reveal">
+                <div class="video-placeholder">
+                    <div class="live-badge">À Venir</div>
+                    <div class="play-icon">
+                        <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    </div>
+                    <span class="video-status">Diffusion le 30 Mai</span>
+                </div>
+            </div>
+            <div class="countdown-panel reveal">
+                <div class="countdown-label">Compte à rebours</div>
+                <div class="countdown" id="countdown">
+                    <div class="countdown-block">
+                        <div class="countdown-num" id="cd-days">--</div>
+                        <div class="countdown-unit">Jours</div>
+                    </div>
+                    <div class="countdown-block">
+                        <div class="countdown-num" id="cd-hours">--</div>
+                        <div class="countdown-unit">Heures</div>
+                    </div>
+                    <div class="countdown-block">
+                        <div class="countdown-num" id="cd-mins">--</div>
+                        <div class="countdown-unit">Minutes</div>
+                    </div>
+                    <div class="countdown-block">
+                        <div class="countdown-num" id="cd-secs">--</div>
+                        <div class="countdown-unit">Secondes</div>
+                    </div>
+                </div>
+                <div class="stream-actions">
+                    <a href="live.html" class="btn btn-red">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                        Regarder en Live
+                    </a>
+                    <a href="#" class="btn btn-outline" style="font-size:0.75rem;">Recevoir un rappel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SPONSORS -->
+<section class="section sponsors" id="sponsors">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">Partenaires</p>
+            <h2 class="section-title">Partenaires &amp; Sponsors</h2>
+            <p class="section-subtitle">Les marques qui rendent Batay San Fwontyè possible.</p>
+        </div>
+        <div class="sponsor-categories reveal">
+            <div>
+                <div class="sponsor-cat-label">Connectivité</div>
+                <div class="sponsor-logos">
+                    <div class="sponsor-logo">Votre Logo</div>
+                    <div class="sponsor-logo">Votre Logo</div>
+                </div>
+            </div>
+            <div>
+                <div class="sponsor-cat-label">Diffusion</div>
+                <div class="sponsor-logos">
+                    <div class="sponsor-logo">Votre Logo</div>
+                    <div class="sponsor-logo">Votre Logo</div>
+                </div>
+            </div>
+            <div>
+                <div class="sponsor-cat-label">Banque / Finance</div>
+                <div class="sponsor-logos">
+                    <div class="sponsor-logo">Votre Logo</div>
+                    <div class="sponsor-logo">Votre Logo</div>
+                </div>
+            </div>
+            <div>
+                <div class="sponsor-cat-label">Betting &bull; Beverage &bull; Food</div>
+                <div class="sponsor-logos">
+                    <div class="sponsor-logo">Votre Logo</div>
+                    <div class="sponsor-logo">Votre Logo</div>
+                    <div class="sponsor-logo">Votre Logo</div>
+                </div>
+            </div>
+        </div>
+        <div class="sponsor-ctas reveal">
+            <a href="sponsors.html" class="btn btn-red">Télécharger dossier sponsor</a>
+            <a href="sponsors.html" class="btn btn-outline" style="border-color:var(--red);color:var(--red);">Demander le media kit</a>
+        </div>
+    </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section experience">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">Sur Place</p>
+            <h2 class="section-title">Expérience sur place</h2>
+            <p class="section-subtitle">Plus qu'un combat — une expérience complète pour toute la famille.</p>
+        </div>
+        <div class="experience-grid reveal">
+            <div class="exp-card">
+                <span class="exp-icon">🍖</span>
+                <div class="exp-name">Food Village</div>
+            </div>
+            <div class="exp-card">
+                <span class="exp-icon">🥂</span>
+                <div class="exp-name">Lounge VIP</div>
+            </div>
+            <div class="exp-card">
+                <span class="exp-icon">🏢</span>
+                <div class="exp-name">Stands Sponsors</div>
+            </div>
+            <div class="exp-card">
+                <span class="exp-icon">🎰</span>
+                <div class="exp-name">Zone Betting</div>
+            </div>
+            <div class="exp-card">
+                <span class="exp-icon">📶</span>
+                <div class="exp-name">Zone WiFi</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FUTURE VISION -->
+<section class="section future">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">La Vision</p>
+            <h2 class="section-title">La suite</h2>
+            <p class="section-subtitle">Batay San Fwontyè n'est que le début d'un mouvement sportif haïtien.</p>
+        </div>
+        <div class="timeline reveal">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">30 Mai 2025</div>
+                <div class="timeline-title">Événement 1 — Batay San Fwontyè</div>
+                <div class="timeline-desc">Le premier combat international Haïti vs République Dominicaine au Parc Sainte-Thérèse.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">Chaque 6 Mois</div>
+                <div class="timeline-title">Événements récurrents</div>
+                <div class="timeline-desc">Un calendrier régulier d'événements de combat, grandissant en taille et en portée internationale.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2027</div>
+                <div class="timeline-title">Académie de Combat</div>
+                <div class="timeline-desc">Formation professionnelle pour les jeunes talents haïtiens en boxe et MMA.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2028+</div>
+                <div class="timeline-title">Circuit International</div>
+                <div class="timeline-desc">Expansion vers un circuit caribéen et international de combat professionnel.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <div class="footer-logo">BOX TO BOX</div>
+            <p class="footer-tagline">Box To Box &amp; 48HoursReady.com Présentent<br>Batay San Fwontyè<br><em>Combat. Culture. Connexion.</em></p>
+            <div class="footer-socials">
+                <a href="#" aria-label="Instagram">IG</a>
+                <a href="#" aria-label="Facebook">FB</a>
+                <a href="#" aria-label="YouTube">YT</a>
+            </div>
+        </div>
+        <div>
+            <div class="footer-col-title">Navigation</div>
+            <ul class="footer-links">
+                <li><a href="/">Accueil</a></li>
+                <li><a href="tickets.html">Tickets</a></li>
+                <li><a href="live.html">Livestream</a></li>
+                <li><a href="sponsors.html">Sponsors</a></li>
+            </ul>
+        </div>
+        <div>
+            <div class="footer-col-title">Informations</div>
+            <ul class="footer-links">
+                <li><a href="media.html">Media</a></li>
+                <li><a href="about.html">À Propos</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div>
+            <div class="footer-col-title">Contact</div>
+            <ul class="footer-links">
+                <li><a href="#">WhatsApp</a></li>
+                <li><a href="#">Email</a></li>
+                <li><a href="#">Instagram</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>&copy; 2025 Box To Box. Tous droits réservés.</span>
+        <span>Powered by <a href="https://48hoursready.com">48HoursReady.com</a></span>
+    </div>
+</footer>
+
+<!-- MOBILE FLOATING CTAs -->
+<div class="mobile-ctas">
+    <a href="tickets.html" class="btn btn-red">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/></svg>
+        Tickets
+    </a>
+    <a href="live.html" class="btn btn-blue">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Live
+    </a>
+    <a href="#" class="btn btn-whatsapp">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.624-1.467A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.666-5.813-1.803l-.417-.263-2.743.87.88-2.683-.287-.44A9.715 9.715 0 0 1 2.25 12c0-5.385 4.365-9.75 9.75-9.75S21.75 6.615 21.75 12s-4.365 9.75-9.75 9.75z"/></svg>
+        WhatsApp
+    </a>
+</div>
+
+<script>
+// Countdown timer
+function updateCountdown() {
+    const eventDate = new Date('2025-05-30T19:00:00-04:00');
+    const now = new Date();
+    const diff = eventDate - now;
+
+    if (diff <= 0) {
+        document.getElementById('cd-days').textContent = '00';
+        document.getElementById('cd-hours').textContent = '00';
+        document.getElementById('cd-mins').textContent = '00';
+        document.getElementById('cd-secs').textContent = '00';
+        return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+    document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+    document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
+    document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => entry.target.classList.add('visible'), i * 80);
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => observer.observe(el));
+
+// Nav background on scroll
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+    nav.style.background = window.scrollY > 80
+        ? 'rgba(10,10,10,0.95)'
+        : 'rgba(10,10,10,0.85)';
+});
+</script>
+
+</body>
+</html>
