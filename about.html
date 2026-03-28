@@ -323,21 +323,16 @@ body {
 }
 .tech-partner-visual {
     position: relative;
-    aspect-ratio: 4/3;
-    background: linear-gradient(135deg, #0a1628 0%, var(--black) 100%);
     border-radius: 8px;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.tech-partner-visual::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(circle at 30% 40%, rgba(0,36,125,0.15) 0%, transparent 50%),
-        radial-gradient(circle at 70% 60%, rgba(212,168,67,0.08) 0%, transparent 50%);
+.tech-partner-visual img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 8px;
 }
 .tech-badge {
     position: relative;
