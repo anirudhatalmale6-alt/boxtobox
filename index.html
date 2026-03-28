@@ -97,6 +97,33 @@ body {
     transition: transform 0.3s, opacity 0.3s;
 }
 
+/* ===== LANGUAGE SWITCHER ===== */
+.lang-switcher {
+    display: flex;
+    gap: 2px;
+    margin-left: 0.8rem;
+}
+.lang-btn {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 0.3rem 0.5rem;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 3px;
+    background: transparent;
+    color: var(--gray-600);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.lang-btn:hover { border-color: var(--blue); color: var(--blue); }
+.lang-btn.active { background: var(--blue); color: var(--white); border-color: var(--blue); }
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 /* ===== HERO ===== */
 .hero {
     padding-top: 64px;
@@ -820,29 +847,36 @@ body {
         <li><a href="media.html">Media</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
-        <li><a href="tickets.html" class="nav-cta">Acheter Ticket</a></li>
+        <li><a href="tickets.html" class="nav-cta" data-i18n="nav_tickets">Acheter Ticket</a></li>
     </ul>
-    <div class="nav-hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
-        <span></span><span></span><span></span>
+    <div class="nav-right">
+        <div class="lang-switcher">
+            <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+            <button class="lang-btn" onclick="setLang('en')">EN</button>
+            <button class="lang-btn" onclick="setLang('kr')">KR</button>
+        </div>
+        <div class="nav-hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </div>
     </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-    <div class="hero-bg" style="background-image:url('img/arena-hero.jpg');"></div>
+    <div class="hero-bg" style="background-image:url('img/hero-fighters.jpg');"></div>
     <div class="hero-inner">
         <div class="hero-text">
-            <p class="hero-date">Samedi 30 Mai 2026 — Parc Sainte-Thérèse</p>
+            <p class="hero-date" data-i18n="hero_date">Samedi 30 Mai 2026 — Parc Sainte-Thérèse</p>
             <div class="hero-ctas">
                 <a href="tickets.html" class="btn btn-red">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/></svg>
-                    Acheter Ticket
+                    <span data-i18n="btn_buy">Acheter Ticket</span>
                 </a>
                 <a href="live.html" class="btn btn-blue">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                    Regarder en Live
+                    <span data-i18n="btn_live">Regarder en Live</span>
                 </a>
-                <a href="sponsors.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.3);color:var(--white);">Devenir Sponsor</a>
+                <a href="sponsors.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.3);color:var(--white);"><span data-i18n="btn_sponsor">Devenir Sponsor</span></a>
             </div>
         </div>
     </div>
@@ -851,8 +885,8 @@ body {
 <!-- EVENT INFO BAR -->
 <div class="info-bar">
     <div class="info-bar-inner">
-        <div class="info-item"><div class="label">Date</div><div class="value">30 Mai</div></div>
-        <div class="info-item"><div class="label">Lieu</div><div class="value">Parc Ste-Thérèse</div></div>
+        <div class="info-item"><div class="label" data-i18n="info_date">Date</div><div class="value">30 Mai</div></div>
+        <div class="info-item"><div class="label" data-i18n="info_venue">Lieu</div><div class="value">Parc Ste-Thérèse</div></div>
         <div class="info-item"><div class="label">Tickets</div><div class="value">1,000 Gdes</div></div>
         <div class="info-item"><div class="label">VIP</div><div class="value">2,500 Gdes</div></div>
         <div class="info-item"><div class="label">Live</div><div class="value">YouTube</div></div>
@@ -864,17 +898,17 @@ body {
 <section class="section about">
     <div class="section-inner">
         <div class="reveal">
-            <p class="section-label">L'Événement</p>
-            <h2 class="section-title">Un mouvement, pas seulement un événement</h2>
+            <p class="section-label" data-i18n="about_label">L'Événement</p>
+            <h2 class="section-title" data-i18n="about_title">Un mouvement, pas seulement un événement</h2>
         </div>
         <div class="about-grid">
             <div class="about-text reveal">
-                <p>Batay San Fwontyè est bien plus qu'un simple événement sportif. C'est une vitrine internationale pour Haïti, utilisant la boxe et le MMA comme vecteurs de fierté nationale, de discipline et de connexion entre les peuples.</p>
+                <p data-i18n="about_text">Batay San Fwontyè est bien plus qu'un simple événement sportif. C'est une vitrine internationale pour Haïti, utilisant la boxe et le MMA comme vecteurs de fierté nationale, de discipline et de connexion entre les peuples.</p>
                 <ul class="about-bullets">
-                    <li>Boxe et MMA international — Haïti vs Dominican Republic</li>
-                    <li>Haïti positionnée à travers le sport sur la scène mondiale</li>
-                    <li>Événements tous les 6 mois — un circuit grandissant</li>
-                    <li>Académie de combat prévue pour 2027</li>
+                    <li data-i18n="about_b1">Boxe et MMA international — Haïti vs Dominican Republic</li>
+                    <li data-i18n="about_b2">Haïti positionnée à travers le sport sur la scène mondiale</li>
+                    <li data-i18n="about_b3">Événements tous les 6 mois — un circuit grandissant</li>
+                    <li data-i18n="about_b4">Académie de combat prévue pour 2027</li>
                 </ul>
             </div>
             <div class="about-visual reveal">
@@ -888,9 +922,9 @@ body {
 <section class="section tickets" id="tickets">
     <div class="section-inner">
         <div class="reveal">
-            <p class="section-label">Billetterie</p>
-            <h2 class="section-title">Réservez votre place</h2>
-            <p class="section-subtitle">Chaque billet inclut un QR code unique pour une entrée rapide et sécurisée.</p>
+            <p class="section-label" data-i18n="tickets_label">Billetterie</p>
+            <h2 class="section-title" data-i18n="tickets_title">Réservez votre place</h2>
+            <p class="section-subtitle" data-i18n="tickets_sub">Chaque billet inclut un QR code unique pour une entrée rapide et sécurisée.</p>
         </div>
         <div class="tickets-grid">
             <div class="ticket-card standard reveal">
@@ -905,7 +939,7 @@ body {
                         <li>Accès zone food village</li>
                         <li>QR code billet numérique</li>
                     </ul>
-                    <a href="tickets.html" class="btn btn-red ticket-btn">Acheter Standard</a>
+                    <a href="tickets.html" class="btn btn-red ticket-btn" data-i18n="buy_standard">Acheter Standard</a>
                 </div>
             </div>
             <div class="ticket-card vip reveal">
@@ -915,13 +949,13 @@ body {
                 </div>
                 <div class="ticket-body">
                     <ul class="ticket-perks">
-                        <li>Siège VIP première rangée</li>
-                        <li>Accès lounge VIP privé</li>
-                        <li>Boissons et snacks inclus</li>
-                        <li>Rencontre avec les combattants</li>
-                        <li>QR code billet numérique</li>
+                        <li data-i18n="vip_p1">Siège VIP première rangée</li>
+                        <li data-i18n="vip_p2">Accès lounge VIP privé</li>
+                        <li data-i18n="vip_p3">Boissons et snacks inclus</li>
+                        <li data-i18n="vip_p4">Rencontre avec les combattants</li>
+                        <li data-i18n="vip_p5">QR code billet numérique</li>
                     </ul>
-                    <a href="tickets.html" class="btn btn-gold ticket-btn">Acheter VIP</a>
+                    <a href="tickets.html" class="btn btn-gold ticket-btn" data-i18n="buy_vip">Acheter VIP</a>
                 </div>
             </div>
         </div>
@@ -936,9 +970,9 @@ body {
 <section class="section livestream" id="live">
     <div class="section-inner">
         <div class="reveal">
-            <p class="section-label">Diffusion en direct</p>
-            <h2 class="section-title">Regarder en direct</h2>
-            <p class="section-subtitle">Suivez chaque round en direct sur YouTube. Replay disponible après l'événement.</p>
+            <p class="section-label" data-i18n="live_label">Diffusion en direct</p>
+            <h2 class="section-title" data-i18n="live_title">Regarder en direct</h2>
+            <p class="section-subtitle" data-i18n="live_sub">Suivez chaque round en direct sur YouTube. Replay disponible après l'événement.</p>
         </div>
         <div class="livestream-content">
             <div class="video-wrapper reveal">
@@ -971,9 +1005,9 @@ body {
 <section class="section sponsors" id="sponsors">
     <div class="section-inner">
         <div class="reveal">
-            <p class="section-label">Partenaires</p>
-            <h2 class="section-title">Partenaires & Sponsors</h2>
-            <p class="section-subtitle">Les marques qui rendent Batay San Fwontyè possible.</p>
+            <p class="section-label" data-i18n="sponsors_label">Partenaires</p>
+            <h2 class="section-title" data-i18n="sponsors_title">Partenaires & Sponsors</h2>
+            <p class="section-subtitle" data-i18n="sponsors_sub">Les marques qui rendent Batay San Fwontyè possible.</p>
         </div>
         <div class="sponsor-categories reveal">
             <div><div class="sponsor-cat-label">Connectivité</div><div class="sponsor-logos"><div class="sponsor-logo">Votre Logo</div><div class="sponsor-logo">Votre Logo</div></div></div>
@@ -992,9 +1026,9 @@ body {
 <section class="section experience">
     <div class="section-inner">
         <div class="reveal">
-            <p class="section-label">Sur Place</p>
-            <h2 class="section-title">Expérience sur place</h2>
-            <p class="section-subtitle">Plus qu'un combat — une expérience complète pour toute la famille.</p>
+            <p class="section-label" data-i18n="exp_label">Sur Place</p>
+            <h2 class="section-title" data-i18n="exp_title">Expérience sur place</h2>
+            <p class="section-subtitle" data-i18n="exp_sub">Plus qu'un combat — une expérience complète pour toute la famille.</p>
         </div>
         <div class="experience-grid reveal">
             <div class="exp-card"><span class="exp-icon">🍖</span><div class="exp-name">Food Village</div></div>
@@ -1010,9 +1044,9 @@ body {
 <section class="section future">
     <div class="section-inner">
         <div class="reveal">
-            <p class="section-label">La Vision</p>
-            <h2 class="section-title">La suite</h2>
-            <p class="section-subtitle">Batay San Fwontyè n'est que le début d'un mouvement sportif haïtien.</p>
+            <p class="section-label" data-i18n="vision_label">La Vision</p>
+            <h2 class="section-title" data-i18n="vision_title">La suite</h2>
+            <p class="section-subtitle" data-i18n="vision_sub">Batay San Fwontyè n'est que le début d'un mouvement sportif haïtien.</p>
         </div>
         <div class="timeline reveal">
             <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-date">30 Mai 2026</div><div class="timeline-title">Événement 1 — Batay San Fwontyè</div><div class="timeline-desc">Le premier combat international Haïti vs Dominican Republic au Parc Sainte-Thérèse.</div></div>
@@ -1074,6 +1108,142 @@ const nav = document.getElementById('mainNav');
 window.addEventListener('scroll', () => {
     nav.style.boxShadow = window.scrollY > 80 ? '0 2px 8px rgba(0,0,0,0.12)' : '0 1px 4px rgba(0,0,0,0.08)';
 });
+
+// ===== LANGUAGE SWITCHER =====
+const translations = {
+    fr: {
+        nav_tickets: 'Acheter Ticket',
+        hero_date: 'Samedi 30 Mai 2026 \u2014 Parc Sainte-Th\u00e9r\u00e8se',
+        btn_buy: 'Acheter Ticket',
+        btn_live: 'Regarder en Live',
+        btn_sponsor: 'Devenir Sponsor',
+        info_date: 'Date',
+        info_venue: 'Lieu',
+        about_label: "L'\u00c9v\u00e9nement",
+        about_title: 'Un mouvement, pas seulement un \u00e9v\u00e9nement',
+        about_text: "Batay San Fwonty\u00e8 est bien plus qu'un simple \u00e9v\u00e9nement sportif. C'est une vitrine internationale pour Ha\u00efti, utilisant la boxe et le MMA comme vecteurs de fiert\u00e9 nationale, de discipline et de connexion entre les peuples.",
+        about_b1: 'Boxe et MMA international \u2014 Ha\u00efti vs Dominican Republic',
+        about_b2: "Ha\u00efti positionn\u00e9e \u00e0 travers le sport sur la sc\u00e8ne mondiale",
+        about_b3: '\u00c9v\u00e9nements tous les 6 mois \u2014 un circuit grandissant',
+        about_b4: 'Acad\u00e9mie de combat pr\u00e9vue pour 2027',
+        tickets_label: 'Billetterie',
+        tickets_title: 'R\u00e9servez votre place',
+        tickets_sub: 'Chaque billet inclut un QR code unique pour une entr\u00e9e rapide et s\u00e9curis\u00e9e.',
+        buy_standard: 'Acheter Standard',
+        buy_vip: 'Acheter VIP',
+        vip_p1: 'Si\u00e8ge VIP premi\u00e8re rang\u00e9e',
+        vip_p2: 'Acc\u00e8s lounge VIP priv\u00e9',
+        vip_p3: 'Boissons et snacks inclus',
+        vip_p4: 'Rencontre avec les combattants',
+        vip_p5: 'QR code billet num\u00e9rique',
+        live_label: 'Diffusion en direct',
+        live_title: 'Regarder en direct',
+        live_sub: 'Suivez chaque round en direct sur YouTube. Replay disponible apr\u00e8s l\u2019\u00e9v\u00e9nement.',
+        sponsors_label: 'Partenaires',
+        sponsors_title: 'Partenaires & Sponsors',
+        sponsors_sub: 'Les marques qui rendent Batay San Fwonty\u00e8 possible.',
+        exp_label: 'Sur Place',
+        exp_title: 'Exp\u00e9rience sur place',
+        exp_sub: "Plus qu'un combat \u2014 une exp\u00e9rience compl\u00e8te pour toute la famille.",
+        vision_label: 'La Vision',
+        vision_title: 'La suite',
+        vision_sub: "Batay San Fwonty\u00e8 n'est que le d\u00e9but d'un mouvement sportif ha\u00eftien."
+    },
+    en: {
+        nav_tickets: 'Buy Ticket',
+        hero_date: 'Saturday May 30, 2026 \u2014 Parc Sainte-Th\u00e9r\u00e8se',
+        btn_buy: 'Buy Ticket',
+        btn_live: 'Watch Live',
+        btn_sponsor: 'Become a Sponsor',
+        info_date: 'Date',
+        info_venue: 'Venue',
+        about_label: 'The Event',
+        about_title: 'A movement, not just an event',
+        about_text: 'Batay San Fwonty\u00e8 is much more than a sporting event. It is an international showcase for Haiti, using boxing and MMA as vehicles for national pride, discipline and connection between peoples.',
+        about_b1: 'International Boxing & MMA \u2014 Haiti vs Dominican Republic',
+        about_b2: 'Haiti positioned through sport on the world stage',
+        about_b3: 'Events every 6 months \u2014 a growing circuit',
+        about_b4: 'Combat academy planned for 2027',
+        tickets_label: 'Tickets',
+        tickets_title: 'Reserve your seat',
+        tickets_sub: 'Each ticket includes a unique QR code for fast and secure entry.',
+        buy_standard: 'Buy Standard',
+        buy_vip: 'Buy VIP',
+        vip_p1: 'VIP front row seat',
+        vip_p2: 'Private VIP lounge access',
+        vip_p3: 'Drinks and snacks included',
+        vip_p4: 'Meet the fighters',
+        vip_p5: 'Digital QR code ticket',
+        live_label: 'Live Broadcast',
+        live_title: 'Watch Live',
+        live_sub: 'Follow every round live on YouTube. Replay available after the event.',
+        sponsors_label: 'Partners',
+        sponsors_title: 'Partners & Sponsors',
+        sponsors_sub: 'The brands making Batay San Fwonty\u00e8 possible.',
+        exp_label: 'On Site',
+        exp_title: 'On-site experience',
+        exp_sub: 'More than a fight \u2014 a complete experience for the whole family.',
+        vision_label: 'The Vision',
+        vision_title: "What's next",
+        vision_sub: 'Batay San Fwonty\u00e8 is just the beginning of a Haitian sports movement.'
+    },
+    kr: {
+        nav_tickets: 'Achte Tikè',
+        hero_date: 'Samdi 30 Me 2026 \u2014 Pak Sent-Terez',
+        btn_buy: 'Achte Tikè',
+        btn_live: 'Gade an Dirèk',
+        btn_sponsor: 'Vin yon Esponsò',
+        info_date: 'Dat',
+        info_venue: 'Kote',
+        about_label: 'Evènman an',
+        about_title: 'Yon mouvman, pa sèlman yon evènman',
+        about_text: 'Batay San Fwontyè se plis pase yon evènman espòtif. Se yon vitrinn entènasyonal pou Ayiti, ki itilize bòks ak MMA kòm vektè fyète nasyonal, disiplin ak koneksyon ant pèp yo.',
+        about_b1: 'Bòks ak MMA entènasyonal \u2014 Ayiti vs Repiblik Dominikèn',
+        about_b2: 'Ayiti pozisyone atravè espò sou sèn mondyal la',
+        about_b3: 'Evènman chak 6 mwa \u2014 yon sikui k ap grandi',
+        about_b4: 'Akademi konba prevwa pou 2027',
+        tickets_label: 'Tikè',
+        tickets_title: 'Rezève plas ou',
+        tickets_sub: 'Chak tikè gen yon QR code inik pou antre rapid e an sekirite.',
+        buy_standard: 'Achte Standard',
+        buy_vip: 'Achte VIP',
+        vip_p1: 'Chèz VIP premye ranje',
+        vip_p2: 'Aksè lounge VIP prive',
+        vip_p3: 'Bwason ak kolasyon enkli',
+        vip_p4: 'Rankontre ak konbatan yo',
+        vip_p5: 'QR code tikè nimerik',
+        live_label: 'Difizyon an Dirèk',
+        live_title: 'Gade an Dirèk',
+        live_sub: 'Suiv chak round an dirèk sou YouTube. Replay disponib aprè evènman an.',
+        sponsors_label: 'Patnè',
+        sponsors_title: 'Patnè & Esponsò',
+        sponsors_sub: 'Mak ki rann Batay San Fwontyè posib.',
+        exp_label: 'Sou Plas',
+        exp_title: 'Eksperyans sou plas',
+        exp_sub: 'Plis pase yon batay \u2014 yon eksperyans konplè pou tout fanmi an.',
+        vision_label: 'Vizyon',
+        vision_title: 'Sa k ap vini',
+        vision_sub: 'Batay San Fwontyè se sèlman kòmansman yon mouvman espòtif ayisyen.'
+    }
+};
+
+function setLang(lang) {
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector('.lang-btn[onclick*="' + lang + '"]').classList.add('active');
+    const t = translations[lang];
+    if (!t) return;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key]) el.textContent = t[key];
+    });
+    localStorage.setItem('btb-lang', lang);
+}
+
+// Restore saved language
+(function() {
+    const saved = localStorage.getItem('btb-lang');
+    if (saved && saved !== 'fr') setLang(saved);
+})();
 </script>
 
 </body>
