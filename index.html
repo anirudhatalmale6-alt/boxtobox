@@ -108,8 +108,15 @@ body {
     position: absolute;
     top: 64px; left: 0; right: 0; bottom: 0;
     background-size: cover;
-    background-position: center;
-    opacity: 0.35;
+    background-position: center top;
+    opacity: 0.5;
+}
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 64px; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(180deg, rgba(0,24,71,0.3) 0%, rgba(0,24,71,0.85) 100%);
+    z-index: 1;
 }
 .hero-inner {
     max-width: 900px;
@@ -123,19 +130,11 @@ body {
     z-index: 2;
 }
 .hero-logo {
-    width: min(360px, 80vw);
-    margin-bottom: 1.5rem;
+    width: min(300px, 65vw);
+    margin-bottom: 2rem;
     opacity: 0;
     animation: fadeUp 0.8s 0.2s forwards;
     filter: drop-shadow(0 4px 20px rgba(0,0,0,0.4));
-}
-.hero-poster-img {
-    width: min(520px, 90vw);
-    border-radius: 10px;
-    margin-bottom: 1.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.4s forwards;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
 }
 .hero-text {
     opacity: 0;
@@ -782,8 +781,7 @@ body {
         box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
     .hero-inner { padding: 2rem 1.5rem 2rem; }
-    .hero-logo { width: min(280px, 75vw); }
-    .hero-poster-img { width: min(400px, 88vw); }
+    .hero-logo { width: min(240px, 60vw); }
     .info-bar-inner { grid-template-columns: repeat(3, 1fr); }
     .about-grid { grid-template-columns: 1fr; gap: 2rem; }
     .tickets-grid { grid-template-columns: 1fr; max-width: 420px; }
@@ -840,7 +838,6 @@ body {
     <div class="hero-bg" style="background-image:url('img/fight-poster.jpg');"></div>
     <div class="hero-inner">
         <img src="img/boxetoboxe-logo.png" alt="Boxe To Boxe" class="hero-logo">
-        <img src="img/fight-poster.jpg" alt="Batay San Fwontyè - Caribbean Fight Night" class="hero-poster-img">
         <div class="hero-text">
             <h1 class="hero-title">
                 BATAY SAN FWONTYÈ
