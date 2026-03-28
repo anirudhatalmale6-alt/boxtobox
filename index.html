@@ -150,6 +150,53 @@ body {
 .hero-cta-bar .hero-date {
     margin-bottom: 1rem;
 }
+/* COUNTDOWN */
+.countdown-bar {
+    background: linear-gradient(135deg, var(--black) 0%, #0a1628 50%, var(--black) 100%);
+    padding: 1.5rem 2rem;
+    text-align: center;
+    border-bottom: 2px solid var(--gold);
+}
+.countdown-heading {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+}
+.countdown-units {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+.countdown-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 60px;
+}
+.countdown-num {
+    font-family: var(--font-display);
+    font-size: 2.8rem;
+    color: var(--white);
+    line-height: 1;
+}
+.countdown-label {
+    font-family: var(--font-heading);
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-top: 0.3rem;
+}
+.countdown-sep {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    color: var(--red);
+    align-self: flex-start;
+    margin-top: 0.2rem;
+}
 .hero-text {
     opacity: 0;
     animation: fadeUp 0.8s 0.3s forwards;
@@ -801,6 +848,10 @@ body {
         box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
     .hero-cta-bar { padding: 1.2rem 1.5rem; }
+    .countdown-bar { padding: 1rem; }
+    .countdown-units { gap: 0.8rem; }
+    .countdown-num { font-size: 2rem; }
+    .countdown-label { font-size: 0.55rem; }
     .info-bar-inner { grid-template-columns: repeat(3, 1fr); }
     .about-grid { grid-template-columns: 1fr; gap: 2rem; }
     .tickets-grid { grid-template-columns: 1fr; max-width: 420px; }
@@ -881,6 +932,20 @@ body {
         </div>
     </div>
 </section>
+
+<!-- COUNTDOWN -->
+<div class="countdown-bar">
+    <div class="countdown-heading" data-i18n="countdown_heading">Le Combat Commence Dans</div>
+    <div class="countdown-units" id="countdown">
+        <div class="countdown-unit"><span class="countdown-num" id="cd-days">--</span><span class="countdown-label" data-i18n="cd_days">Jours</span></div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-unit"><span class="countdown-num" id="cd-hours">--</span><span class="countdown-label" data-i18n="cd_hours">Heures</span></div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-unit"><span class="countdown-num" id="cd-mins">--</span><span class="countdown-label" data-i18n="cd_mins">Minutes</span></div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-unit"><span class="countdown-num" id="cd-secs">--</span><span class="countdown-label" data-i18n="cd_secs">Secondes</span></div>
+    </div>
+</div>
 
 <!-- EVENT INFO BAR -->
 <div class="info-bar">
@@ -1149,7 +1214,9 @@ const translations = {
         exp_sub: "Plus qu'un combat \u2014 une exp\u00e9rience compl\u00e8te pour toute la famille.",
         vision_label: 'La Vision',
         vision_title: 'La suite',
-        vision_sub: "Batay San Fwonty\u00e8 n'est que le d\u00e9but d'un mouvement sportif ha\u00eftien."
+        vision_sub: "Batay San Fwonty\u00e8 n'est que le d\u00e9but d'un mouvement sportif ha\u00eftien.",
+        countdown_heading: 'Le Combat Commence Dans',
+        cd_days: 'Jours', cd_hours: 'Heures', cd_mins: 'Minutes', cd_secs: 'Secondes'
     },
     en: {
         nav_tickets: 'Buy Ticket',
@@ -1187,7 +1254,9 @@ const translations = {
         exp_sub: 'More than a fight \u2014 a complete experience for the whole family.',
         vision_label: 'The Vision',
         vision_title: "What's next",
-        vision_sub: 'Batay San Fwonty\u00e8 is just the beginning of a Haitian sports movement.'
+        vision_sub: 'Batay San Fwonty\u00e8 is just the beginning of a Haitian sports movement.',
+        countdown_heading: 'The Fight Starts In',
+        cd_days: 'Days', cd_hours: 'Hours', cd_mins: 'Minutes', cd_secs: 'Seconds'
     },
     kr: {
         nav_tickets: 'Achte Tikè',
@@ -1225,7 +1294,9 @@ const translations = {
         exp_sub: 'Plis pase yon batay \u2014 yon eksperyans konplè pou tout fanmi an.',
         vision_label: 'Vizyon',
         vision_title: 'Sa k ap vini',
-        vision_sub: 'Batay San Fwontyè se sèlman kòmansman yon mouvman espòtif ayisyen.'
+        vision_sub: 'Batay San Fwontyè se sèlman kòmansman yon mouvman espòtif ayisyen.',
+        countdown_heading: 'Batay la Kòmanse Nan',
+        cd_days: 'Jou', cd_hours: 'Èdtan', cd_mins: 'Minit', cd_secs: 'Segond'
     },
     es: {
         nav_tickets: 'Comprar Boleto',
@@ -1263,7 +1334,9 @@ const translations = {
         exp_sub: 'M\u00e1s que una pelea \u2014 una experiencia completa para toda la familia.',
         vision_label: 'La Visi\u00f3n',
         vision_title: 'Lo que viene',
-        vision_sub: 'Batay San Fwonty\u00e8 es solo el comienzo de un movimiento deportivo haitiano.'
+        vision_sub: 'Batay San Fwonty\u00e8 es solo el comienzo de un movimiento deportivo haitiano.',
+        countdown_heading: 'La Pelea Comienza En',
+        cd_days: 'D\u00edas', cd_hours: 'Horas', cd_mins: 'Minutos', cd_secs: 'Segundos'
     },
     pt: {
         nav_tickets: 'Comprar Ingresso',
@@ -1301,7 +1374,9 @@ const translations = {
         exp_sub: 'Mais do que uma luta \u2014 uma experi\u00eancia completa para toda a fam\u00edlia.',
         vision_label: 'A Vis\u00e3o',
         vision_title: 'O que vem a seguir',
-        vision_sub: 'Batay San Fwonty\u00e8 \u00e9 apenas o come\u00e7o de um movimento esportivo haitiano.'
+        vision_sub: 'Batay San Fwonty\u00e8 \u00e9 apenas o come\u00e7o de um movimento esportivo haitiano.',
+        countdown_heading: 'A Luta Come\u00e7a Em',
+        cd_days: 'Dias', cd_hours: 'Horas', cd_mins: 'Minutos', cd_secs: 'Segundos'
     }
 };
 
@@ -1321,6 +1396,32 @@ function setLang(lang) {
 (function() {
     const saved = localStorage.getItem('btb-lang');
     if (saved && saved !== 'fr') setLang(saved);
+})();
+
+// Countdown to May 30, 2026 8:00 PM (Haiti time, UTC-5)
+(function() {
+    const eventDate = new Date('2026-05-30T20:00:00-05:00').getTime();
+    function update() {
+        const now = Date.now();
+        const diff = eventDate - now;
+        if (diff <= 0) {
+            document.getElementById('cd-days').textContent = '0';
+            document.getElementById('cd-hours').textContent = '0';
+            document.getElementById('cd-mins').textContent = '0';
+            document.getElementById('cd-secs').textContent = '0';
+            return;
+        }
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff % 86400000) / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        document.getElementById('cd-days').textContent = d;
+        document.getElementById('cd-hours').textContent = String(h).padStart(2, '0');
+        document.getElementById('cd-mins').textContent = String(m).padStart(2, '0');
+        document.getElementById('cd-secs').textContent = String(s).padStart(2, '0');
+    }
+    update();
+    setInterval(update, 1000);
 })();
 </script>
 
