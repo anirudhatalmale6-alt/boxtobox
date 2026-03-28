@@ -258,13 +258,27 @@ body {
 .about-org-text p:last-child { margin-bottom: 0; }
 .about-org-visual {
     position: relative;
-    aspect-ratio: 4/3;
     background: linear-gradient(135deg, var(--blue-deep) 0%, var(--black) 100%);
     border-radius: 8px;
     overflow: hidden;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 1.5rem;
+    padding: 2.5rem 2rem;
+}
+.about-org-visual .logo-pair {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+}
+.about-org-visual .logo-pair img {
+    max-width: 320px;
+    width: 80%;
+    height: auto;
 }
 .about-org-visual::before {
     content: '';
@@ -937,8 +951,11 @@ body {
                 <p style="font-family:var(--font-display);font-size:1.4rem;color:var(--gold);letter-spacing:2px;margin-top:1rem;">Deux Nations. Un Ring.</p>
             </div>
             <div class="about-org-visual reveal">
-                <img src="img/arena.jpg" alt="Arena - Parc Sainte-Thérèse" style="width:100%;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.4);">
-                <div class="org-badge" style="margin-top:1.5rem;">
+                <div class="logo-pair">
+                    <img src="img/logo-boxetoboxe.jpg" alt="Boxe To Boxe">
+                    <img src="img/logo-academy.jpg" alt="Boxe To Boxe Academy x 48 Hours Ready">
+                </div>
+                <div class="org-badge">
                     <div class="org-badge-name">BOX TO BOX</div>
                     <div class="org-badge-sub">Combat. Culture. Connexion.</div>
                 </div>
