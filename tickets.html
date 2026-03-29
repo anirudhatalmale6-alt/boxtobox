@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Acheter Tickets — Box To Box | Batay San Fwontyè</title>
 <meta property="og:title" content="Acheter Tickets — Batay San Fwontyè">
-<meta property="og:description" content="Haiti vs République Dominicaine | Saturday May 30, 2026 | Standard 1,000 Gdes | VIP 5,000 Gdes">
+<meta property="og:description" content="Haiti vs République Dominicaine | Saturday May 30, 2026 | Standard $15 | VIP $50 | Livestream $50">
 <meta property="og:image" content="https://boxetoboxe.com/img/og-preview.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -303,7 +303,7 @@ body {
 }
 .tickets-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     margin-top: 3rem;
 }
@@ -1038,7 +1038,7 @@ body {
             </div>
             <div class="banner-meta-item">
                 <div class="meta-label">À partir de</div>
-                <div class="meta-value">1,000 Gdes</div>
+                <div class="meta-value">$15 USD</div>
             </div>
         </div>
     </div>
@@ -1050,13 +1050,13 @@ body {
         <div class="reveal">
             <p class="section-label">Choisissez votre expérience</p>
             <h2 class="section-title">Options de billets</h2>
-            <p class="section-subtitle">Deux formules pour vivre Batay San Fwontyè selon votre style.</p>
+            <p class="section-subtitle">Trois formules pour vivre Batay San Fwontyè selon votre style.</p>
         </div>
         <div class="tickets-grid">
             <div class="ticket-card standard reveal">
                 <div class="ticket-header">
                     <div class="ticket-type">Standard</div>
-                    <div class="ticket-price">1,000 <span class="currency">GDES</span></div>
+                    <div class="ticket-price">$15 <span class="currency">USD</span></div>
                 </div>
                 <div class="ticket-body">
                     <ul class="ticket-perks">
@@ -1073,7 +1073,7 @@ body {
             <div class="ticket-card vip reveal">
                 <div class="ticket-header">
                     <div class="ticket-type">VIP</div>
-                    <div class="ticket-price">5,000 <span class="currency">GDES</span></div>
+                    <div class="ticket-price">$50 <span class="currency">USD</span></div>
                 </div>
                 <div class="ticket-body">
                     <ul class="ticket-perks">
@@ -1086,6 +1086,22 @@ body {
                         <li>Accès prioritaire sans file d'attente</li>
                     </ul>
                     <button class="btn btn-gold ticket-select-btn" onclick="selectTicket('vip')">Sélectionner VIP</button>
+                </div>
+            </div>
+            <div class="ticket-card reveal" style="border-top:3px solid var(--blue);">
+                <div class="ticket-header" style="background:linear-gradient(135deg, var(--blue) 0%, var(--blue-deep) 100%);">
+                    <div class="ticket-type">Livestream</div>
+                    <div class="ticket-price">$50 <span class="currency">USD</span></div>
+                </div>
+                <div class="ticket-body">
+                    <ul class="ticket-perks">
+                        <li>Diffusion HD sur YouTube</li>
+                        <li>Tous les combats en direct</li>
+                        <li>Commentaires professionnels en direct</li>
+                        <li>Replays disponibles 48h</li>
+                        <li>Accessible partout dans le monde</li>
+                    </ul>
+                    <button class="btn btn-blue ticket-select-btn" onclick="selectTicket('livestream')">Sélectionner Livestream</button>
                 </div>
             </div>
         </div>
@@ -1128,8 +1144,9 @@ body {
                             <label class="form-label" for="ticketType">Type de billet <span class="required">*</span></label>
                             <select id="ticketType" class="form-select" required>
                                 <option value="">-- Choisir --</option>
-                                <option value="standard">Standard — 1,000 Gdes</option>
-                                <option value="vip">VIP — 5,000 Gdes</option>
+                                <option value="standard">Standard — $15 USD</option>
+                                <option value="vip">VIP — $50 USD</option>
+                                <option value="livestream">Livestream — $50 USD</option>
                             </select>
                             <div class="form-error-msg" id="ticketTypeError">Sélectionnez un type de billet.</div>
                         </div>
@@ -1198,7 +1215,7 @@ body {
                 </div>
                 <div class="order-line">
                     <span class="order-label">Prix unitaire</span>
-                    <span class="order-value" id="summaryUnit">-- Gdes</span>
+                    <span class="order-value" id="summaryUnit">-- USD</span>
                 </div>
                 <div class="order-line">
                     <span class="order-label">Quantité</span>
@@ -1338,7 +1355,7 @@ body {
                 </button>
                 <div class="faq-answer">
                     <div class="faq-answer-inner">
-                        Le billet Standard (1,000 Gdes) vous donne accès à l'événement avec vue sur le ring et accès au food village. Le billet VIP (5,000 Gdes) inclut un siège première rangée ringside, l'accès au lounge VIP privé, des boissons premium, la rencontre avec les combattants, un parking dédié et une entrée prioritaire sans file d'attente.
+                        Le billet Standard ($15 USD) vous donne accès à l'événement avec vue sur le ring et accès au food village. Le billet VIP ($50 USD) inclut un siège première rangée ringside, l'accès au lounge VIP privé, des boissons premium, la rencontre avec les combattants, un parking dédié et une entrée prioritaire sans file d'attente. Le Livestream ($50 USD) vous permet de regarder tous les combats en direct sur YouTube depuis n'importe où dans le monde.
                     </div>
                 </div>
             </div>
@@ -1441,7 +1458,7 @@ body {
 
 <script>
 // Ticket prices
-const PRICES = { standard: 1000, vip: 5000 };
+const PRICES = { standard: 15, vip: 50, livestream: 50 };
 
 // Select ticket from cards
 function selectTicket(type) {
@@ -1459,14 +1476,14 @@ function updateSummary() {
         const unitPrice = PRICES[type];
         const total = unitPrice * qty;
         document.getElementById('summaryType').textContent = type === 'vip' ? 'VIP' : 'Standard';
-        document.getElementById('summaryUnit').textContent = unitPrice.toLocaleString() + ' Gdes';
+        document.getElementById('summaryUnit').textContent = '$' + unitPrice + ' USD';
         document.getElementById('summaryQty').textContent = qty;
-        document.getElementById('summaryTotal').innerHTML = total.toLocaleString() + ' <span class="currency-small">GDES</span>';
+        document.getElementById('summaryTotal').innerHTML = '$' + total + ' <span class="currency-small">USD</span>';
     } else {
         document.getElementById('summaryType').textContent = '--';
-        document.getElementById('summaryUnit').textContent = '-- Gdes';
+        document.getElementById('summaryUnit').textContent = '-- USD';
         document.getElementById('summaryQty').textContent = qty;
-        document.getElementById('summaryTotal').innerHTML = '-- <span class="currency-small">GDES</span>';
+        document.getElementById('summaryTotal').innerHTML = '-- <span class="currency-small">USD</span>';
     }
 }
 
@@ -1527,9 +1544,7 @@ document.getElementById('ticketForm').addEventListener('submit', function(e) {
 
         // PayPal: redirect to paypal.me with USD amount
         if (method === 'paypal') {
-            const HTG_TO_USD = 132;
-            const usdAmount = (total / HTG_TO_USD).toFixed(2);
-            window.location.href = 'https://paypal.me/talentforpeace/' + usdAmount + 'USD';
+            window.location.href = 'https://paypal.me/talentforpeace/' + total + 'USD';
             return;
         }
 

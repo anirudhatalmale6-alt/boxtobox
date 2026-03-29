@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Box To Box — Batay San Fwontyè | Haïti vs Dominican Republic</title>
 <meta property="og:title" content="Batay San Fwontyè — Caribbean Fight Night">
-<meta property="og:description" content="Haiti vs République Dominicaine | Saturday May 30, 2026 | Parc St-Thérèse | Tickets from 1,000 Gdes">
+<meta property="og:description" content="Haiti vs République Dominicaine | Saturday May 30, 2026 | Parc St-Thérèse | Tickets from $15 USD">
 <meta property="og:image" content="https://boxetoboxe.com/img/og-preview.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -419,7 +419,7 @@ body {
 .tickets { background: var(--white); }
 .tickets-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     margin-top: 2.5rem;
 }
@@ -952,9 +952,9 @@ body {
     <div class="info-bar-inner">
         <div class="info-item"><div class="label" data-i18n="info_date">Date</div><div class="value">30 Mai</div></div>
         <div class="info-item"><div class="label" data-i18n="info_venue">Lieu</div><div class="value">Parc Ste-Thérèse</div></div>
-        <div class="info-item"><div class="label">Tickets</div><div class="value">1,000 Gdes</div></div>
-        <div class="info-item"><div class="label">VIP</div><div class="value">5,000 Gdes</div></div>
-        <div class="info-item"><div class="label">Live</div><div class="value">YouTube</div></div>
+        <div class="info-item"><div class="label">Tickets</div><div class="value">$15 USD</div></div>
+        <div class="info-item"><div class="label">VIP</div><div class="value">$50 USD</div></div>
+        <div class="info-item"><div class="label">Live</div><div class="value">$50 USD</div></div>
         <div class="info-item"><div class="label">Main Event</div><div class="value">Haïti vs RD</div></div>
     </div>
 </div>
@@ -996,7 +996,7 @@ body {
             <div class="ticket-card standard reveal">
                 <div class="ticket-header">
                     <div class="ticket-type">Standard</div>
-                    <div class="ticket-price">1,000 <span class="currency">GDES</span></div>
+                    <div class="ticket-price">$15 <span class="currency">USD</span></div>
                 </div>
                 <div class="ticket-body">
                     <ul class="ticket-perks">
@@ -1011,7 +1011,7 @@ body {
             <div class="ticket-card vip reveal">
                 <div class="ticket-header">
                     <div class="ticket-type">VIP</div>
-                    <div class="ticket-price">5,000 <span class="currency">GDES</span></div>
+                    <div class="ticket-price">$50 <span class="currency">USD</span></div>
                 </div>
                 <div class="ticket-body">
                     <ul class="ticket-perks">
@@ -1022,6 +1022,21 @@ body {
                         <li data-i18n="vip_p5">QR code billet numérique</li>
                     </ul>
                     <a href="tickets.html" class="btn btn-gold ticket-btn" data-i18n="buy_vip">Acheter VIP</a>
+                </div>
+            </div>
+            <div class="ticket-card reveal" style="border-top:3px solid var(--blue);">
+                <div class="ticket-header" style="background:linear-gradient(135deg, var(--blue) 0%, var(--blue-deep) 100%);">
+                    <div class="ticket-type">Livestream</div>
+                    <div class="ticket-price">$50 <span class="currency">USD</span></div>
+                </div>
+                <div class="ticket-body">
+                    <ul class="ticket-perks">
+                        <li data-i18n="live_p1">Diffusion HD sur YouTube</li>
+                        <li data-i18n="live_p2">Tous les combats en direct</li>
+                        <li data-i18n="live_p3">Commentaires en direct</li>
+                        <li data-i18n="live_p4">Replays disponibles 48h</li>
+                    </ul>
+                    <a href="tickets.html" class="btn btn-blue ticket-btn" data-i18n="buy_live">Acheter Livestream</a>
                 </div>
             </div>
         </div>
