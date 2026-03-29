@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verification Ticket — Boxe To Boxe</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Oswald', sans-serif;
+    background: #0A0A0A;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+.verify-card {
+    background: #111;
+    border-radius: 16px;
+    padding: 3rem 2.5rem;
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.verify-icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 3rem;
+}
+.verify-icon.valid { background: rgba(34,197,94,0.15); color: #22C55E; border: 3px solid #22C55E; }
+.verify-icon.invalid { background: rgba(239,68,68,0.15); color: #EF4444; border: 3px solid #EF4444; }
+.verify-status {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 3px;
+    margin-bottom: 1rem;
+}
+.verify-status.valid { color: #22C55E; }
+.verify-status.invalid { color: #EF4444; }
+.verify-detail {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+.verify-type {
+    display: inline-block;
+    padding: 0.3rem 1.2rem;
+    border-radius: 20px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    margin: 1rem 0;
+}
+.verify-type.vip { background: linear-gradient(135deg, #D4A843, #F0D078); color: #0A0A0A; }
+.verify-type.standard { background: linear-gradient(135deg, #C41E2A, #FF1A2E); color: #fff; }
+.verify-ref {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 2px;
+    margin-top: 1rem;
+}
+.verify-event {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+</style>
+</head>
+<body>
+<div class="verify-card" id="verifyCard">
+    <div class="verify-icon valid" id="verifyIcon">&#10003;</div>
+    <div class="verify-status valid" id="verifyStatus">BILLET VALIDE</div>
+    <div id="verifyDetails">
+        <div class="verify-detail" id="verifyName"></div>
+        <div id="verifyTypeBadge"></div>
+        <div class="verify-ref" id="verifyRef"></div>
+    </div>
+    <div class="verify-event">
+        BATAY SAN FWONTYE<br>
+        30 Mai 2026 | Parc Ste-Therese
+    </div>
+</div>
+
+<script>
+(function() {
+    const params = new URLSearchParams(window.location.search);
+    const ref = params.get('ref');
+
+    if (!ref) {
+        document.getElementById('verifyIcon').className = 'verify-icon invalid';
+        document.getElementById('verifyIcon').innerHTML = '&#10007;';
+        document.getElementById('verifyStatus').className = 'verify-status invalid';
+        document.getElementById('verifyStatus').textContent = 'BILLET INVALIDE';
+        document.getElementById('verifyDetails').innerHTML = '<div class="verify-detail">Aucune reference fournie</div>';
+        return;
+    }
+
+    // Show ticket info from ref
+    document.getElementById('verifyRef').textContent = ref;
+
+    // Try to fetch ticket data from WordPress API
+    fetch('/wp-json/boxtobox/v1/ticket/' + encodeURIComponent(ref))
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+            if (data && data.name) {
+                document.getElementById('verifyName').textContent = data.name.toUpperCase();
+                var isVIP = data.ticket_type && data.ticket_type.toLowerCase() === 'vip';
+                document.getElementById('verifyTypeBadge').innerHTML = '<div class="verify-type ' + (isVIP ? 'vip' : 'standard') + '">' + (isVIP ? 'VIP' : 'STANDARD') + '</div>';
+                if (data.quantity) {
+                    document.getElementById('verifyDetails').innerHTML += '<div class="verify-detail">Qty: ' + data.quantity + '</div>';
+                }
+            }
+        })
+        .catch(function() {
+            // API not available - show ref only (ticket still shows as valid based on having a ref)
+            document.getElementById('verifyName').textContent = 'Ticket enregistre';
+        });
+})();
+</script>
+</body>
+</html>

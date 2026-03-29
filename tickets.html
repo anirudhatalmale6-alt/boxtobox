@@ -991,6 +991,8 @@ body {
     transform: translateY(0);
 }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 </head>
 <body>
 
@@ -1621,24 +1623,103 @@ window.addEventListener('scroll', () => {
 // Initialize summary on load
 updateSummary();
 
-// Handle Stripe return
+// Handle payment return
 (function() {
     const params = new URLSearchParams(window.location.search);
     if (params.get('payment') === 'success') {
-        const ref = params.get('ref') || '';
-        const overlay = document.createElement('div');
-        overlay.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.85);display:flex;align-items:center;justify-content:center;';
-        overlay.innerHTML = '<div style="background:#fff;border-radius:12px;padding:3rem 2.5rem;text-align:center;max-width:440px;margin:1rem;">'
-            + '<div style="font-size:3.5rem;margin-bottom:1rem;">&#10003;</div>'
-            + '<h2 style="font-family:Bebas Neue,sans-serif;font-size:1.8rem;margin-bottom:0.5rem;color:#0A0A0A;">Paiement Confirme!</h2>'
-            + '<p style="color:#6B6760;line-height:1.7;margin-bottom:1.5rem;">Merci! Votre billet QR code sera envoye par WhatsApp et e-mail sous peu.' + (ref ? '<br><small style="color:#999;">Ref: ' + ref + '</small>' : '') + '</p>'
-            + '<a href="/boxtobox/" style="display:inline-block;background:#C41E2A;color:#fff;padding:0.8rem 2rem;border-radius:6px;text-decoration:none;font-family:Oswald,sans-serif;font-weight:600;letter-spacing:1px;text-transform:uppercase;">Retour a l\'accueil</a>'
-            + '</div>';
-        document.body.appendChild(overlay);
+        const ref = params.get('ref') || 'BTB-' + Date.now();
+        const buyerName = params.get('name') || '';
+        const tType = params.get('type') || 'standard';
+        const qty = params.get('qty') || '1';
+        showTicket(ref, buyerName, tType, qty);
     } else if (params.get('payment') === 'cancelled') {
         alert('Paiement annule. Vous pouvez reessayer quand vous voulez.');
     }
 })();
+
+function showTicket(ref, buyerName, ticketType, quantity) {
+    const isVIP = ticketType.toLowerCase() === 'vip';
+    const typeLabel = isVIP ? 'VIP' : 'STANDARD';
+    const typeBg = isVIP ? 'linear-gradient(135deg, #D4A843, #F0D078)' : 'linear-gradient(135deg, #C41E2A, #FF1A2E)';
+    const typeColor = isVIP ? '#0A0A0A' : '#fff';
+
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.9);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1rem;overflow-y:auto;';
+
+    overlay.innerHTML = `
+    <div id="ticketCard" style="width:100%;max-width:480px;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.5);font-family:'Source Sans 3',sans-serif;">
+        <!-- Top section - dark -->
+        <div style="background:linear-gradient(135deg, #001847 0%, #0A0A0A 100%);padding:2rem 2rem 1.5rem;text-align:center;position:relative;">
+            <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg, #C41E2A, #D4A843, #00247D);"></div>
+            <img src="img/logo-boxetoboxe.jpg" alt="Boxe To Boxe" style="width:120px;border-radius:6px;margin-bottom:1rem;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:#fff;letter-spacing:2px;line-height:1.1;">BATAY SAN FWONTYE</div>
+            <div style="font-family:'Oswald',sans-serif;font-size:0.7rem;color:#D4A843;letter-spacing:3px;text-transform:uppercase;margin-top:0.3rem;">Caribbean Fight Night</div>
+            <div style="display:flex;justify-content:center;gap:1.5rem;margin-top:1rem;font-size:0.8rem;color:rgba(255,255,255,0.7);">
+                <div><span style="display:block;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:#fff;">30 MAI 2026</span>Date</div>
+                <div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+                <div><span style="display:block;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:#fff;">19H00</span>Heure</div>
+                <div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+                <div><span style="display:block;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:#fff;">PARC STE-THERESE</span>Lieu</div>
+            </div>
+        </div>
+        <!-- Dashed divider -->
+        <div style="position:relative;height:24px;background:#fff;">
+            <div style="position:absolute;top:50%;left:0;right:0;border-top:2px dashed #E0DDD6;"></div>
+            <div style="position:absolute;top:50%;left:-12px;transform:translateY(-50%);width:24px;height:24px;background:#0A0A0A;border-radius:50%;"></div>
+            <div style="position:absolute;top:50%;right:-12px;transform:translateY(-50%);width:24px;height:24px;background:#0A0A0A;border-radius:50%;"></div>
+        </div>
+        <!-- Bottom section - white -->
+        <div style="background:#fff;padding:1.5rem 2rem 2rem;text-align:center;">
+            <div style="display:inline-block;padding:0.4rem 1.5rem;border-radius:20px;background:${typeBg};color:${typeColor};font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:3px;">${typeLabel}</div>
+            ${buyerName ? '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:1.4rem;color:#0A0A0A;margin-top:0.8rem;letter-spacing:1px;">' + buyerName.toUpperCase() + '</div>' : ''}
+            <div style="font-size:0.8rem;color:#6B6760;margin-top:0.3rem;">Qty: ${quantity}</div>
+            <div id="qrCodeContainer" style="margin:1.2rem auto;width:180px;height:180px;"></div>
+            <div style="font-family:'Oswald',sans-serif;font-size:0.7rem;color:#999;letter-spacing:2px;margin-top:0.5rem;">${ref}</div>
+            <div style="font-size:0.65rem;color:#bbb;margin-top:0.5rem;">Presentez ce QR code a l'entree</div>
+        </div>
+    </div>
+    <!-- Action buttons -->
+    <div style="display:flex;gap:0.8rem;margin-top:1.5rem;flex-wrap:wrap;justify-content:center;">
+        <button onclick="downloadTicket()" style="background:#C41E2A;color:#fff;border:none;padding:0.8rem 1.5rem;border-radius:8px;font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;font-size:0.85rem;display:flex;align-items:center;gap:0.5rem;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Telecharger
+        </button>
+        <button onclick="shareWhatsApp('${ref}')" style="background:#25D366;color:#fff;border:none;padding:0.8rem 1.5rem;border-radius:8px;font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;font-size:0.85rem;display:flex;align-items:center;gap:0.5rem;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.636-1.467A11.932 11.932 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.194 0-4.22-.696-5.878-1.878l-.422-.315-2.751.871.826-2.63-.346-.45A9.705 9.705 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg>
+            WhatsApp
+        </button>
+        <a href="/" style="background:rgba(255,255,255,0.15);color:#fff;padding:0.8rem 1.5rem;border-radius:8px;font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;font-size:0.85rem;">Accueil</a>
+    </div>`;
+
+    document.body.appendChild(overlay);
+
+    // Generate QR code
+    const qrUrl = 'https://boxetoboxe.com/verify.html?ref=' + encodeURIComponent(ref);
+    new QRCode(document.getElementById('qrCodeContainer'), {
+        text: qrUrl,
+        width: 180,
+        height: 180,
+        colorDark: '#0A0A0A',
+        colorLight: '#ffffff',
+        correctLevel: QRCode.CorrectLevel.H
+    });
+}
+
+function downloadTicket() {
+    const ticket = document.getElementById('ticketCard');
+    html2canvas(ticket, { scale: 2, useCORS: true, backgroundColor: null }).then(function(canvas) {
+        const link = document.createElement('a');
+        link.download = 'ticket-boxetoboxe.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    });
+}
+
+function shareWhatsApp(ref) {
+    const ticketUrl = window.location.origin + window.location.pathname + '?payment=success&ref=' + encodeURIComponent(ref);
+    const msg = encodeURIComponent('Mon billet Batay San Fwontye - Caribbean Fight Night!\n30 Mai 2026 | Parc Ste-Therese\nRef: ' + ref + '\n' + ticketUrl);
+    window.open('https://wa.me/?text=' + msg, '_blank');
+}
 </script>
 
 </body>
