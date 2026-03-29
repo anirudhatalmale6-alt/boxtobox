@@ -1156,6 +1156,12 @@ body {
                                 <span class="pm-label">Carte</span>
                                 <span class="pm-sub">Visa, Mastercard</span>
                             </label>
+                            <label class="payment-method-option" data-method="paypal">
+                                <input type="radio" name="paymentMethod" value="paypal">
+                                <span class="pm-icon">🅿️</span>
+                                <span class="pm-label">PayPal</span>
+                                <span class="pm-sub">Paiement en ligne</span>
+                            </label>
                             <label class="payment-method-option" data-method="moncash">
                                 <input type="radio" name="paymentMethod" value="moncash">
                                 <span class="pm-icon">📱</span>
@@ -1516,6 +1522,14 @@ document.getElementById('ticketForm').addEventListener('submit', function(e) {
         const method = document.querySelector('input[name="paymentMethod"]:checked').value;
         const qty = parseInt(document.getElementById('quantity').value) || 1;
         const total = PRICES[ticketType.value] * qty;
+
+        // PayPal: redirect to paypal.me with USD amount
+        if (method === 'paypal') {
+            const HTG_TO_USD = 132;
+            const usdAmount = (total / HTG_TO_USD).toFixed(2);
+            window.location.href = 'https://www.paypal.me/JefferyBoyard991/' + usdAmount + 'USD';
+            return;
+        }
 
         // Route to Stripe or Peyem based on payment method
         const isStripe = (method === 'stripe');
