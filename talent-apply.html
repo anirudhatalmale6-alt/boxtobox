@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#C41E2A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="/img/boxetoboxe-logo.png">
 <title>Apply — Fight 4 Peace Talent | Box To Box</title>
 <meta property="og:title" content="Apply to Fight 4 Peace Talent">
 <meta property="og:description" content="Join Haiti's leading talent network for events and brand partnerships. Models, DJs, Hosts, Bartenders & more.">
@@ -724,6 +729,7 @@ body {
 <!-- PAGE HERO -->
 <section class="page-hero">
     <div class="page-hero-content">
+        <img src="img/talent4peace-logo.jpg" alt="Talent 4 Peace" style="width:80px;height:80px;border-radius:50%;margin-bottom:1rem;box-shadow:0 4px 20px rgba(212,168,67,0.4);border:2px solid var(--gold);">
         <p class="page-hero-label">Fight 4 Peace Talent</p>
         <h1 class="page-hero-title">APPLY TO FIGHT 4 PEACE TALENT</h1>
         <p class="page-hero-subtitle">Join Haiti's leading talent network for events and brand partnerships</p>
@@ -1008,5 +1014,6 @@ function handleSubmit(e) {
 }
 </script>
 
+<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js");}</script>
 </body>
 </html>

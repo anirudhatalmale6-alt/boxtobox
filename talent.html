@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#C41E2A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="/img/boxetoboxe-logo.png">
 <title>Fight 4 Peace Talent — Box To Box | Haiti's Premier Talent Agency</title>
 <meta property="og:title" content="Fight 4 Peace Talent — Boxe To Boxe">
 <meta property="og:description" content="Haiti's Premier Talent Agency for Events, Brands & Entertainment. Models, DJs, Hosts, Bartenders & more.">
@@ -979,6 +984,7 @@ body {
 <!-- HERO -->
 <section class="talent-hero">
     <div class="talent-hero-content">
+        <img src="img/talent4peace-logo.jpg" alt="Talent 4 Peace" style="width:120px;height:120px;border-radius:50%;margin-bottom:1rem;box-shadow:0 4px 20px rgba(212,168,67,0.4);border:3px solid var(--gold);">
         <p class="talent-hero-powered">Boxe To Boxe Presents</p>
         <h1 class="talent-hero-title">FIGHT 4 PEACE TALENT&trade;</h1>
         <p class="talent-hero-subtitle">Models. Staff. DJs. Ambassadors. All in one platform.</p>
@@ -1468,5 +1474,6 @@ const observer = new IntersectionObserver((entries) => {
 reveals.forEach(el => observer.observe(el));
 </script>
 
+<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js");}</script>
 </body>
 </html>

@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#C41E2A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="/img/boxetoboxe-logo.png">
 <title>Box To Box — Batay San Fwontyè | Haïti vs Dominican Republic</title>
 <meta property="og:title" content="Batay San Fwontyè — Caribbean Fight Night">
 <meta property="og:description" content="Haiti vs République Dominicaine | Saturday May 30, 2026 | Parc St-Thérèse | Tickets from $15 USD">
@@ -978,8 +983,7 @@ body {
                 </ul>
             </div>
             <div class="about-visual reveal">
-                <img src="img/logo-boxetoboxe.jpg" alt="Boxe To Boxe">
-                <img src="img/logo-academy.jpg" alt="Boxe To Boxe Academy x 48 Hours Ready">
+                <img src="img/boxe-academy-48hours.jpg" alt="Boxe To Boxe Academy x 48 Hours Ready" style="width:100%;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,0.3);">
             </div>
         </div>
     </div>
@@ -1441,5 +1445,6 @@ function setLang(lang) {
 })();
 </script>
 
+<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js");}</script>
 </body>
 </html>

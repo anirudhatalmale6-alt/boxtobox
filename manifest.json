@@ -1,0 +1,25 @@
+{
+  "name": "Boxe To Boxe - Batay San Fwonty\u00e8",
+  "short_name": "BoxeToBoxe",
+  "description": "Haiti vs Dominican Republic - Caribbean Fight Night | May 30, 2026",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1A1A1A",
+  "theme_color": "#C41E2A",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/img/boxetoboxe-logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/img/boxetoboxe-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["sports", "entertainment"]
+}
