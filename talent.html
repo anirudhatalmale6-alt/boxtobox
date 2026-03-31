@@ -766,6 +766,185 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* ===== STAFFING PACKAGES ===== */
+.packages { background: var(--black); }
+.packages .section-label { color: var(--gold); }
+.packages .section-title { color: var(--white); }
+.packages .section-subtitle { color: rgba(255,255,255,0.45); }
+.packages-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+}
+.pkg-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(212,168,67,0.2);
+    border-radius: 10px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+.pkg-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--gold);
+    box-shadow: 0 8px 40px rgba(212,168,67,0.15);
+}
+.pkg-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+}
+.pkg-name {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--white);
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+.pkg-price {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--gold);
+    letter-spacing: 1px;
+    margin-bottom: 1.2rem;
+}
+.pkg-features {
+    list-style: none;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+.pkg-features li {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.5;
+    padding-left: 1.2rem;
+    position: relative;
+    text-align: left;
+}
+.pkg-features li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+}
+@media (max-width: 1024px) {
+    .packages-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+    .packages-grid { grid-template-columns: 1fr; }
+}
+
+/* ===== BRAND ACTIVATIONS ===== */
+.brand-activations { background: var(--off-white); }
+.brand-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+}
+.brand-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    border: 1px solid var(--gray-200);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.brand-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+.brand-card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+.brand-card-name {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--black);
+    letter-spacing: 1px;
+    margin-bottom: 0.8rem;
+}
+.brand-card-desc {
+    font-size: 0.95rem;
+    color: var(--gray-600);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+@media (max-width: 768px) {
+    .brand-grid { grid-template-columns: 1fr; }
+}
+
+/* ===== SPONSORS & BRANDS ===== */
+.sponsors-info {
+    background: linear-gradient(160deg, var(--blue-deep) 0%, var(--black) 60%, #0d0a14 100%);
+    position: relative;
+    overflow: hidden;
+}
+.sponsors-info::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 100% 80% at 50% 50%, rgba(212,168,67,0.06) 0%, transparent 70%);
+}
+.sponsors-info .section-inner { position: relative; z-index: 2; }
+.sponsors-info .section-label { color: var(--gold); }
+.sponsors-info .section-title { color: var(--white); }
+.sponsors-info .section-subtitle { color: rgba(255,255,255,0.45); }
+.sponsors-points {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+.sponsor-point {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(212,168,67,0.15);
+    border-radius: 8px;
+}
+.sponsor-point-icon {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+.sponsor-point-text h4 {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+}
+.sponsor-point-text p {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+}
+@media (max-width: 768px) {
+    .sponsors-points { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
@@ -801,13 +980,15 @@ body {
 <section class="talent-hero">
     <div class="talent-hero-content">
         <p class="talent-hero-powered">Boxe To Boxe Presents</p>
-        <h1 class="talent-hero-title">FIGHT 4 PEACE TALENT</h1>
-        <p class="talent-hero-subtitle">Haiti's Premier Talent Agency for Events, Brands &amp; Entertainment</p>
+        <h1 class="talent-hero-title">FIGHT 4 PEACE TALENT&trade;</h1>
+        <p class="talent-hero-subtitle">Models. Staff. DJs. Ambassadors. All in one platform.</p>
+        <p style="font-family:var(--font-heading);font-size:0.85rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:2rem;opacity:0;animation:fadeUp 0.8s 0.7s forwards;">In Partnership with Caramel Agency</p>
         <div class="talent-hero-ctas">
             <a href="talent-apply.html" class="btn btn-red">Apply Now</a>
             <a href="talent-booking.html" class="btn btn-outline">Book Talent</a>
         </div>
-        <p class="talent-hero-badge">Powered by Boxe To Boxe x 48HoursReady</p>
+        <img src="img/talent-hero.jpg" alt="Fight 4 Peace Talent" style="max-width:100%;border-radius:12px;margin-top:2rem;box-shadow:0 8px 40px rgba(0,0,0,0.5);">
+        <p class="talent-hero-badge">In Partnership with Talent 4 Peace&trade; x Caramel Agency</p>
     </div>
 </section>
 
@@ -874,6 +1055,139 @@ body {
                     <a href="talent-apply.html" class="cat-apply-link">Apply</a>
                 </div>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- STAFFING PACKAGES -->
+<section class="section packages">
+    <div class="section-inner">
+        <div class="reveal" style="text-align:center;">
+            <p class="section-label">Packages</p>
+            <h2 class="section-title">STAFFING PACKAGES</h2>
+            <p class="section-subtitle" style="margin:0 auto;">Complete event talent solutions for brands and sponsors</p>
+        </div>
+        <div class="packages-grid">
+            <div class="pkg-card reveal">
+                <h3 class="pkg-name">VIP EXPERIENCE PACKAGE</h3>
+                <div class="pkg-price">$3,000+</div>
+                <ul class="pkg-features">
+                    <li>6 Ring Models</li>
+                    <li>4 VIP Waiters/Waitresses</li>
+                    <li>2 Expert Bartenders</li>
+                    <li>1 DJ</li>
+                    <li>Sponsored branding included</li>
+                </ul>
+                <a href="talent-booking.html" class="btn btn-gold btn-sm">Book This Package</a>
+            </div>
+            <div class="pkg-card reveal">
+                <h3 class="pkg-name">BRAND ACTIVATION CREW</h3>
+                <div class="pkg-price">$1,500+</div>
+                <ul class="pkg-features">
+                    <li>4 Brand Ambassadors</li>
+                    <li>2 Hosts/MCs</li>
+                    <li>Custom branded uniforms</li>
+                    <li>Social media coverage</li>
+                </ul>
+                <a href="talent-booking.html" class="btn btn-gold btn-sm">Book This Package</a>
+            </div>
+            <div class="pkg-card reveal">
+                <h3 class="pkg-name">NIGHTLIFE PACKAGE</h3>
+                <div class="pkg-price">$2,000+</div>
+                <ul class="pkg-features">
+                    <li>2 DJs (pre-event + afterparty)</li>
+                    <li>4 Models</li>
+                    <li>3 Bartenders</li>
+                    <li>VIP section management</li>
+                </ul>
+                <a href="talent-booking.html" class="btn btn-gold btn-sm">Book This Package</a>
+            </div>
+            <div class="pkg-card reveal">
+                <h3 class="pkg-name">CUSTOM PACKAGE</h3>
+                <div class="pkg-price">Contact Us</div>
+                <ul class="pkg-features">
+                    <li>Mix and match any talent</li>
+                    <li>Flexible team sizes</li>
+                    <li>Multi-event discounts</li>
+                    <li>Full brand integration</li>
+                </ul>
+                <a href="contact.html" class="btn btn-outline btn-sm">Get a Quote</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BRAND ACTIVATIONS -->
+<section class="section brand-activations">
+    <div class="section-inner">
+        <div class="reveal" style="text-align:center;">
+            <p class="section-label">Activations</p>
+            <h2 class="section-title">BRAND ACTIVATIONS</h2>
+            <p class="section-subtitle" style="margin:0 auto;">Talent teams ready for your brand</p>
+        </div>
+        <div class="brand-grid">
+            <div class="brand-card reveal">
+                <span class="brand-card-icon">&#x1F37A;</span>
+                <h3 class="brand-card-name">PRESTIGE BAR TEAM</h3>
+                <p class="brand-card-desc">Expert bartenders in Prestige-branded attire serving at VIP sections and bar activations.</p>
+                <a href="talent-booking.html" class="btn btn-blue btn-sm">Book Brand Team</a>
+            </div>
+            <div class="brand-card reveal">
+                <span class="brand-card-icon">&#x1F4F1;</span>
+                <h3 class="brand-card-name">DIGICEL ACTIVATION CREW</h3>
+                <p class="brand-card-desc">Brand ambassadors and hosts representing Digicel at events, booths, and social activations.</p>
+                <a href="talent-booking.html" class="btn btn-blue btn-sm">Book Brand Team</a>
+            </div>
+            <div class="brand-card reveal">
+                <span class="brand-card-icon">&#x2B50;</span>
+                <h3 class="brand-card-name">ZOLTE AMBASSADORS</h3>
+                <p class="brand-card-desc">Models and ambassadors promoting Zolte at events and social media campaigns.</p>
+                <a href="talent-booking.html" class="btn btn-blue btn-sm">Book Brand Team</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOR SPONSORS & BRANDS -->
+<section class="section sponsors-info">
+    <div class="section-inner">
+        <div class="reveal" style="text-align:center;">
+            <p class="section-label">Partnership</p>
+            <h2 class="section-title">FOR SPONSORS &amp; BRANDS</h2>
+            <p class="section-subtitle" style="margin:0 auto;">Partner with Fight 4 Peace Talent for your next event</p>
+        </div>
+        <div class="sponsors-points">
+            <div class="sponsor-point reveal">
+                <div class="sponsor-point-icon">%</div>
+                <div class="sponsor-point-text">
+                    <h4>20-40% Commission Model</h4>
+                    <p>Transparent and competitive commission structure for all talent bookings.</p>
+                </div>
+            </div>
+            <div class="sponsor-point reveal">
+                <div class="sponsor-point-icon">&#x1F3AF;</div>
+                <div class="sponsor-point-text">
+                    <h4>Full Brand Experience Packages</h4>
+                    <p>Talent + Booth + Branding — complete turnkey solutions for your activations.</p>
+                </div>
+            </div>
+            <div class="sponsor-point reveal">
+                <div class="sponsor-point-icon">&#x1F4E6;</div>
+                <div class="sponsor-point-text">
+                    <h4>Event Bundles</h4>
+                    <p>Multi-event deals for recurring partnerships and season-long activations.</p>
+                </div>
+            </div>
+            <div class="sponsor-point reveal">
+                <div class="sponsor-point-icon">&#x1F91D;</div>
+                <div class="sponsor-point-text">
+                    <h4>Custom Talent Teams</h4>
+                    <p>Build your ideal team for any occasion — from fight nights to fashion shows.</p>
+                </div>
+            </div>
+        </div>
+        <div class="reveal" style="text-align:center;">
+            <a href="contact.html" class="btn btn-gold">Contact Us for Sponsorship</a>
         </div>
     </div>
 </section>
