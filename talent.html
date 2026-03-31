@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fight 4 Peace Talent — Box To Box | Haiti's Premier Talent Agency</title>
+<meta property="og:title" content="Fight 4 Peace Talent — Boxe To Boxe">
+<meta property="og:description" content="Haiti's Premier Talent Agency for Events, Brands & Entertainment. Models, DJs, Hosts, Bartenders & more.">
+<meta property="og:image" content="https://boxetoboxe.com/img/og-preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://boxetoboxe.com/talent.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Boxe To Boxe">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+    --red: #C41E2A;
+    --red-dark: #8B0000;
+    --red-glow: #FF1A2E;
+    --blue: #00247D;
+    --blue-deep: #001847;
+    --gold: #D4A843;
+    --gold-light: #F0D078;
+    --black: #0A0A0A;
+    --off-white: #F5F3EF;
+    --white: #FFFFFF;
+    --gray-100: #F0EEEA;
+    --gray-200: #E0DDD6;
+    --gray-600: #6B6760;
+    --gray-800: #2A2824;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-heading: 'Oswald', sans-serif;
+    --font-body: 'Source Sans 3', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: var(--font-body);
+    color: var(--gray-800);
+    background: var(--off-white);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ===== NAVIGATION ===== */
+.nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 0 2rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.3s;
+}
+.nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.nav-links {
+    display: flex;
+    gap: 1.8rem;
+    align-items: center;
+    list-style: none;
+}
+.nav-links a {
+    font-family: var(--font-heading);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a.active { color: var(--white); }
+.nav-cta {
+    background: var(--red);
+    color: var(--white) !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    font-weight: 600 !important;
+    letter-spacing: 1px;
+    transition: background 0.2s, transform 0.2s;
+}
+.nav-cta:hover { background: var(--red-dark); transform: translateY(-1px); }
+.nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+}
+.nav-hamburger span {
+    width: 24px; height: 2px;
+    background: var(--white);
+    transition: transform 0.3s, opacity 0.3s;
+}
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.lang-switcher {
+    display: flex;
+    gap: 2px;
+    margin-left: 0.8rem;
+}
+.lang-btn {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 0.3rem 0.5rem;
+    border: 1.5px solid rgba(255,255,255,0.2);
+    border-radius: 3px;
+    background: transparent;
+    color: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.lang-btn:hover { border-color: var(--gold); color: var(--gold); }
+.lang-btn.active { background: var(--blue); color: var(--white); border-color: var(--blue); }
+
+/* ===== COMMON ===== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.9rem 2rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+.btn-red {
+    background: var(--red);
+    color: var(--white);
+    box-shadow: 0 4px 20px rgba(196,30,42,0.4);
+}
+.btn-red:hover {
+    background: var(--red-glow);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(255,26,46,0.5);
+}
+.btn-blue {
+    background: var(--blue);
+    color: var(--white);
+    box-shadow: 0 4px 20px rgba(0,36,125,0.3);
+}
+.btn-blue:hover { background: #003399; transform: translateY(-2px); }
+.btn-outline {
+    background: transparent;
+    color: var(--gold);
+    border: 1.5px solid var(--gold);
+}
+.btn-outline:hover {
+    background: var(--gold);
+    color: var(--black);
+    transform: translateY(-2px);
+}
+.btn-gold {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--black);
+    box-shadow: 0 2px 12px rgba(212,168,67,0.3);
+}
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(212,168,67,0.4); }
+.btn-sm {
+    font-size: 0.75rem;
+    padding: 0.6rem 1.2rem;
+    letter-spacing: 1px;
+}
+
+.section {
+    padding: 6rem 2rem;
+    position: relative;
+}
+.section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.section-label {
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.8rem;
+}
+.section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    color: var(--black);
+    letter-spacing: 1px;
+    margin-bottom: 1.2rem;
+}
+.section-subtitle {
+    font-size: 1.1rem;
+    color: var(--gray-600);
+    max-width: 600px;
+    line-height: 1.7;
+}
+
+/* ===== HERO ===== */
+.talent-hero {
+    padding-top: 64px;
+    background: linear-gradient(160deg, var(--blue-deep) 0%, var(--black) 60%, #0d0a14 100%);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 5rem;
+}
+.talent-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 120% 80% at 50% 20%, rgba(196,30,42,0.1) 0%, transparent 60%),
+        radial-gradient(ellipse 80% 60% at 80% 80%, rgba(0,36,125,0.08) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 20% 60%, rgba(212,168,67,0.06) 0%, transparent 50%);
+}
+.talent-hero::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    bottom: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--red), var(--gold), var(--blue), transparent);
+}
+.talent-hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 5rem 2rem 0;
+}
+.talent-hero-powered {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+}
+.talent-hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    color: var(--white);
+    letter-spacing: 3px;
+    line-height: 0.95;
+    margin-bottom: 1.2rem;
+    text-shadow: 0 0 80px rgba(196,30,42,0.3);
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+}
+.talent-hero-subtitle {
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.55);
+    max-width: 580px;
+    margin: 0 auto 2rem;
+    line-height: 1.7;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+}
+.talent-hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s forwards;
+}
+.talent-hero-badge {
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    opacity: 0;
+    animation: fadeUp 0.8s 1s forwards;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== TALENT CATEGORIES ===== */
+.categories { background: var(--off-white); }
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+}
+.cat-card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    border: 1px solid var(--gray-200);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+.cat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+.cat-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--red), var(--gold));
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.cat-card:hover::after { opacity: 1; }
+.cat-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+.cat-title {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--black);
+    letter-spacing: 1px;
+    margin-bottom: 0.6rem;
+}
+.cat-desc {
+    font-size: 0.95rem;
+    color: var(--gray-600);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+.cat-actions {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    align-items: center;
+}
+.cat-apply-link {
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--red);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.cat-apply-link:hover { color: var(--red-dark); }
+
+/* ===== HOW IT WORKS ===== */
+.how-it-works { background: var(--white); }
+.how-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 3rem;
+}
+.how-column {
+    background: var(--off-white);
+    border-radius: 8px;
+    padding: 2.5rem 2rem;
+    border: 1px solid var(--gray-200);
+}
+.how-column-title {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--black);
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+.how-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.how-step {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+.how-step-num {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--white);
+}
+.how-talent .how-step-num { background: var(--red); }
+.how-brands .how-step-num { background: var(--blue); }
+.how-step-text h4 {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--black);
+    margin-bottom: 0.3rem;
+}
+.how-step-text p {
+    font-size: 0.9rem;
+    color: var(--gray-600);
+    line-height: 1.6;
+}
+
+/* ===== FEATURED TALENT ===== */
+.featured { background: var(--black); }
+.featured .section-label { color: var(--gold); }
+.featured .section-title { color: var(--white); }
+.featured .section-subtitle { color: rgba(255,255,255,0.45); }
+.featured-scroll {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding: 2.5rem 0 1rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold) transparent;
+}
+.featured-scroll::-webkit-scrollbar { height: 4px; }
+.featured-scroll::-webkit-scrollbar-track { background: transparent; }
+.featured-scroll::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+.talent-card {
+    flex-shrink: 0;
+    width: 220px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    overflow: hidden;
+    scroll-snap-align: start;
+    transition: transform 0.3s, border-color 0.3s;
+}
+.talent-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(212,168,67,0.3);
+}
+.talent-card-photo {
+    width: 100%;
+    height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 2px;
+}
+.talent-card-info {
+    padding: 1rem;
+}
+.talent-card-name {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+}
+.talent-card-meta {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+}
+.badge {
+    font-family: var(--font-heading);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+}
+.badge-cat {
+    background: rgba(196,30,42,0.15);
+    color: var(--red);
+    border: 1px solid rgba(196,30,42,0.25);
+}
+.badge-available {
+    background: rgba(37,211,102,0.12);
+    color: #25D366;
+    border: 1px solid rgba(37,211,102,0.25);
+}
+.badge-booked {
+    background: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.4);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.talent-card-location {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 0.8rem;
+}
+.talent-card .btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.7rem;
+    padding: 0.6rem;
+}
+
+/* ===== WHY SECTION ===== */
+.why-section { background: var(--off-white); }
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+}
+.why-card {
+    text-align: center;
+    padding: 1.5rem 1rem;
+}
+.why-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue-deep), var(--blue));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+}
+.why-icon svg {
+    width: 22px;
+    height: 22px;
+    stroke: var(--gold);
+    fill: none;
+    stroke-width: 2;
+}
+.why-title {
+    font-family: var(--font-heading);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--black);
+    margin-bottom: 0.5rem;
+}
+.why-desc {
+    font-size: 0.88rem;
+    color: var(--gray-600);
+    line-height: 1.6;
+}
+
+/* ===== CTA SECTION ===== */
+.cta-section {
+    background: linear-gradient(160deg, var(--blue-deep) 0%, var(--black) 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 100% 80% at 50% 50%, rgba(196,30,42,0.08) 0%, transparent 70%);
+}
+.cta-section .section-inner { position: relative; z-index: 2; }
+.cta-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--white);
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+}
+.cta-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 2rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+}
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    background: var(--black);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 3rem 2rem;
+}
+.footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 2rem;
+}
+.footer-brand .footer-logo {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--white);
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+.footer-brand .footer-tagline {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+.footer-socials {
+    display: flex;
+    gap: 0.8rem;
+}
+.footer-socials a {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: border-color 0.3s, color 0.3s;
+}
+.footer-socials a:hover { border-color: var(--gold); color: var(--gold); }
+.footer-col-title {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+.footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.footer-links a {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--white); }
+.footer-bottom {
+    max-width: 1100px;
+    margin: 2rem auto 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.25);
+}
+.footer-bottom a {
+    color: var(--gold);
+    text-decoration: none;
+}
+
+/* ===== MOBILE FLOATING CTAs ===== */
+.mobile-ctas {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0; right: 0;
+    z-index: 999;
+    padding: 0.6rem;
+    gap: 0.5rem;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+.mobile-ctas .btn {
+    flex: 1;
+    justify-content: center;
+    font-size: 0.72rem;
+    padding: 0.7rem 0.5rem;
+    border-radius: 4px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    .categories-grid { grid-template-columns: repeat(2, 1fr); }
+    .why-grid { grid-template-columns: repeat(3, 1fr); }
+    .how-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 64px; left: 0; right: 0;
+        background: rgba(10,10,10,0.97);
+        padding: 1.5rem 2rem;
+        gap: 1.2rem;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .categories-grid { grid-template-columns: repeat(2, 1fr); }
+    .why-grid { grid-template-columns: 1fr 1fr; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .section { padding: 4rem 1.5rem; }
+    .mobile-ctas { display: flex; }
+    body { padding-bottom: 64px; }
+    .talent-hero-content { padding: 3rem 1.5rem 0; }
+    .lang-switcher { display: none; }
+}
+
+@media (max-width: 480px) {
+    .categories-grid { grid-template-columns: 1fr 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .talent-card { width: 180px; }
+    .talent-card-photo { height: 200px; }
+}
+
+/* ===== SCROLL ANIMATIONS ===== */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="mainNav">
+    <a href="/" class="nav-logo"><img src="img/boxtobox-logo.jpg" alt="Boxe To Boxe" style="height:40px;border-radius:4px;"></a>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="/">Home</a></li>
+        <li><a href="tickets.html">Tickets</a></li>
+        <li><a href="live.html">Live</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="talent.html" class="active">Talent</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="tickets.html" class="nav-cta">Acheter Ticket</a></li>
+    </ul>
+    <div class="nav-right">
+        <div class="lang-switcher">
+            <button class="lang-btn active">FR</button>
+            <button class="lang-btn">EN</button>
+            <button class="lang-btn">KR</button>
+            <button class="lang-btn">ES</button>
+        </div>
+        <div class="nav-hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="talent-hero">
+    <div class="talent-hero-content">
+        <p class="talent-hero-powered">Boxe To Boxe Presents</p>
+        <h1 class="talent-hero-title">FIGHT 4 PEACE TALENT</h1>
+        <p class="talent-hero-subtitle">Haiti's Premier Talent Agency for Events, Brands &amp; Entertainment</p>
+        <div class="talent-hero-ctas">
+            <a href="talent-apply.html" class="btn btn-red">Apply Now</a>
+            <a href="talent-booking.html" class="btn btn-outline">Book Talent</a>
+        </div>
+        <p class="talent-hero-badge">Powered by Boxe To Boxe x 48HoursReady</p>
+    </div>
+</section>
+
+<!-- TALENT CATEGORIES -->
+<section class="section categories">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">Categories</p>
+            <h2 class="section-title">OUR TALENT</h2>
+            <p class="section-subtitle">Professional, vetted talent for every type of event and brand activation.</p>
+        </div>
+        <div class="categories-grid">
+            <div class="cat-card reveal">
+                <span class="cat-icon">&#x1F4F8;</span>
+                <h3 class="cat-title">MODELS</h3>
+                <p class="cat-desc">Fashion, commercial, and event modeling. Walk the runway or represent brands.</p>
+                <div class="cat-actions">
+                    <a href="talent-directory.html?cat=models" class="btn btn-blue btn-sm">View Talent</a>
+                    <a href="talent-apply.html" class="cat-apply-link">Apply</a>
+                </div>
+            </div>
+            <div class="cat-card reveal">
+                <span class="cat-icon">&#x1F37D;&#xFE0F;</span>
+                <h3 class="cat-title">WAITERS</h3>
+                <p class="cat-desc">Professional event servers for galas, VIP sections, and corporate events.</p>
+                <div class="cat-actions">
+                    <a href="talent-directory.html?cat=waiters" class="btn btn-blue btn-sm">View Talent</a>
+                    <a href="talent-apply.html" class="cat-apply-link">Apply</a>
+                </div>
+            </div>
+            <div class="cat-card reveal">
+                <span class="cat-icon">&#x1F378;</span>
+                <h3 class="cat-title">BARTENDERS</h3>
+                <p class="cat-desc">Expert mixologists for private events, brand activations, and fight nights.</p>
+                <div class="cat-actions">
+                    <a href="talent-directory.html?cat=bartenders" class="btn btn-blue btn-sm">View Talent</a>
+                    <a href="talent-apply.html" class="cat-apply-link">Apply</a>
+                </div>
+            </div>
+            <div class="cat-card reveal">
+                <span class="cat-icon">&#x1F3A7;</span>
+                <h3 class="cat-title">DJS</h3>
+                <p class="cat-desc">Top DJs to set the vibe at events, afterparties, and brand experiences.</p>
+                <div class="cat-actions">
+                    <a href="talent-directory.html?cat=djs" class="btn btn-blue btn-sm">View Talent</a>
+                    <a href="talent-apply.html" class="cat-apply-link">Apply</a>
+                </div>
+            </div>
+            <div class="cat-card reveal">
+                <span class="cat-icon">&#x1F3A4;</span>
+                <h3 class="cat-title">HOSTS / MCS</h3>
+                <p class="cat-desc">Bilingual hosts and MCs for live events, ceremonies, and media appearances.</p>
+                <div class="cat-actions">
+                    <a href="talent-directory.html?cat=hosts" class="btn btn-blue btn-sm">View Talent</a>
+                    <a href="talent-apply.html" class="cat-apply-link">Apply</a>
+                </div>
+            </div>
+            <div class="cat-card reveal">
+                <span class="cat-icon">&#x1F31F;</span>
+                <h3 class="cat-title">BRAND AMBASSADORS</h3>
+                <p class="cat-desc">Represent brands at events, social media campaigns, and activations.</p>
+                <div class="cat-actions">
+                    <a href="talent-directory.html?cat=ambassadors" class="btn btn-blue btn-sm">View Talent</a>
+                    <a href="talent-apply.html" class="cat-apply-link">Apply</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section how-it-works">
+    <div class="section-inner">
+        <div class="reveal" style="text-align:center;">
+            <p class="section-label">Process</p>
+            <h2 class="section-title">HOW IT WORKS</h2>
+        </div>
+        <div class="how-grid">
+            <div class="how-column how-talent reveal">
+                <h3 class="how-column-title">FOR TALENT</h3>
+                <div class="how-steps">
+                    <div class="how-step">
+                        <div class="how-step-num">1</div>
+                        <div class="how-step-text">
+                            <h4>Apply Online</h4>
+                            <p>Fill out your profile with photos, experience, and availability.</p>
+                        </div>
+                    </div>
+                    <div class="how-step">
+                        <div class="how-step-num">2</div>
+                        <div class="how-step-text">
+                            <h4>Get Approved</h4>
+                            <p>Our team reviews your application within 48 hours.</p>
+                        </div>
+                    </div>
+                    <div class="how-step">
+                        <div class="how-step-num">3</div>
+                        <div class="how-step-text">
+                            <h4>Get Booked &amp; Paid</h4>
+                            <p>Receive booking requests and get paid for events and campaigns.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="how-column how-brands reveal">
+                <h3 class="how-column-title">FOR BRANDS</h3>
+                <div class="how-steps">
+                    <div class="how-step">
+                        <div class="how-step-num">1</div>
+                        <div class="how-step-text">
+                            <h4>Browse Talent</h4>
+                            <p>Explore our curated directory of professional talent by category.</p>
+                        </div>
+                    </div>
+                    <div class="how-step">
+                        <div class="how-step-num">2</div>
+                        <div class="how-step-text">
+                            <h4>Book for Your Event</h4>
+                            <p>Select the talent you need and submit a booking request.</p>
+                        </div>
+                    </div>
+                    <div class="how-step">
+                        <div class="how-step-num">3</div>
+                        <div class="how-step-text">
+                            <h4>We Handle the Rest</h4>
+                            <p>We coordinate logistics, contracts, and on-site management.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURED TALENT -->
+<section class="section featured">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">Spotlight</p>
+            <h2 class="section-title">FEATURED TALENT</h2>
+            <p class="section-subtitle">Meet some of our top professionals ready for your next event.</p>
+        </div>
+        <div class="featured-scroll">
+            <div class="talent-card">
+                <div class="talent-card-photo" style="background:linear-gradient(135deg,#1a0a2e,#2d1b4e);">MC</div>
+                <div class="talent-card-info">
+                    <div class="talent-card-name">Marie Claire D.</div>
+                    <div class="talent-card-meta">
+                        <span class="badge badge-cat">Model</span>
+                        <span class="badge badge-available">Available</span>
+                    </div>
+                    <div class="talent-card-location">Port-au-Prince</div>
+                    <a href="talent-directory.html" class="btn btn-outline btn-sm">View Profile</a>
+                </div>
+            </div>
+            <div class="talent-card">
+                <div class="talent-card-photo" style="background:linear-gradient(135deg,#0a1628,#1a2d4e);">JB</div>
+                <div class="talent-card-info">
+                    <div class="talent-card-name">Jean-Baptiste R.</div>
+                    <div class="talent-card-meta">
+                        <span class="badge badge-cat">DJ</span>
+                        <span class="badge badge-available">Available</span>
+                    </div>
+                    <div class="talent-card-location">P&eacute;tion-Ville</div>
+                    <a href="talent-directory.html" class="btn btn-outline btn-sm">View Profile</a>
+                </div>
+            </div>
+            <div class="talent-card">
+                <div class="talent-card-photo" style="background:linear-gradient(135deg,#2e0a0a,#4e1b1b);">SL</div>
+                <div class="talent-card-info">
+                    <div class="talent-card-name">Sophia L.</div>
+                    <div class="talent-card-meta">
+                        <span class="badge badge-cat">Host / MC</span>
+                        <span class="badge badge-booked">Booked</span>
+                    </div>
+                    <div class="talent-card-location">Cap-Ha&iuml;tien</div>
+                    <a href="talent-directory.html" class="btn btn-outline btn-sm">View Profile</a>
+                </div>
+            </div>
+            <div class="talent-card">
+                <div class="talent-card-photo" style="background:linear-gradient(135deg,#0a2e1a,#1b4e2d);">PJ</div>
+                <div class="talent-card-info">
+                    <div class="talent-card-name">Pierre-Jean M.</div>
+                    <div class="talent-card-meta">
+                        <span class="badge badge-cat">Bartender</span>
+                        <span class="badge badge-available">Available</span>
+                    </div>
+                    <div class="talent-card-location">Port-au-Prince</div>
+                    <a href="talent-directory.html" class="btn btn-outline btn-sm">View Profile</a>
+                </div>
+            </div>
+            <div class="talent-card">
+                <div class="talent-card-photo" style="background:linear-gradient(135deg,#2e2e0a,#4e4e1b);">NK</div>
+                <div class="talent-card-info">
+                    <div class="talent-card-name">Nadine K.</div>
+                    <div class="talent-card-meta">
+                        <span class="badge badge-cat">Brand Ambassador</span>
+                        <span class="badge badge-available">Available</span>
+                    </div>
+                    <div class="talent-card-location">Jacmel</div>
+                    <a href="talent-directory.html" class="btn btn-outline btn-sm">View Profile</a>
+                </div>
+            </div>
+            <div class="talent-card">
+                <div class="talent-card-photo" style="background:linear-gradient(135deg,#1a1a2e,#2d2d4e);">RF</div>
+                <div class="talent-card-info">
+                    <div class="talent-card-name">Ricardo F.</div>
+                    <div class="talent-card-meta">
+                        <span class="badge badge-cat">Waiter</span>
+                        <span class="badge badge-booked">Booked</span>
+                    </div>
+                    <div class="talent-card-location">Gonа&iuml;ves</div>
+                    <a href="talent-directory.html" class="btn btn-outline btn-sm">View Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WHY FIGHT 4 PEACE TALENT -->
+<section class="section why-section">
+    <div class="section-inner">
+        <div class="reveal" style="text-align:center;">
+            <p class="section-label">Why Us</p>
+            <h2 class="section-title">WHY FIGHT 4 PEACE TALENT</h2>
+        </div>
+        <div class="why-grid">
+            <div class="why-card reveal">
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                </div>
+                <h4 class="why-title">Trusted</h4>
+                <p class="why-desc">Trusted by Boxe To Boxe and international events across the Caribbean.</p>
+            </div>
+            <div class="why-card reveal">
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <h4 class="why-title">Vetted</h4>
+                <p class="why-desc">Professionally vetted talent with verified experience and references.</p>
+            </div>
+            <div class="why-card reveal">
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24"><path d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/></svg>
+                </div>
+                <h4 class="why-title">Bilingual</h4>
+                <p class="why-desc">French, Creole, and English-speaking talent for any audience.</p>
+            </div>
+            <div class="why-card reveal">
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                </div>
+                <h4 class="why-title">Event-Ready</h4>
+                <p class="why-desc">Event-ready and brand-trained professionals who deliver every time.</p>
+            </div>
+            <div class="why-card reveal">
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                </div>
+                <h4 class="why-title">Flexible</h4>
+                <p class="why-desc">Flexible booking for any occasion, from fight nights to fashion shows.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="section cta-section">
+    <div class="section-inner">
+        <div class="reveal">
+            <h2 class="cta-title">JOIN THE FIGHT 4 PEACE<br>TALENT NETWORK</h2>
+            <p class="cta-subtitle">Whether you're talent looking for opportunities or a brand looking for professionals, we've got you covered.</p>
+            <div class="cta-buttons">
+                <a href="talent-apply.html" class="btn btn-red">Apply as Talent</a>
+                <a href="talent-booking.html" class="btn btn-outline">Book Talent for Your Event</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <div class="footer-logo"><img src="img/boxtobox-logo.jpg" alt="Boxe To Boxe" style="height:50px;border-radius:4px;"></div>
+            <p class="footer-tagline">Box To Box &amp; 48HoursReady.com Pr&eacute;sentent<br>Batay San Fwonty&egrave;<br><em>Combat. Culture. Connexion.</em></p>
+            <div class="footer-socials">
+                <a href="#" aria-label="Instagram">IG</a>
+                <a href="#" aria-label="Facebook">FB</a>
+                <a href="#" aria-label="YouTube">YT</a>
+            </div>
+        </div>
+        <div>
+            <div class="footer-col-title">Navigation</div>
+            <ul class="footer-links">
+                <li><a href="/">Accueil</a></li>
+                <li><a href="tickets.html">Tickets</a></li>
+                <li><a href="live.html">Livestream</a></li>
+                <li><a href="sponsors.html">Sponsors</a></li>
+            </ul>
+        </div>
+        <div>
+            <div class="footer-col-title">Informations</div>
+            <ul class="footer-links">
+                <li><a href="media.html">Media</a></li>
+                <li><a href="about.html">&Agrave; Propos</a></li>
+                <li><a href="talent.html">Talent</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div>
+            <div class="footer-col-title">Contact</div>
+            <ul class="footer-links">
+                <li><a href="#">WhatsApp</a></li>
+                <li><a href="#">Email</a></li>
+                <li><a href="#">Instagram</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>&copy; 2026 Box To Box. Tous droits r&eacute;serv&eacute;s.</span>
+        <span style="display:flex;align-items:center;gap:8px;">Powered by <a href="https://48hoursready.com"><img src="img/48hoursready-logo.jpg" alt="48HoursReady" style="height:28px;border-radius:3px;"></a></span>
+    </div>
+</footer>
+
+<!-- MOBILE FLOATING CTAs -->
+<div class="mobile-ctas">
+    <a href="talent-apply.html" class="btn btn-red">Apply</a>
+    <a href="talent-booking.html" class="btn btn-gold">Book Talent</a>
+    <a href="#" class="btn" style="background:#25D366;color:#fff;">WhatsApp</a>
+</div>
+
+<script>
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => entry.target.classList.add('visible'), i * 80);
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

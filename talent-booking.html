@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Talent — Fight 4 Peace Talent | Boxe To Boxe</title>
+<meta name="description" content="Select and book professional talent for your event or brand activation in Haiti.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+    --red: #C41E2A;
+    --red-dark: #9B1520;
+    --blue: #00247D;
+    --blue-deep: #001847;
+    --blue-light: #E8EDF8;
+    --gold: #D4A843;
+    --gold-light: #F0D078;
+    --black: #1A1A1A;
+    --white: #FFFFFF;
+    --gray-50: #F8F9FA;
+    --gray-100: #F1F3F5;
+    --gray-200: #E2E5E9;
+    --gray-400: #ADB5BD;
+    --gray-600: #6C757D;
+    --gray-800: #2D3436;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-heading: 'Oswald', sans-serif;
+    --font-body: 'Source Sans 3', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font-body);
+    color: var(--gray-800);
+    background: var(--gray-50);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ===== NAVIGATION ===== */
+.nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 0 2rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--white);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    transition: box-shadow 0.3s;
+}
+.nav-logo { display: flex; align-items: center; }
+.nav-links {
+    display: flex;
+    gap: 1.8rem;
+    align-items: center;
+    list-style: none;
+}
+.nav-links a {
+    font-family: var(--font-heading);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--gray-600);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--blue); }
+.nav-links a.active-link { color: var(--blue); font-weight: 600; }
+.nav-cta {
+    background: var(--red) !important;
+    color: var(--white) !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    font-weight: 600 !important;
+    transition: background 0.2s, transform 0.2s;
+}
+.nav-cta:hover { background: var(--red-dark) !important; transform: translateY(-1px); }
+.nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+}
+.nav-hamburger span {
+    width: 24px; height: 2px;
+    background: var(--gray-800);
+    transition: transform 0.3s, opacity 0.3s;
+}
+.lang-switcher { display: flex; gap: 2px; margin-left: 0.8rem; }
+.lang-btn {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 0.3rem 0.5rem;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 3px;
+    background: transparent;
+    color: var(--gray-600);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.lang-btn:hover { border-color: var(--blue); color: var(--blue); }
+.lang-btn.active { background: var(--blue); color: var(--white); border-color: var(--blue); }
+.nav-right { display: flex; align-items: center; gap: 0.5rem; }
+
+/* ===== PAGE HEADER ===== */
+.page-header {
+    padding-top: 64px;
+    background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue) 100%);
+    padding-bottom: 2.5rem;
+    text-align: center;
+}
+.page-header-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem 2rem 0;
+}
+.page-header h1 {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    color: var(--white);
+    letter-spacing: 3px;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+.page-header p {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.6);
+    font-weight: 300;
+}
+
+/* ===== FORM LAYOUT ===== */
+.booking-section {
+    max-width: 720px;
+    margin: -1.5rem auto 3rem;
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 10;
+}
+
+/* Pre-selected talent card */
+.preselected-card {
+    background: var(--white);
+    border: 2px solid var(--gold);
+    border-radius: 12px;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1.5rem;
+    display: none;
+    align-items: center;
+    gap: 1rem;
+}
+.preselected-card.visible { display: flex; }
+.preselected-avatar {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue) 0%, var(--red) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.preselected-avatar span {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--white);
+}
+.preselected-info { flex: 1; }
+.preselected-label {
+    font-family: var(--font-heading);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.2rem;
+}
+.preselected-name {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--gray-800);
+}
+.preselected-meta {
+    font-size: 0.82rem;
+    color: var(--gray-600);
+}
+.preselected-remove {
+    background: none;
+    border: none;
+    color: var(--gray-400);
+    font-size: 1.3rem;
+    cursor: pointer;
+    padding: 0.3rem;
+    transition: color 0.2s;
+}
+.preselected-remove:hover { color: var(--red); }
+
+/* Form card */
+.form-card {
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+}
+.form-card-title {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 0.3rem;
+}
+.form-card-subtitle {
+    font-size: 0.88rem;
+    color: var(--gray-600);
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--gray-100);
+}
+.step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: var(--blue);
+    color: var(--white);
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.form-row.full { grid-template-columns: 1fr; }
+.form-group { display: flex; flex-direction: column; }
+.form-group label {
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gray-600);
+    margin-bottom: 0.4rem;
+}
+.form-group label .required { color: var(--red); }
+.form-group input,
+.form-group select,
+.form-group textarea {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    padding: 0.7rem 0.9rem;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 8px;
+    background: var(--white);
+    color: var(--gray-800);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(0,36,125,0.08);
+}
+.form-group textarea { resize: vertical; min-height: 80px; }
+.form-group select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236C757D' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.8rem center;
+    padding-right: 2.2rem;
+}
+
+/* Checkboxes row */
+.checkbox-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+}
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    cursor: pointer;
+}
+.checkbox-item input[type="checkbox"] {
+    width: 18px; height: 18px;
+    accent-color: var(--blue);
+    cursor: pointer;
+}
+.checkbox-item span {
+    font-size: 0.92rem;
+    color: var(--gray-800);
+}
+
+/* Submit */
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--red) 100%);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+}
+.submit-btn:hover { opacity: 0.92; transform: translateY(-1px); }
+
+/* ===== SUCCESS SCREEN ===== */
+.success-screen {
+    display: none;
+    text-align: center;
+    padding: 3rem 2rem;
+    max-width: 520px;
+    margin: 0 auto;
+}
+.success-screen.visible { display: block; }
+.success-icon {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4CAF50, #2E7D32);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+}
+.success-icon svg { width: 40px; height: 40px; fill: var(--white); }
+.success-title {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--gray-800);
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+.success-text {
+    font-size: 1rem;
+    color: var(--gray-600);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+.success-ref {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--blue);
+    background: var(--blue-light);
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    display: inline-block;
+    margin-bottom: 2rem;
+}
+.success-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.btn {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+.btn-blue { background: var(--blue); color: var(--white); }
+.btn-blue:hover { background: var(--blue-deep); }
+.btn-outline {
+    background: transparent;
+    border: 1.5px solid var(--gray-200);
+    color: var(--gray-600);
+}
+.btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+
+/* ===== FOOTER ===== */
+.footer {
+    background: var(--black);
+    padding: 3rem 2rem;
+}
+.footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 2rem;
+}
+.footer-brand .footer-logo { margin-bottom: 0.5rem; }
+.footer-tagline {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+.footer-socials { display: flex; gap: 0.7rem; }
+.footer-socials a {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: border-color 0.3s, color 0.3s;
+}
+.footer-socials a:hover { border-color: var(--gold); color: var(--gold); }
+.footer-col-title {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+}
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+.footer-links a {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--white); }
+.footer-bottom {
+    max-width: 1100px;
+    margin: 2rem auto 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.25);
+}
+.footer-bottom a { color: var(--gold); text-decoration: none; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 64px; left: 0; right: 0;
+        background: var(--white);
+        padding: 1.5rem 2rem;
+        gap: 1.2rem;
+        border-bottom: 1px solid var(--gray-200);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .page-header h1 { font-size: 2.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .form-card { padding: 1.5rem; }
+    .booking-section { padding: 0 1rem; }
+    .preselected-card { flex-direction: column; text-align: center; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+}
+
+@media (max-width: 480px) {
+    .page-header h1 { font-size: 2rem; }
+    .success-title { font-size: 1.8rem; }
+    .success-actions { flex-direction: column; }
+    .success-actions .btn { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="mainNav">
+    <a href="/" class="nav-logo"><img src="img/boxtobox-logo.jpg" alt="Boxe To Boxe" style="height:40px;border-radius:4px;"></a>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="/">Home</a></li>
+        <li><a href="tickets.html">Tickets</a></li>
+        <li><a href="live.html">Live</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="talent-directory.html" class="active-link">Talent</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="tickets.html" class="nav-cta">Acheter Ticket</a></li>
+    </ul>
+    <div class="nav-right">
+        <div class="lang-switcher">
+            <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+            <button class="lang-btn" onclick="setLang('en')">EN</button>
+            <button class="lang-btn" onclick="setLang('kr')">KR</button>
+            <button class="lang-btn" onclick="setLang('es')">ES</button>
+            <button class="lang-btn" onclick="setLang('pt')">PT</button>
+        </div>
+        <div class="nav-hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+    <div class="page-header-inner">
+        <h1>Book Talent</h1>
+        <p>Select talent for your event or brand activation</p>
+    </div>
+</section>
+
+<!-- BOOKING FORM -->
+<section class="booking-section" id="bookingForm">
+
+    <!-- Pre-selected Talent Card -->
+    <div class="preselected-card" id="preselectedCard">
+        <div class="preselected-avatar"><span id="preselectedInitials"></span></div>
+        <div class="preselected-info">
+            <div class="preselected-label">Pre-Selected Talent</div>
+            <div class="preselected-name" id="preselectedName"></div>
+            <div class="preselected-meta" id="preselectedMeta"></div>
+        </div>
+        <button class="preselected-remove" onclick="removePreselected()" title="Remove">&times;</button>
+    </div>
+
+    <form id="talentBookingForm" onsubmit="return handleSubmit(event)">
+
+        <!-- Step 1: Event Details -->
+        <div class="form-card">
+            <div class="form-card-title"><span class="step-number">1</span> Event Details</div>
+            <div class="form-card-subtitle">Tell us about your event</div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Event Name <span class="required">*</span></label>
+                    <input type="text" name="eventName" required placeholder="e.g. Batay San Fwontye Fight Night">
+                </div>
+                <div class="form-group">
+                    <label>Event Date <span class="required">*</span></label>
+                    <input type="date" name="eventDate" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Event Time</label>
+                    <input type="time" name="eventTime">
+                </div>
+                <div class="form-group">
+                    <label>Event Location</label>
+                    <input type="text" name="eventLocation" placeholder="e.g. Parc St-Thérèse, Pétion-Ville">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Event Type</label>
+                    <select name="eventType">
+                        <option value="">Select type...</option>
+                        <option value="boxing-mma">Boxing / MMA Event</option>
+                        <option value="corporate">Corporate Event</option>
+                        <option value="brand-activation">Brand Activation</option>
+                        <option value="gala-dinner">Gala / Dinner</option>
+                        <option value="nightlife-party">Nightlife / Party</option>
+                        <option value="fashion-show">Fashion Show</option>
+                        <option value="private">Private Event</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row full">
+                <div class="form-group">
+                    <label>Event Description</label>
+                    <textarea name="eventDescription" placeholder="Briefly describe your event, theme, and what you're looking for..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2: Talent Requirements -->
+        <div class="form-card">
+            <div class="form-card-title"><span class="step-number">2</span> Talent Requirements</div>
+            <div class="form-card-subtitle">What kind of talent do you need?</div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Talent Type <span class="required">*</span></label>
+                    <select name="talentType" required>
+                        <option value="">Select type...</option>
+                        <option value="models">Models</option>
+                        <option value="waiters">Waiters</option>
+                        <option value="bartenders">Bartenders</option>
+                        <option value="djs">DJs</option>
+                        <option value="hosts">Hosts / MCs</option>
+                        <option value="ambassadors">Brand Ambassadors</option>
+                        <option value="mixed">Mixed Team</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Number of Talent Needed</label>
+                    <input type="number" name="talentCount" min="1" max="50" value="1" placeholder="1">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Gender Preference</label>
+                    <select name="genderPref">
+                        <option value="no-preference">No Preference</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="mixed">Mixed</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row full">
+                <div class="form-group">
+                    <label>Language Requirements</label>
+                </div>
+            </div>
+            <div class="checkbox-row">
+                <label class="checkbox-item">
+                    <input type="checkbox" name="langFrench" checked>
+                    <span>French</span>
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" name="langCreole" checked>
+                    <span>Creole</span>
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" name="langEnglish">
+                    <span>English</span>
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" name="langSpanish">
+                    <span>Spanish</span>
+                </label>
+            </div>
+            <div class="form-row full">
+                <div class="form-group">
+                    <label>Special Requirements</label>
+                    <textarea name="specialReqs" placeholder="Dress code, special skills, equipment needs, etc."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3: Brand Information -->
+        <div class="form-card">
+            <div class="form-card-title"><span class="step-number">3</span> Brand Information</div>
+            <div class="form-card-subtitle">How can we reach you?</div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Company / Brand Name <span class="required">*</span></label>
+                    <input type="text" name="companyName" required placeholder="Your company or brand">
+                </div>
+                <div class="form-group">
+                    <label>Contact Person <span class="required">*</span></label>
+                    <input type="text" name="contactPerson" required placeholder="Full name">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Email <span class="required">*</span></label>
+                    <input type="email" name="email" required placeholder="you@company.com">
+                </div>
+                <div class="form-group">
+                    <label>Phone (+509) <span class="required">*</span></label>
+                    <input type="tel" name="phone" required placeholder="+509 XXXX XXXX" pattern="\+?[0-9\s\-]{7,15}">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Budget Range</label>
+                    <select name="budget">
+                        <option value="">Select range...</option>
+                        <option value="under-500">Under $500</option>
+                        <option value="500-1000">$500 - $1,000</option>
+                        <option value="1000-2500">$1,000 - $2,500</option>
+                        <option value="2500-5000">$2,500 - $5,000</option>
+                        <option value="5000+">$5,000+</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>How did you hear about us?</label>
+                    <select name="referral">
+                        <option value="">Select...</option>
+                        <option value="batay-event">Batay San Fwonty&egrave; Event</option>
+                        <option value="social-media">Social Media</option>
+                        <option value="referral">Referral</option>
+                        <option value="48hoursready">48HoursReady</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit Booking Request</button>
+    </form>
+</section>
+
+<!-- SUCCESS SCREEN -->
+<section class="booking-section">
+    <div class="success-screen" id="successScreen">
+        <div class="success-icon">
+            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+        </div>
+        <div class="success-title">Booking Request Submitted!</div>
+        <p class="success-text">Our team will review your request and confirm talent availability within 24 hours. You will receive a confirmation email shortly.</p>
+        <div class="success-ref" id="successRef">Reference: FP-BOOK-00000</div>
+        <div class="success-actions">
+            <a href="talent-directory.html" class="btn btn-blue">Back to Directory</a>
+            <button class="btn btn-outline" onclick="resetForm()">Submit Another Request</button>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <div class="footer-logo"><img src="img/boxtobox-logo.jpg" alt="Boxe To Boxe" style="height:50px;border-radius:4px;"></div>
+            <p class="footer-tagline">Box To Box & 48HoursReady.com Pr&eacute;sentent<br>Batay San Fwonty&egrave;<br><em>Combat. Culture. Connexion.</em></p>
+            <div class="footer-socials"><a href="#">IG</a><a href="#">FB</a><a href="#">YT</a></div>
+        </div>
+        <div><div class="footer-col-title">Navigation</div><ul class="footer-links"><li><a href="/">Accueil</a></li><li><a href="tickets.html">Tickets</a></li><li><a href="live.html">Livestream</a></li><li><a href="sponsors.html">Sponsors</a></li></ul></div>
+        <div><div class="footer-col-title">Informations</div><ul class="footer-links"><li><a href="media.html">Media</a></li><li><a href="about.html">&Agrave; Propos</a></li><li><a href="contact.html">Contact</a></li><li><a href="talent-directory.html">Talent</a></li></ul></div>
+        <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="#">WhatsApp</a></li><li><a href="#">Email</a></li><li><a href="#">Instagram</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+        <span>&copy; 2026 Box To Box. Tous droits r&eacute;serv&eacute;s.</span>
+        <span style="display:flex;align-items:center;gap:8px;">Powered by <a href="https://48hoursready.com"><img src="img/48hoursready-logo.jpg" alt="48HoursReady" style="height:28px;border-radius:3px;"></a></span>
+    </div>
+</footer>
+
+<script>
+// Talent data (same as directory)
+const TALENT = [
+    { id: 1, name: 'Marie-Claire Joseph', category: 'models', location: 'Port-au-Prince', availability: 'available', rating: 4.9, events: 24, bio: 'Fashion and commercial model. Featured in Batay San Fwontye events.', initials: 'MJ' },
+    { id: 2, name: 'Jean-Pierre Augustin', category: 'bartenders', location: 'Pétion-Ville', availability: 'available', rating: 4.8, events: 31, bio: 'Expert mixologist. 5 years experience in VIP events.', initials: 'JA' },
+    { id: 3, name: 'Sophie Laurent', category: 'hosts', location: 'Port-au-Prince', availability: 'available', rating: 5.0, events: 42, bio: 'Bilingual MC and host. TV presenter experience.', initials: 'SL' },
+    { id: 4, name: 'DJ Kreyòl', category: 'djs', location: 'Port-au-Prince', availability: 'weekends', rating: 4.7, events: 56, bio: 'Haitian music specialist. Kompa, dancehall, afrobeat.', initials: 'DK' },
+    { id: 5, name: 'Ricardo Charles', category: 'waiters', location: 'Pétion-Ville', availability: 'available', rating: 4.6, events: 18, bio: 'Professional event server. VIP and corporate experience.', initials: 'RC' },
+    { id: 6, name: 'Nathalie Pierre', category: 'ambassadors', location: 'Cap-Haïtien', availability: 'available', rating: 4.9, events: 35, bio: 'Brand ambassador for international companies. Social media influencer.', initials: 'NP' },
+    { id: 7, name: 'Fabienne Dessalines', category: 'models', location: 'Port-au-Prince', availability: 'part-time', rating: 4.8, events: 15, bio: 'Runway and editorial model. Fashion week experience.', initials: 'FD' },
+    { id: 8, name: 'Marcus Jean-Baptiste', category: 'bartenders', location: 'Port-au-Prince', availability: 'available', rating: 4.5, events: 22, bio: 'Cocktail specialist. Trained in international bar standards.', initials: 'MB' },
+    { id: 9, name: 'DJ Vibe Haiti', category: 'djs', location: 'Pétion-Ville', availability: 'available', rating: 4.9, events: 67, bio: 'Top event DJ. International festivals and fight nights.', initials: 'DV' },
+    { id: 10, name: 'Carline Beauvoir', category: 'hosts', location: 'Port-au-Prince', availability: 'available', rating: 4.7, events: 28, bio: 'Event host and brand presenter. French, Creole, English.', initials: 'CB' },
+    { id: 11, name: 'Alex Toussaint', category: 'waiters', location: 'Les Cayes', availability: 'weekends', rating: 4.4, events: 12, bio: 'Experienced gala and banquet server.', initials: 'AT' },
+    { id: 12, name: 'Vanessa Étienne', category: 'ambassadors', location: 'Port-au-Prince', availability: 'available', rating: 5.0, events: 40, bio: 'Top brand ambassador. Multilingual. Social media 50K+ followers.', initials: 'VE' }
+];
+
+const categoryLabels = { models: 'Model', bartenders: 'Bartender', hosts: 'Host / MC', djs: 'DJ', waiters: 'Waiter', ambassadors: 'Ambassador' };
+const availabilityLabels = { available: 'Available', 'part-time': 'Part-Time', weekends: 'Weekends' };
+
+var preselectedId = null;
+
+// Check ?talent=ID param
+var urlParams = new URLSearchParams(window.location.search);
+var talentParam = urlParams.get('talent');
+if (talentParam) {
+    var tid = parseInt(talentParam);
+    var talent = TALENT.find(function(t) { return t.id === tid; });
+    if (talent) {
+        preselectedId = tid;
+        document.getElementById('preselectedInitials').textContent = talent.initials;
+        document.getElementById('preselectedName').textContent = talent.name;
+        document.getElementById('preselectedMeta').textContent = (categoryLabels[talent.category] || talent.category) + ' — ' + talent.location + ' — ' + availabilityLabels[talent.availability];
+        document.getElementById('preselectedCard').classList.add('visible');
+    }
+}
+
+function removePreselected() {
+    preselectedId = null;
+    document.getElementById('preselectedCard').classList.remove('visible');
+}
+
+function generateRef() {
+    return 'FP-BOOK-' + String(Math.floor(10000 + Math.random() * 90000));
+}
+
+function handleSubmit(e) {
+    e.preventDefault();
+
+    // Show success
+    document.getElementById('bookingForm').querySelector('form').style.display = 'none';
+    document.getElementById('preselectedCard').style.display = 'none';
+    document.getElementById('successRef').textContent = 'Reference: ' + generateRef();
+    document.getElementById('successScreen').classList.add('visible');
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return false;
+}
+
+function resetForm() {
+    document.getElementById('successScreen').classList.remove('visible');
+    var form = document.getElementById('talentBookingForm');
+    form.reset();
+    form.style.display = 'block';
+    if (preselectedId) {
+        document.getElementById('preselectedCard').style.display = 'flex';
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Language switcher stub
+function setLang(l) {
+    document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
+    event.target.classList.add('active');
+}
+</script>
+</body>
+</html>

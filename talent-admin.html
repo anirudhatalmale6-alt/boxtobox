@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fight 4 Peace Talent — Admin Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+    --red: #C41E2A;
+    --red-dark: #9B1520;
+    --blue: #00247D;
+    --blue-deep: #001847;
+    --blue-light: #E8EDF8;
+    --gold: #D4A843;
+    --gold-light: #F0D078;
+    --black: #1A1A1A;
+    --white: #FFFFFF;
+    --gray-50: #F8F9FA;
+    --gray-100: #F1F3F5;
+    --gray-200: #E2E5E9;
+    --gray-400: #ADB5BD;
+    --gray-600: #6C757D;
+    --gray-800: #2D3436;
+    --green: #28A745;
+    --green-light: #D4EDDA;
+    --red-light: #F8D7DA;
+    --yellow: #FFC107;
+    --yellow-light: #FFF3CD;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-heading: 'Oswald', sans-serif;
+    --font-body: 'Source Sans 3', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font-body);
+    color: var(--gray-800);
+    background: var(--gray-50);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ===== ADMIN HEADER ===== */
+.admin-header {
+    background: var(--blue-deep);
+    padding: 0 2rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+.admin-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+.admin-logo {
+    width: 36px;
+    height: 36px;
+    background: var(--red);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--white);
+    letter-spacing: 1px;
+}
+.admin-title {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.admin-title span {
+    color: var(--gold);
+}
+.admin-user {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.85rem;
+}
+.admin-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--white);
+}
+
+/* ===== MAIN CONTENT ===== */
+.admin-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem;
+}
+
+/* ===== STAT CARDS ===== */
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+.stat-card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    border-left: 4px solid var(--blue);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.stat-card:nth-child(2) { border-left-color: var(--gold); }
+.stat-card:nth-child(3) { border-left-color: var(--green); }
+.stat-card:nth-child(4) { border-left-color: var(--red); }
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+}
+.stat-card:nth-child(1) .stat-icon { background: var(--blue-light); }
+.stat-card:nth-child(2) .stat-icon { background: var(--yellow-light); }
+.stat-card:nth-child(3) .stat-icon { background: var(--green-light); }
+.stat-card:nth-child(4) .stat-icon { background: var(--red-light); }
+.stat-info { flex: 1; }
+.stat-number {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--blue-deep);
+}
+.stat-label {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--gray-600);
+    margin-top: 0.2rem;
+}
+
+/* ===== TAB NAVIGATION ===== */
+.tab-nav {
+    display: flex;
+    gap: 0;
+    background: var(--white);
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.tab-btn {
+    flex: 1;
+    min-width: 0;
+    padding: 1rem 0.5rem;
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--gray-600);
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+    white-space: nowrap;
+}
+.tab-btn:hover { color: var(--blue); background: var(--gray-50); }
+.tab-btn.active {
+    color: var(--blue-deep);
+    border-bottom-color: var(--red);
+    background: var(--white);
+}
+.tab-content {
+    background: var(--white);
+    border-radius: 0 0 8px 8px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    min-height: 400px;
+}
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+}
+.badge-model { background: #E8D5F5; color: #6B21A8; }
+.badge-bartender { background: #DBEAFE; color: #1D4ED8; }
+.badge-host { background: #FEF3C7; color: #92400E; }
+.badge-dj { background: #FCE7F3; color: #BE185D; }
+.badge-ambassador { background: #D1FAE5; color: #065F46; }
+.badge-waiter { background: #F3E8FF; color: #7C3AED; }
+.badge-pending { background: var(--yellow-light); color: #856404; }
+.badge-approved { background: var(--green-light); color: #155724; }
+.badge-rejected { background: var(--red-light); color: #721C24; }
+.badge-confirmed { background: var(--green-light); color: #155724; }
+.badge-active { background: var(--green-light); color: #155724; }
+
+/* ===== APPLICATION CARDS ===== */
+.app-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--gray-200);
+    border-radius: 6px;
+    margin-bottom: 0.75rem;
+    transition: all 0.3s;
+}
+.app-card.card-approved {
+    background: var(--green-light);
+    border-color: #A3CFBB;
+}
+.app-card.card-rejected {
+    background: var(--red-light);
+    border-color: #E4B4B9;
+    opacity: 0.6;
+}
+.app-photo {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--gray-200);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--gray-600);
+    flex-shrink: 0;
+}
+.app-info { flex: 1; min-width: 0; }
+.app-name {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--blue-deep);
+}
+.app-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    margin-top: 0.3rem;
+    font-size: 0.82rem;
+    color: var(--gray-600);
+}
+.app-actions {
+    display: flex;
+    gap: 0.4rem;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+.btn {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+.btn-approve { background: var(--green); color: var(--white); }
+.btn-approve:hover { background: #218838; }
+.btn-reject { background: var(--red); color: var(--white); }
+.btn-reject:hover { background: var(--red-dark); }
+.btn-outline {
+    background: transparent;
+    color: var(--blue);
+    border: 1.5px solid var(--blue);
+}
+.btn-outline:hover { background: var(--blue); color: var(--white); }
+.btn-sm { padding: 0.3rem 0.6rem; font-size: 0.65rem; }
+.btn-gold { background: var(--gold); color: var(--white); }
+.btn-gold:hover { background: #C49A38; }
+.btn-blue { background: var(--blue); color: var(--white); }
+.btn-blue:hover { background: var(--blue-deep); }
+
+/* ===== TALENT ROSTER ===== */
+.search-bar {
+    margin-bottom: 1rem;
+}
+.search-input {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 6px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    transition: border-color 0.2s;
+}
+.search-input:focus {
+    outline: none;
+    border-color: var(--blue);
+}
+.roster-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+}
+.roster-table th {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--gray-600);
+    text-align: left;
+    padding: 0.75rem 0.5rem;
+    border-bottom: 2px solid var(--gray-200);
+}
+.roster-table td {
+    padding: 0.75rem 0.5rem;
+    border-bottom: 1px solid var(--gray-100);
+    vertical-align: middle;
+}
+.roster-table tr:hover { background: var(--gray-50); }
+.roster-name {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--blue-deep);
+}
+.rating { color: var(--gold); font-weight: 600; }
+
+/* Sponsor dropdown */
+.sponsor-dropdown {
+    position: relative;
+    display: inline-block;
+}
+.sponsor-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    z-index: 50;
+    min-width: 180px;
+    padding: 0.25rem 0;
+}
+.sponsor-menu.open { display: block; }
+.sponsor-menu-item {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: var(--gray-800);
+    transition: background 0.15s;
+}
+.sponsor-menu-item:hover { background: var(--blue-light); color: var(--blue); }
+
+/* ===== BOOKING CARDS ===== */
+.booking-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--gray-200);
+    border-radius: 6px;
+    margin-bottom: 0.75rem;
+}
+.booking-date {
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+    background: var(--blue-deep);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.booking-date-month {
+    font-family: var(--font-heading);
+    font-size: 0.6rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--gold);
+}
+.booking-date-day {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--white);
+    line-height: 1;
+}
+.booking-info { flex: 1; min-width: 0; }
+.booking-name {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--blue-deep);
+}
+.booking-meta {
+    font-size: 0.82rem;
+    color: var(--gray-600);
+    margin-top: 0.25rem;
+}
+.booking-actions {
+    display: flex;
+    gap: 0.4rem;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+/* ===== SPONSOR CARDS ===== */
+.sponsor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+}
+.sponsor-card {
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 1.25rem;
+    transition: box-shadow 0.2s;
+}
+.sponsor-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.sponsor-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+.sponsor-card-name {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--blue-deep);
+}
+.sponsor-card-stat {
+    font-size: 0.85rem;
+    color: var(--gray-600);
+    margin-bottom: 0.75rem;
+}
+.sponsor-card-stat strong {
+    color: var(--blue-deep);
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+}
+.sponsor-card-actions {
+    display: flex;
+    gap: 0.4rem;
+}
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gray-600);
+}
+
+/* ===== MOBILE TABLE SCROLL ===== */
+.table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .admin-header { padding: 0 1rem; }
+    .admin-title { font-size: 0.8rem; letter-spacing: 1px; }
+    .admin-user span { display: none; }
+    .stat-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .stat-icon { width: 40px; height: 40px; font-size: 1.1rem; }
+    .stat-number { font-size: 1.6rem; }
+    .stat-label { font-size: 0.65rem; }
+    .app-card { flex-wrap: wrap; }
+    .app-actions { width: 100%; justify-content: flex-start; margin-top: 0.5rem; }
+    .booking-card { flex-wrap: wrap; }
+    .booking-actions { width: 100%; justify-content: flex-start; margin-top: 0.5rem; }
+    .tab-btn { font-size: 0.68rem; padding: 0.8rem 0.4rem; letter-spacing: 1px; }
+    .roster-table { font-size: 0.78rem; }
+    .roster-table th, .roster-table td { padding: 0.5rem 0.3rem; }
+    .sponsor-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+    .stat-grid { grid-template-columns: 1fr; }
+    .admin-main { padding: 1rem 0.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== ADMIN HEADER ===== -->
+<header class="admin-header">
+    <div class="admin-brand">
+        <div class="admin-logo">F4P</div>
+        <div class="admin-title">Fight 4 Peace Talent <span>— Admin</span></div>
+    </div>
+    <div class="admin-user">
+        <span>Admin</span>
+        <div class="admin-avatar">AD</div>
+    </div>
+</header>
+
+<!-- ===== MAIN ===== -->
+<main class="admin-main">
+
+    <!-- STAT CARDS -->
+    <div class="stat-grid">
+        <div class="stat-card">
+            <div class="stat-icon">&#9733;</div>
+            <div class="stat-info">
+                <div class="stat-number">48</div>
+                <div class="stat-label">Total Talent</div>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">&#9998;</div>
+            <div class="stat-info">
+                <div class="stat-number">7</div>
+                <div class="stat-label">Pending Applications</div>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">&#10003;</div>
+            <div class="stat-info">
+                <div class="stat-number">12</div>
+                <div class="stat-label">Active Bookings</div>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">&#9830;</div>
+            <div class="stat-info">
+                <div class="stat-number">5</div>
+                <div class="stat-label">Sponsors Connected</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB NAVIGATION -->
+    <div class="tab-nav">
+        <button class="tab-btn active" onclick="switchTab('applications')">Applications</button>
+        <button class="tab-btn" onclick="switchTab('roster')">Talent Roster</button>
+        <button class="tab-btn" onclick="switchTab('bookings')">Bookings</button>
+        <button class="tab-btn" onclick="switchTab('sponsors')">Sponsors</button>
+    </div>
+
+    <div class="tab-content">
+
+        <!-- ===== TAB 1: APPLICATIONS ===== -->
+        <div id="tab-applications" class="tab-panel active">
+            <div class="section-header">
+                <div class="section-title">Pending Applications (7)</div>
+            </div>
+
+            <div id="app-list">
+                <!-- Cards generated by JS -->
+            </div>
+        </div>
+
+        <!-- ===== TAB 2: TALENT ROSTER ===== -->
+        <div id="tab-roster" class="tab-panel">
+            <div class="section-header">
+                <div class="section-title">Approved Talent (12)</div>
+            </div>
+            <div class="search-bar">
+                <input type="text" class="search-input" placeholder="Search talent by name, category, or location..." oninput="filterRoster(this.value)">
+            </div>
+            <div class="table-wrap">
+                <table class="roster-table" id="roster-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Location</th>
+                            <th>Available</th>
+                            <th>Rating</th>
+                            <th>Events</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="roster-body">
+                        <!-- Rows generated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ===== TAB 3: BOOKINGS ===== -->
+        <div id="tab-bookings" class="tab-panel">
+            <div class="section-header">
+                <div class="section-title">Booking Requests (5)</div>
+            </div>
+            <div id="bookings-list">
+                <!-- Cards generated by JS -->
+            </div>
+        </div>
+
+        <!-- ===== TAB 4: SPONSORS ===== -->
+        <div id="tab-sponsors" class="tab-panel">
+            <div class="section-header">
+                <div class="section-title">Sponsor Management (5)</div>
+                <button class="btn btn-gold" onclick="alert('Add Sponsor form coming soon.')">+ Add Sponsor</button>
+            </div>
+            <div class="sponsor-grid" id="sponsor-grid">
+                <!-- Cards generated by JS -->
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<script>
+/* ===== TAB SWITCHING ===== */
+function switchTab(tab) {
+    document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+    document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
+    document.getElementById('tab-' + tab).classList.add('active');
+    var btns = document.querySelectorAll('.tab-btn');
+    var tabs = ['applications','roster','bookings','sponsors'];
+    for (var i = 0; i < tabs.length; i++) {
+        if (tabs[i] === tab) btns[i].classList.add('active');
+    }
+}
+
+/* ===== APPLICATIONS DATA & RENDER ===== */
+var applications = [
+    { name: 'Marie Saint-Louis', type: 'Model', typeCls: 'badge-model', location: 'Port-au-Prince', ago: '2 days ago', initials: 'MS' },
+    { name: 'Jacques Dupont', type: 'Bartender', typeCls: 'badge-bartender', location: 'P\u00e9tion-Ville', ago: '3 days ago', initials: 'JD' },
+    { name: 'Fatima Charles', type: 'Host/MC', typeCls: 'badge-host', location: 'Cap-Ha\u00eftien', ago: '1 day ago', initials: 'FC' },
+    { name: 'DJ Flame', type: 'DJ', typeCls: 'badge-dj', location: 'Port-au-Prince', ago: '4 days ago', initials: 'DF' },
+    { name: 'Roseline Pierre', type: 'Ambassador', typeCls: 'badge-ambassador', location: 'P\u00e9tion-Ville', ago: '1 day ago', initials: 'RP' },
+    { name: 'Claude Martin', type: 'Waiter', typeCls: 'badge-waiter', location: 'Port-au-Prince', ago: '5 days ago', initials: 'CM' },
+    { name: 'Stephanie Bellevue', type: 'Model', typeCls: 'badge-model', location: 'Les Cayes', ago: '6 days ago', initials: 'SB' }
+];
+
+function renderApplications() {
+    var html = '';
+    for (var i = 0; i < applications.length; i++) {
+        var a = applications[i];
+        var status = a.status || 'PENDING';
+        var cardCls = '';
+        if (status === 'Approved') cardCls = ' card-approved';
+        else if (status === 'Rejected') cardCls = ' card-rejected';
+
+        html += '<div class="app-card' + cardCls + '" id="app-' + i + '">' +
+            '<div class="app-photo">' + a.initials + '</div>' +
+            '<div class="app-info">' +
+                '<div class="app-name">' + a.name + '</div>' +
+                '<div class="app-meta">' +
+                    '<span class="badge ' + a.typeCls + '">' + a.type + '</span>' +
+                    '<span>' + a.location + '</span>' +
+                    '<span>Applied ' + a.ago + '</span>' +
+                    '<span class="badge badge-' + status.toLowerCase() + '">' + status + '</span>' +
+                '</div>' +
+            '</div>' +
+            '<div class="app-actions">';
+        if (status === 'PENDING') {
+            html += '<button class="btn btn-approve btn-sm" onclick="approveApp(' + i + ')">Approve</button>' +
+                    '<button class="btn btn-reject btn-sm" onclick="rejectApp(' + i + ')">Reject</button>';
+        }
+        html += '<button class="btn btn-outline btn-sm" onclick="alert(\'Viewing application for ' + a.name.replace(/'/g, "\\'") + '\')">View</button>' +
+            '</div></div>';
+    }
+    document.getElementById('app-list').innerHTML = html;
+}
+
+function approveApp(i) {
+    applications[i].status = 'Approved';
+    renderApplications();
+}
+function rejectApp(i) {
+    applications[i].status = 'Rejected';
+    renderApplications();
+}
+
+renderApplications();
+
+/* ===== TALENT ROSTER DATA & RENDER ===== */
+var sponsors = ['Prestige Beer', 'Rhum Barbancourt', 'Digicel Haiti', 'Natcom', 'Sogebank'];
+
+var roster = [
+    { name: 'Anabelle Joseph', type: 'Model', typeCls: 'badge-model', location: 'Port-au-Prince', available: 'Yes', rating: '4.9', events: 24 },
+    { name: 'Ricardo Toussaint', type: 'Bartender', typeCls: 'badge-bartender', location: 'P\u00e9tion-Ville', available: 'Yes', rating: '4.8', events: 18 },
+    { name: 'Nathalie Bien-Aim\u00e9', type: 'Host/MC', typeCls: 'badge-host', location: 'Port-au-Prince', available: 'No', rating: '4.7', events: 31 },
+    { name: 'DJ K-Libre', type: 'DJ', typeCls: 'badge-dj', location: 'Cap-Ha\u00eftien', available: 'Yes', rating: '4.9', events: 42 },
+    { name: 'Sophie Desrosiers', type: 'Ambassador', typeCls: 'badge-ambassador', location: 'P\u00e9tion-Ville', available: 'Yes', rating: '4.6', events: 15 },
+    { name: 'Jean-Marc Louis', type: 'Waiter', typeCls: 'badge-waiter', location: 'Port-au-Prince', available: 'Yes', rating: '4.5', events: 20 },
+    { name: 'Vanessa Clermont', type: 'Model', typeCls: 'badge-model', location: 'Les Cayes', available: 'Yes', rating: '4.8', events: 12 },
+    { name: 'Pierre Augustin', type: 'Bartender', typeCls: 'badge-bartender', location: 'Port-au-Prince', available: 'No', rating: '4.7', events: 28 },
+    { name: 'Melissa Paul', type: 'Ambassador', typeCls: 'badge-ambassador', location: 'Jacmel', available: 'Yes', rating: '4.6', events: 9 },
+    { name: 'DJ Maestro', type: 'DJ', typeCls: 'badge-dj', location: 'Port-au-Prince', available: 'Yes', rating: '4.9', events: 56 },
+    { name: 'Gabrielle Th\u00e9odore', type: 'Host/MC', typeCls: 'badge-host', location: 'Port-au-Prince', available: 'Yes', rating: '4.8', events: 22 },
+    { name: 'Emmanuel Baptiste', type: 'Waiter', typeCls: 'badge-waiter', location: 'P\u00e9tion-Ville', available: 'Yes', rating: '4.4', events: 14 }
+];
+
+function renderRoster(filter) {
+    var f = (filter || '').toLowerCase();
+    var html = '';
+    for (var i = 0; i < roster.length; i++) {
+        var r = roster[i];
+        if (f && r.name.toLowerCase().indexOf(f) === -1 && r.type.toLowerCase().indexOf(f) === -1 && r.location.toLowerCase().indexOf(f) === -1) continue;
+        html += '<tr>' +
+            '<td class="roster-name">' + r.name + '</td>' +
+            '<td><span class="badge ' + r.typeCls + '">' + r.type + '</span></td>' +
+            '<td>' + r.location + '</td>' +
+            '<td>' + (r.available === 'Yes' ? '<span style="color:var(--green);font-weight:600;">Available</span>' : '<span style="color:var(--gray-400);">Unavailable</span>') + '</td>' +
+            '<td class="rating">' + r.rating + ' &#9733;</td>' +
+            '<td>' + r.events + '</td>' +
+            '<td>' +
+                '<button class="btn btn-outline btn-sm" onclick="alert(\'Edit ' + r.name.replace(/'/g, "\\'") + '\')">Edit</button> ' +
+                '<button class="btn btn-reject btn-sm" onclick="alert(\'Suspend ' + r.name.replace(/'/g, "\\'") + '?\')">Suspend</button> ' +
+                '<div class="sponsor-dropdown" style="display:inline-block;">' +
+                    '<button class="btn btn-gold btn-sm" onclick="toggleSponsorMenu(this)">Assign Sponsor</button>' +
+                    '<div class="sponsor-menu">' + sponsorMenuItems(r.name) + '</div>' +
+                '</div>' +
+            '</td></tr>';
+    }
+    document.getElementById('roster-body').innerHTML = html;
+}
+
+function sponsorMenuItems(talentName) {
+    var html = '';
+    for (var s = 0; s < sponsors.length; s++) {
+        html += '<button class="sponsor-menu-item" onclick="assignSponsor(\'' + talentName.replace(/'/g, "\\'") + '\', \'' + sponsors[s] + '\'); closeSponsorMenus();">' + sponsors[s] + '</button>';
+    }
+    return html;
+}
+
+function toggleSponsorMenu(btn) {
+    var menu = btn.nextElementSibling;
+    var wasOpen = menu.classList.contains('open');
+    closeSponsorMenus();
+    if (!wasOpen) menu.classList.add('open');
+}
+
+function closeSponsorMenus() {
+    document.querySelectorAll('.sponsor-menu').forEach(function(m){ m.classList.remove('open'); });
+}
+
+function assignSponsor(talent, sponsor) {
+    alert(talent + ' has been assigned to ' + sponsor);
+}
+
+function filterRoster(val) {
+    renderRoster(val);
+}
+
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.sponsor-dropdown')) closeSponsorMenus();
+});
+
+renderRoster();
+
+/* ===== BOOKINGS DATA & RENDER ===== */
+var bookings = [
+    { name: 'Batay San Fwonty\u00e8 VIP Night', talent: '8 talent (3 models, 3 waiters, 2 bartenders)', date: 'May 30, 2026', month: 'MAY', day: '30', status: 'CONFIRMED', requester: 'Box To Box Events' },
+    { name: 'Digicel Brand Launch', talent: '4 ambassadors', date: 'Jun 15, 2026', month: 'JUN', day: '15', status: 'PENDING', requester: 'Digicel Haiti' },
+    { name: 'Private Corporate Dinner', talent: '6 waiters', date: 'Apr 12, 2026', month: 'APR', day: '12', status: 'CONFIRMED', requester: 'Sogebank' },
+    { name: 'Fashion Show PAP', talent: '10 models', date: 'Jul 20, 2026', month: 'JUL', day: '20', status: 'PENDING', requester: 'Haiti Fashion Week' },
+    { name: 'Rhum Barbancourt Tasting', talent: '2 bartenders, 2 ambassadors', date: 'May 15, 2026', month: 'MAY', day: '15', status: 'CONFIRMED', requester: 'Rhum Barbancourt' }
+];
+
+function renderBookings() {
+    var html = '';
+    for (var i = 0; i < bookings.length; i++) {
+        var b = bookings[i];
+        var statusCls = b.status === 'CONFIRMED' ? 'badge-confirmed' : 'badge-pending';
+        html += '<div class="booking-card">' +
+            '<div class="booking-date"><div class="booking-date-month">' + b.month + '</div><div class="booking-date-day">' + b.day + '</div></div>' +
+            '<div class="booking-info">' +
+                '<div class="booking-name">' + b.name + '</div>' +
+                '<div class="booking-meta">' + b.talent + ' &middot; ' + b.requester + ' <span class="badge ' + statusCls + '" style="margin-left:0.5rem;">' + b.status + '</span></div>' +
+            '</div>' +
+            '<div class="booking-actions">' +
+                '<button class="btn btn-outline btn-sm" onclick="alert(\'View details for ' + b.name.replace(/'/g, "\\'") + '\')">View Details</button>';
+        if (b.status === 'PENDING') {
+            html += ' <button class="btn btn-blue btn-sm" onclick="alert(\'Assign talent to ' + b.name.replace(/'/g, "\\'") + '\')">Assign Talent</button>' +
+                     ' <button class="btn btn-approve btn-sm" onclick="confirmBooking(' + i + ')">Confirm</button>';
+        }
+        html += '</div></div>';
+    }
+    document.getElementById('bookings-list').innerHTML = html;
+}
+
+function confirmBooking(i) {
+    bookings[i].status = 'CONFIRMED';
+    renderBookings();
+}
+
+renderBookings();
+
+/* ===== SPONSORS DATA & RENDER ===== */
+var sponsorData = [
+    { name: 'Prestige Beer', talent: 6, status: 'Active' },
+    { name: 'Rhum Barbancourt', talent: 4, status: 'Active' },
+    { name: 'Digicel Haiti', talent: 8, status: 'Active' },
+    { name: 'Natcom', talent: 3, status: 'Pending' },
+    { name: 'Sogebank', talent: 2, status: 'Active' }
+];
+
+function renderSponsors() {
+    var html = '';
+    for (var i = 0; i < sponsorData.length; i++) {
+        var s = sponsorData[i];
+        var statusCls = s.status === 'Active' ? 'badge-active' : 'badge-pending';
+        html += '<div class="sponsor-card">' +
+            '<div class="sponsor-card-header">' +
+                '<div class="sponsor-card-name">' + s.name + '</div>' +
+                '<span class="badge ' + statusCls + '">' + s.status + '</span>' +
+            '</div>' +
+            '<div class="sponsor-card-stat"><strong>' + s.talent + '</strong> talent assigned</div>' +
+            '<div class="sponsor-card-actions">' +
+                '<button class="btn btn-outline btn-sm" onclick="alert(\'View talent for ' + s.name.replace(/'/g, "\\'") + '\')">View Talent</button>' +
+                '<button class="btn btn-blue btn-sm" onclick="alert(\'Edit ' + s.name.replace(/'/g, "\\'") + '\')">Edit</button>' +
+            '</div>' +
+        '</div>';
+    }
+    document.getElementById('sponsor-grid').innerHTML = html;
+}
+
+renderSponsors();
+</script>
+
+</body>
+</html>

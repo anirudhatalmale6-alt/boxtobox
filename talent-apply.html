@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apply — Fight 4 Peace Talent | Box To Box</title>
+<meta property="og:title" content="Apply to Fight 4 Peace Talent">
+<meta property="og:description" content="Join Haiti's leading talent network for events and brand partnerships. Models, DJs, Hosts, Bartenders & more.">
+<meta property="og:image" content="https://boxetoboxe.com/img/og-preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://boxetoboxe.com/talent-apply.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Boxe To Boxe">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+    --red: #C41E2A;
+    --red-dark: #8B0000;
+    --red-glow: #FF1A2E;
+    --blue: #00247D;
+    --blue-deep: #001847;
+    --gold: #D4A843;
+    --gold-light: #F0D078;
+    --black: #0A0A0A;
+    --off-white: #F5F3EF;
+    --white: #FFFFFF;
+    --gray-100: #F0EEEA;
+    --gray-200: #E0DDD6;
+    --gray-600: #6B6760;
+    --gray-800: #2A2824;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-heading: 'Oswald', sans-serif;
+    --font-body: 'Source Sans 3', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: var(--font-body);
+    color: var(--gray-800);
+    background: var(--off-white);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ===== NAVIGATION ===== */
+.nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 0 2rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.3s;
+}
+.nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.nav-links {
+    display: flex;
+    gap: 1.8rem;
+    align-items: center;
+    list-style: none;
+}
+.nav-links a {
+    font-family: var(--font-heading);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a.active { color: var(--white); }
+.nav-cta {
+    background: var(--red);
+    color: var(--white) !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    font-weight: 600 !important;
+    letter-spacing: 1px;
+    transition: background 0.2s, transform 0.2s;
+}
+.nav-cta:hover { background: var(--red-dark); transform: translateY(-1px); }
+.nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+}
+.nav-hamburger span {
+    width: 24px; height: 2px;
+    background: var(--white);
+    transition: transform 0.3s, opacity 0.3s;
+}
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.lang-switcher {
+    display: flex;
+    gap: 2px;
+    margin-left: 0.8rem;
+}
+.lang-btn {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 0.3rem 0.5rem;
+    border: 1.5px solid rgba(255,255,255,0.2);
+    border-radius: 3px;
+    background: transparent;
+    color: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.lang-btn:hover { border-color: var(--gold); color: var(--gold); }
+.lang-btn.active { background: var(--blue); color: var(--white); border-color: var(--blue); }
+
+/* ===== COMMON ===== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.9rem 2rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+.btn-red {
+    background: var(--red);
+    color: var(--white);
+    box-shadow: 0 4px 20px rgba(196,30,42,0.4);
+}
+.btn-red:hover {
+    background: var(--red-glow);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(255,26,46,0.5);
+}
+.btn-blue {
+    background: var(--blue);
+    color: var(--white);
+    box-shadow: 0 4px 20px rgba(0,36,125,0.3);
+}
+.btn-blue:hover { background: #003399; transform: translateY(-2px); }
+.btn-outline {
+    background: transparent;
+    color: var(--gold);
+    border: 1.5px solid var(--gold);
+}
+.btn-outline:hover {
+    background: var(--gold);
+    color: var(--black);
+    transform: translateY(-2px);
+}
+
+/* ===== PAGE HERO ===== */
+.page-hero {
+    padding-top: 140px;
+    padding-bottom: 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--black);
+}
+.page-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 120% 80% at 50% 30%, rgba(196,30,42,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 80% 60% at 20% 80%, rgba(0,36,125,0.08) 0%, transparent 50%);
+}
+.page-hero::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    bottom: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--red), var(--gold), var(--blue), transparent);
+}
+.page-hero-content {
+    position: relative;
+    z-index: 2;
+}
+.page-hero-label {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+.page-hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    color: var(--white);
+    letter-spacing: 3px;
+    line-height: 0.95;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 80px rgba(196,30,42,0.3);
+}
+.page-hero-subtitle {
+    font-size: 1.15rem;
+    color: rgba(255,255,255,0.45);
+    max-width: 550px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* ===== FORM ===== */
+.form-section {
+    padding: 4rem 2rem;
+    background: var(--off-white);
+}
+.form-container {
+    max-width: 720px;
+    margin: 0 auto;
+}
+.form-card {
+    background: var(--white);
+    border-radius: 8px;
+    border: 1px solid var(--gray-200);
+    padding: 2.5rem 2rem;
+    margin-bottom: 1.5rem;
+}
+.form-card-title {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--black);
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.form-card-subtitle {
+    font-size: 0.9rem;
+    color: var(--gray-600);
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+.form-group.full { grid-column: 1 / -1; }
+.form-label {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gray-800);
+}
+.form-label .req {
+    color: var(--red);
+    margin-left: 2px;
+}
+.form-input,
+.form-select,
+.form-textarea {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    padding: 0.7rem 0.9rem;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 4px;
+    background: var(--white);
+    color: var(--gray-800);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+}
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(0,36,125,0.08);
+}
+.form-textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+.form-char-count {
+    font-size: 0.75rem;
+    color: var(--gray-600);
+    text-align: right;
+    margin-top: -0.2rem;
+}
+.form-hint {
+    font-size: 0.8rem;
+    color: var(--gray-600);
+    font-style: italic;
+}
+.phone-group {
+    display: flex;
+    gap: 0.5rem;
+}
+.phone-prefix {
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--gray-800);
+    background: var(--gray-100);
+    border: 1.5px solid var(--gray-200);
+    border-radius: 4px;
+    padding: 0.7rem 0.8rem;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+.phone-group .form-input { flex: 1; }
+
+/* Checkboxes / Radios */
+.checkbox-group,
+.radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 0.2rem;
+}
+.checkbox-item,
+.radio-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.92rem;
+    color: var(--gray-800);
+    cursor: pointer;
+}
+.checkbox-item input,
+.radio-item input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--blue);
+    cursor: pointer;
+}
+
+/* Upload */
+.upload-area {
+    border: 2px dashed var(--gray-200);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+.upload-area:hover {
+    border-color: var(--blue);
+    background: rgba(0,36,125,0.02);
+}
+.upload-area input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+.upload-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+.upload-text {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 0.3rem;
+}
+.upload-hint {
+    font-size: 0.8rem;
+    color: var(--gray-600);
+}
+.upload-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.upload-small {
+    padding: 1.2rem;
+}
+.photo-note {
+    font-size: 0.82rem;
+    color: var(--gray-600);
+    font-style: italic;
+    text-align: center;
+    margin-top: 0.5rem;
+    padding: 0.8rem;
+    background: rgba(212,168,67,0.08);
+    border-radius: 4px;
+    border-left: 3px solid var(--gold);
+}
+
+/* Agreement */
+.agreement-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    margin-bottom: 0.8rem;
+    font-size: 0.92rem;
+    color: var(--gray-800);
+    line-height: 1.5;
+}
+.agreement-item input {
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    accent-color: var(--red);
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+/* Submit */
+.submit-btn {
+    width: 100%;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 1.1rem;
+    border: none;
+    border-radius: 4px;
+    background: var(--red);
+    color: var(--white);
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(196,30,42,0.4);
+    transition: all 0.25s;
+}
+.submit-btn:hover {
+    background: var(--red-glow);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(255,26,46,0.5);
+}
+.submit-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ===== SUCCESS SCREEN ===== */
+.success-screen {
+    display: none;
+    text-align: center;
+    padding: 4rem 2rem;
+}
+.success-screen.active {
+    display: block;
+}
+.success-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #25D366, #1da851);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+}
+.success-icon svg {
+    width: 40px;
+    height: 40px;
+    stroke: white;
+    fill: none;
+    stroke-width: 3;
+}
+.success-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--black);
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+.success-text {
+    font-size: 1.05rem;
+    color: var(--gray-600);
+    line-height: 1.7;
+    max-width: 480px;
+    margin: 0 auto 1.5rem;
+}
+.success-ref {
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--blue);
+    background: rgba(0,36,125,0.06);
+    display: inline-block;
+    padding: 0.6rem 1.5rem;
+    border-radius: 4px;
+    border: 1px solid rgba(0,36,125,0.12);
+    margin-bottom: 2rem;
+}
+.success-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.9rem 2rem;
+    border-radius: 4px;
+    background: var(--blue);
+    color: var(--white);
+    transition: all 0.25s;
+}
+.success-back:hover { background: #003399; transform: translateY(-2px); }
+
+/* ===== FOOTER ===== */
+.footer {
+    background: var(--black);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 3rem 2rem;
+}
+.footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 2rem;
+}
+.footer-brand .footer-logo {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--white);
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+.footer-brand .footer-tagline {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+.footer-socials {
+    display: flex;
+    gap: 0.8rem;
+}
+.footer-socials a {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: border-color 0.3s, color 0.3s;
+}
+.footer-socials a:hover { border-color: var(--gold); color: var(--gold); }
+.footer-col-title {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+.footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.footer-links a {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--white); }
+.footer-bottom {
+    max-width: 1100px;
+    margin: 2rem auto 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.25);
+}
+.footer-bottom a {
+    color: var(--gold);
+    text-decoration: none;
+}
+
+/* ===== MOBILE FLOATING CTAs ===== */
+.mobile-ctas {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0; right: 0;
+    z-index: 999;
+    padding: 0.6rem;
+    gap: 0.5rem;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+.mobile-ctas .btn-inline {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.7rem 0.5rem;
+    border-radius: 4px;
+    transition: all 0.25s;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 64px; left: 0; right: 0;
+        background: rgba(10,10,10,0.97);
+        padding: 1.5rem 2rem;
+        gap: 1.2rem;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .form-row { grid-template-columns: 1fr; }
+    .upload-row { grid-template-columns: 1fr; }
+    .form-card { padding: 2rem 1.5rem; }
+    .form-section { padding: 2rem 1rem; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .mobile-ctas { display: flex; }
+    body { padding-bottom: 64px; }
+    .lang-switcher { display: none; }
+}
+
+@media (max-width: 480px) {
+    .phone-group { flex-direction: column; }
+    .checkbox-group, .radio-group { flex-direction: column; gap: 0.6rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="mainNav">
+    <a href="/" class="nav-logo"><img src="img/boxtobox-logo.jpg" alt="Boxe To Boxe" style="height:40px;border-radius:4px;"></a>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="/">Home</a></li>
+        <li><a href="tickets.html">Tickets</a></li>
+        <li><a href="live.html">Live</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="talent.html" class="active">Talent</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="tickets.html" class="nav-cta">Acheter Ticket</a></li>
+    </ul>
+    <div class="nav-right">
+        <div class="lang-switcher">
+            <button class="lang-btn active">FR</button>
+            <button class="lang-btn">EN</button>
+            <button class="lang-btn">KR</button>
+            <button class="lang-btn">ES</button>
+        </div>
+        <div class="nav-hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+    <div class="page-hero-content">
+        <p class="page-hero-label">Fight 4 Peace Talent</p>
+        <h1 class="page-hero-title">APPLY TO FIGHT 4 PEACE TALENT</h1>
+        <p class="page-hero-subtitle">Join Haiti's leading talent network for events and brand partnerships</p>
+    </div>
+</section>
+
+<!-- APPLICATION FORM -->
+<section class="form-section" id="formSection">
+    <div class="form-container">
+        <form id="talentForm" onsubmit="return handleSubmit(event)">
+
+            <!-- Personal Information -->
+            <div class="form-card">
+                <h2 class="form-card-title">PERSONAL INFORMATION</h2>
+                <p class="form-card-subtitle">Tell us about yourself so we can create your talent profile.</p>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Full Name <span class="req">*</span></label>
+                        <input type="text" class="form-input" name="fullName" required placeholder="Jean-Pierre Duval">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email <span class="req">*</span></label>
+                        <input type="email" class="form-input" name="email" required placeholder="you@email.com">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Phone <span class="req">*</span></label>
+                        <div class="phone-group">
+                            <span class="phone-prefix">+509</span>
+                            <input type="tel" class="form-input" name="phone" required placeholder="3456 7890" pattern="[0-9\s]{7,12}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Date of Birth</label>
+                        <input type="date" class="form-input" name="dob">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Gender</label>
+                        <select class="form-select" name="gender">
+                            <option value="">Select...</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="nonbinary">Non-binary</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">City</label>
+                        <select class="form-select" name="city">
+                            <option value="">Select city...</option>
+                            <option value="port-au-prince">Port-au-Prince</option>
+                            <option value="petion-ville">P&eacute;tion-Ville</option>
+                            <option value="cap-haitien">Cap-Ha&iuml;tien</option>
+                            <option value="les-cayes">Les Cayes</option>
+                            <option value="jacmel">Jacmel</option>
+                            <option value="gonaives">Gona&iuml;ves</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Talent Information -->
+            <div class="form-card">
+                <h2 class="form-card-title">TALENT INFORMATION</h2>
+                <p class="form-card-subtitle">What type of talent are you and what's your experience level?</p>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Talent Type <span class="req">*</span></label>
+                        <select class="form-select" name="talentType" required>
+                            <option value="">Select type...</option>
+                            <option value="model">Model</option>
+                            <option value="waiter">Waiter</option>
+                            <option value="bartender">Bartender</option>
+                            <option value="dj">DJ</option>
+                            <option value="host-mc">Host / MC</option>
+                            <option value="brand-ambassador">Brand Ambassador</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Experience Level</label>
+                        <select class="form-select" name="experience">
+                            <option value="">Select level...</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="professional">Professional</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-bottom:1rem;">
+                    <label class="form-label">Languages</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item"><input type="checkbox" name="languages" value="french"> French</label>
+                        <label class="checkbox-item"><input type="checkbox" name="languages" value="creole"> Creole</label>
+                        <label class="checkbox-item"><input type="checkbox" name="languages" value="english"> English</label>
+                        <label class="checkbox-item"><input type="checkbox" name="languages" value="spanish"> Spanish</label>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-bottom:1rem;">
+                    <label class="form-label">Bio / About You</label>
+                    <textarea class="form-textarea" name="bio" maxlength="200" placeholder="Tell us about yourself, your experience, and what makes you stand out..." oninput="updateCharCount(this)"></textarea>
+                    <div class="form-char-count"><span id="bioCount">0</span>/200</div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Instagram Handle</label>
+                    <input type="text" class="form-input" name="instagram" placeholder="@yourusername">
+                    <span class="form-hint">Optional. Helps us verify your profile.</span>
+                </div>
+            </div>
+
+            <!-- Availability -->
+            <div class="form-card">
+                <h2 class="form-card-title">AVAILABILITY</h2>
+                <p class="form-card-subtitle">Let us know when and where you're available to work.</p>
+                <div class="form-group" style="margin-bottom:1.5rem;">
+                    <label class="form-label">Availability Status</label>
+                    <div class="radio-group">
+                        <label class="radio-item"><input type="radio" name="availability" value="full-time"> Available Full-Time</label>
+                        <label class="radio-item"><input type="radio" name="availability" value="part-time"> Part-Time</label>
+                        <label class="radio-item"><input type="radio" name="availability" value="weekends"> Weekends Only</label>
+                        <label class="radio-item"><input type="radio" name="availability" value="event-based"> Event-Based</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Preferred Event Types</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item"><input type="checkbox" name="eventTypes" value="boxing-mma"> Boxing / MMA Events</label>
+                        <label class="checkbox-item"><input type="checkbox" name="eventTypes" value="corporate"> Corporate Events</label>
+                        <label class="checkbox-item"><input type="checkbox" name="eventTypes" value="brand-activations"> Brand Activations</label>
+                        <label class="checkbox-item"><input type="checkbox" name="eventTypes" value="nightlife"> Nightlife</label>
+                        <label class="checkbox-item"><input type="checkbox" name="eventTypes" value="fashion"> Fashion Shows</label>
+                        <label class="checkbox-item"><input type="checkbox" name="eventTypes" value="private"> Private Events</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photos -->
+            <div class="form-card">
+                <h2 class="form-card-title">PHOTOS</h2>
+                <p class="form-card-subtitle">Upload clear, professional photos to showcase your look and presence.</p>
+
+                <div class="upload-row">
+                    <div class="form-group">
+                        <label class="form-label">Profile Photo <span class="req">*</span></label>
+                        <div class="upload-area">
+                            <input type="file" name="profilePhoto" accept="image/*" required>
+                            <span class="upload-icon">&#x1F4F7;</span>
+                            <p class="upload-text">Click or drag to upload</p>
+                            <p class="upload-hint">Head/shoulders, front-facing</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Full Body Photo</label>
+                        <div class="upload-area">
+                            <input type="file" name="bodyPhoto" accept="image/*">
+                            <span class="upload-icon">&#x1F9CD;</span>
+                            <p class="upload-text">Click or drag to upload</p>
+                            <p class="upload-hint">Full length, standing</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom:0.5rem;">
+                    <label class="form-label">Additional Photos (up to 3)</label>
+                    <div class="upload-area upload-small">
+                        <input type="file" name="additionalPhotos" accept="image/*" multiple>
+                        <span class="upload-icon">&#x1F5BC;&#xFE0F;</span>
+                        <p class="upload-text">Click or drag to upload additional photos</p>
+                        <p class="upload-hint">Event photos, portfolio shots, etc.</p>
+                    </div>
+                </div>
+                <p class="photo-note">Upload clear, professional photos. No filters.</p>
+            </div>
+
+            <!-- Agreement -->
+            <div class="form-card">
+                <h2 class="form-card-title">AGREEMENT</h2>
+                <div class="agreement-item">
+                    <input type="checkbox" name="agreeTerms" required id="agreeTerms">
+                    <label for="agreeTerms">I agree to the Fight 4 Peace Talent terms and code of conduct</label>
+                </div>
+                <div class="agreement-item">
+                    <input type="checkbox" name="agreeAge" required id="agreeAge">
+                    <label for="agreeAge">I am 18 years or older</label>
+                </div>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="submit-btn" id="submitBtn">Submit Application</button>
+
+        </form>
+
+        <!-- Success Screen -->
+        <div class="success-screen" id="successScreen">
+            <div class="success-icon">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h2 class="success-title">APPLICATION RECEIVED!</h2>
+            <p class="success-text">We'll review your application within 48 hours. You'll receive a notification by SMS/email.</p>
+            <div class="success-ref" id="refNumber">FP-TALENT-00000</div>
+            <br><br>
+            <a href="talent.html" class="success-back">Back to Talent</a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <div class="footer-logo"><img src="img/boxtobox-logo.jpg" alt="Boxe To Boxe" style="height:50px;border-radius:4px;"></div>
+            <p class="footer-tagline">Box To Box &amp; 48HoursReady.com Pr&eacute;sentent<br>Batay San Fwonty&egrave;<br><em>Combat. Culture. Connexion.</em></p>
+            <div class="footer-socials">
+                <a href="#" aria-label="Instagram">IG</a>
+                <a href="#" aria-label="Facebook">FB</a>
+                <a href="#" aria-label="YouTube">YT</a>
+            </div>
+        </div>
+        <div>
+            <div class="footer-col-title">Navigation</div>
+            <ul class="footer-links">
+                <li><a href="/">Accueil</a></li>
+                <li><a href="tickets.html">Tickets</a></li>
+                <li><a href="live.html">Livestream</a></li>
+                <li><a href="sponsors.html">Sponsors</a></li>
+            </ul>
+        </div>
+        <div>
+            <div class="footer-col-title">Informations</div>
+            <ul class="footer-links">
+                <li><a href="media.html">Media</a></li>
+                <li><a href="about.html">&Agrave; Propos</a></li>
+                <li><a href="talent.html">Talent</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div>
+            <div class="footer-col-title">Contact</div>
+            <ul class="footer-links">
+                <li><a href="#">WhatsApp</a></li>
+                <li><a href="#">Email</a></li>
+                <li><a href="#">Instagram</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>&copy; 2026 Box To Box. Tous droits r&eacute;serv&eacute;s.</span>
+        <span style="display:flex;align-items:center;gap:8px;">Powered by <a href="https://48hoursready.com"><img src="img/48hoursready-logo.jpg" alt="48HoursReady" style="height:28px;border-radius:3px;"></a></span>
+    </div>
+</footer>
+
+<!-- MOBILE FLOATING CTAs -->
+<div class="mobile-ctas">
+    <a href="talent.html" class="btn-inline" style="background:var(--blue);color:#fff;">Back to Talent</a>
+    <a href="#" class="btn-inline" style="background:#25D366;color:#fff;">WhatsApp</a>
+</div>
+
+<script>
+// Character count for bio
+function updateCharCount(textarea) {
+    document.getElementById('bioCount').textContent = textarea.value.length;
+}
+
+// Form submission
+function handleSubmit(e) {
+    e.preventDefault();
+
+    // Generate reference number
+    const refNum = 'FP-TALENT-' + String(Math.floor(10000 + Math.random() * 90000));
+    document.getElementById('refNumber').textContent = refNum;
+
+    // Hide form, show success
+    document.getElementById('talentForm').style.display = 'none';
+    document.getElementById('successScreen').classList.add('active');
+
+    // Scroll to top of success
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    return false;
+}
+</script>
+
+</body>
+</html>

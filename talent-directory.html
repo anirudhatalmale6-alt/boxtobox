@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Talent Directory — Fight 4 Peace Talent | Boxe To Boxe</title>
+<meta name="description" content="Browse and book professional talent for your events. Models, DJs, hosts, bartenders, waiters, and brand ambassadors in Haiti.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+    --red: #C41E2A;
+    --red-dark: #9B1520;
+    --blue: #00247D;
+    --blue-deep: #001847;
+    --blue-light: #E8EDF8;
+    --gold: #D4A843;
+    --gold-light: #F0D078;
+    --black: #1A1A1A;
+    --white: #FFFFFF;
+    --gray-50: #F8F9FA;
+    --gray-100: #F1F3F5;
+    --gray-200: #E2E5E9;
+    --gray-400: #ADB5BD;
+    --gray-600: #6C757D;
+    --gray-800: #2D3436;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-heading: 'Oswald', sans-serif;
+    --font-body: 'Source Sans 3', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font-body);
+    color: var(--gray-800);
+    background: var(--white);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ===== NAVIGATION ===== */
+.nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 0 2rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--white);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    transition: box-shadow 0.3s;
+}
+.nav-logo {
+    display: flex;
+    align-items: center;
+}
+.nav-links {
+    display: flex;
+    gap: 1.8rem;
+    align-items: center;
+    list-style: none;
+}
+.nav-links a {
+    font-family: var(--font-heading);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--gray-600);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--blue); }
+.nav-links a.active-link { color: var(--blue); font-weight: 600; }
+.nav-cta {
+    background: var(--red) !important;
+    color: var(--white) !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    font-weight: 600 !important;
+    transition: background 0.2s, transform 0.2s;
+}
+.nav-cta:hover { background: var(--red-dark) !important; transform: translateY(-1px); }
+
+.nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+}
+.nav-hamburger span {
+    width: 24px; height: 2px;
+    background: var(--gray-800);
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.lang-switcher {
+    display: flex;
+    gap: 2px;
+    margin-left: 0.8rem;
+}
+.lang-btn {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 0.3rem 0.5rem;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 3px;
+    background: transparent;
+    color: var(--gray-600);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.lang-btn:hover { border-color: var(--blue); color: var(--blue); }
+.lang-btn.active { background: var(--blue); color: var(--white); border-color: var(--blue); }
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* ===== PAGE HEADER ===== */
+.page-header {
+    padding-top: 64px;
+    background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue) 100%);
+    padding-bottom: 2.5rem;
+    text-align: center;
+}
+.page-header-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem 2rem 0;
+}
+.page-header h1 {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    color: var(--white);
+    letter-spacing: 3px;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+.page-header p {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.6);
+    font-weight: 300;
+}
+
+/* ===== FILTERS ===== */
+.filters-section {
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-200);
+    position: sticky;
+    top: 64px;
+    z-index: 100;
+    padding: 1rem 2rem;
+}
+.filters-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.filter-chips {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    flex: 1;
+    min-width: 0;
+}
+.filter-chips::-webkit-scrollbar { display: none; }
+.filter-chip {
+    font-family: var(--font-heading);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 50px;
+    background: transparent;
+    color: var(--gray-600);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+}
+.filter-chip:hover { border-color: var(--blue); color: var(--blue); }
+.filter-chip.active {
+    background: var(--blue);
+    color: var(--white);
+    border-color: var(--blue);
+}
+.filter-select {
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    padding: 0.5rem 2rem 0.5rem 0.8rem;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 6px;
+    background: var(--white);
+    color: var(--gray-800);
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236C757D' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+}
+.filter-select:focus { outline: none; border-color: var(--blue); }
+.results-count {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gray-600);
+    white-space: nowrap;
+}
+
+/* ===== TALENT GRID ===== */
+.talent-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+.talent-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+.talent-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+.talent-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+.talent-card-top {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+.talent-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue) 0%, var(--red) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.talent-avatar span {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--white);
+    letter-spacing: 1px;
+}
+.talent-info { flex: 1; min-width: 0; }
+.talent-name {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--gray-800);
+    margin-bottom: 0.3rem;
+}
+.talent-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    align-items: center;
+}
+.badge {
+    font-family: var(--font-heading);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 50px;
+}
+.badge-category {
+    background: var(--blue-light);
+    color: var(--blue);
+}
+.badge-category[data-cat="models"] { background: #FCE4EC; color: #C2185B; }
+.badge-category[data-cat="bartenders"] { background: #FFF3E0; color: #E65100; }
+.badge-category[data-cat="hosts"] { background: #E8EAF6; color: #283593; }
+.badge-category[data-cat="djs"] { background: #F3E5F5; color: #7B1FA2; }
+.badge-category[data-cat="waiters"] { background: #E0F2F1; color: #00695C; }
+.badge-category[data-cat="ambassadors"] { background: #FFF8E1; color: #F57F17; }
+.badge-available { background: #E8F5E9; color: #2E7D32; }
+.badge-part-time { background: #FFF8E1; color: #F9A825; }
+.badge-weekends { background: #E3F2FD; color: #1565C0; }
+
+.talent-location {
+    font-size: 0.82rem;
+    color: var(--gray-600);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: 0.5rem;
+}
+.talent-location svg {
+    width: 14px;
+    height: 14px;
+    fill: var(--gray-400);
+    flex-shrink: 0;
+}
+.talent-stats {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    font-size: 0.82rem;
+    color: var(--gray-600);
+}
+.talent-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+.star { color: var(--gold); font-size: 0.9rem; }
+.talent-bio {
+    font-size: 0.88rem;
+    color: var(--gray-600);
+    line-height: 1.5;
+    margin: 0.8rem 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex: 1;
+}
+.talent-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 0.8rem;
+}
+.btn {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+.btn-outline {
+    background: transparent;
+    border: 1.5px solid var(--gray-200);
+    color: var(--gray-600);
+}
+.btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+.btn-red {
+    background: var(--red);
+    color: var(--white);
+}
+.btn-red:hover { background: var(--red-dark); }
+.btn-blue {
+    background: var(--blue);
+    color: var(--white);
+}
+.btn-blue:hover { background: var(--blue-deep); }
+.btn-gold {
+    background: linear-gradient(135deg, var(--gold) 0%, var(--red) 100%);
+    color: var(--white);
+}
+.btn-gold:hover { opacity: 0.9; }
+
+/* ===== MODAL / BOTTOM SHEET ===== */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+    background: var(--white);
+    border-radius: 16px;
+    width: 90%;
+    max-width: 520px;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 2rem;
+    position: relative;
+    animation: modalIn 0.25s ease-out;
+}
+@keyframes modalIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: var(--gray-100);
+    color: var(--gray-600);
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+.modal-close:hover { background: var(--gray-200); }
+.modal-avatar {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue) 0%, var(--red) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.2rem;
+}
+.modal-avatar span {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    color: var(--white);
+    letter-spacing: 2px;
+}
+.modal-name {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--gray-800);
+    text-align: center;
+    margin-bottom: 0.3rem;
+}
+.modal-badges {
+    display: flex;
+    justify-content: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.6rem;
+}
+.modal-location {
+    text-align: center;
+    font-size: 0.88rem;
+    color: var(--gray-600);
+    margin-bottom: 1.2rem;
+}
+.modal-bio {
+    font-size: 0.95rem;
+    color: var(--gray-800);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+.modal-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+.modal-stat {
+    text-align: center;
+    padding: 0.8rem;
+    background: var(--gray-50);
+    border-radius: 8px;
+}
+.modal-stat-value {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--blue);
+    line-height: 1;
+}
+.modal-stat-label {
+    font-family: var(--font-heading);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gray-600);
+    margin-top: 0.3rem;
+}
+.modal-languages {
+    text-align: center;
+    font-size: 0.88rem;
+    color: var(--gray-600);
+    margin-bottom: 1.5rem;
+}
+.modal-languages strong {
+    color: var(--gray-800);
+}
+.modal-book-btn {
+    display: block;
+    width: 100%;
+    padding: 0.9rem;
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--red) 100%);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+.modal-book-btn:hover { opacity: 0.9; }
+
+/* ===== NO RESULTS ===== */
+.no-results {
+    text-align: center;
+    padding: 4rem 2rem;
+    display: none;
+}
+.no-results h3 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    color: var(--gray-800);
+    margin-bottom: 0.5rem;
+}
+.no-results p {
+    color: var(--gray-600);
+    font-size: 0.95rem;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    background: var(--black);
+    padding: 3rem 2rem;
+}
+.footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 2rem;
+}
+.footer-brand .footer-logo { margin-bottom: 0.5rem; }
+.footer-tagline {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+.footer-socials { display: flex; gap: 0.7rem; }
+.footer-socials a {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: border-color 0.3s, color 0.3s;
+}
+.footer-socials a:hover { border-color: var(--gold); color: var(--gold); }
+.footer-col-title {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+}
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+.footer-links a {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--white); }
+.footer-bottom {
+    max-width: 1100px;
+    margin: 2rem auto 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.25);
+}
+.footer-bottom a { color: var(--gold); text-decoration: none; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 64px; left: 0; right: 0;
+        background: var(--white);
+        padding: 1.5rem 2rem;
+        gap: 1.2rem;
+        border-bottom: 1px solid var(--gray-200);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .page-header h1 { font-size: 2.5rem; }
+    .filters-inner { flex-direction: column; align-items: stretch; }
+    .filter-chips { flex-shrink: 0; }
+    .filter-dropdowns { display: flex; gap: 0.5rem; }
+    .filter-select { flex: 1; font-size: 0.82rem; }
+    .talent-grid { grid-template-columns: 1fr; }
+    .talent-section { padding: 1.5rem; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+
+    /* Bottom sheet style modal on mobile */
+    .modal-overlay { align-items: flex-end; }
+    .modal {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 16px 16px 0 0;
+        max-height: 90vh;
+        animation: sheetIn 0.3s ease-out;
+    }
+    @keyframes sheetIn {
+        from { transform: translateY(100%); }
+        to { transform: translateY(0); }
+    }
+}
+
+@media (max-width: 480px) {
+    .page-header h1 { font-size: 2rem; }
+    .filter-dropdowns { flex-direction: column; }
+    .modal-stats { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="mainNav">
+    <a href="/" class="nav-logo"><img src="img/boxtobox-logo.jpg" alt="Boxe To Boxe" style="height:40px;border-radius:4px;"></a>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="/">Home</a></li>
+        <li><a href="tickets.html">Tickets</a></li>
+        <li><a href="live.html">Live</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="talent-directory.html" class="active-link">Talent</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="tickets.html" class="nav-cta">Acheter Ticket</a></li>
+    </ul>
+    <div class="nav-right">
+        <div class="lang-switcher">
+            <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+            <button class="lang-btn" onclick="setLang('en')">EN</button>
+            <button class="lang-btn" onclick="setLang('kr')">KR</button>
+            <button class="lang-btn" onclick="setLang('es')">ES</button>
+            <button class="lang-btn" onclick="setLang('pt')">PT</button>
+        </div>
+        <div class="nav-hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+    <div class="page-header-inner">
+        <h1>Talent Directory</h1>
+        <p>Browse and book professional talent for your events</p>
+    </div>
+</section>
+
+<!-- FILTERS -->
+<section class="filters-section">
+    <div class="filters-inner">
+        <div class="filter-chips" id="filterChips">
+            <button class="filter-chip active" data-cat="all">All</button>
+            <button class="filter-chip" data-cat="models">Models</button>
+            <button class="filter-chip" data-cat="waiters">Waiters</button>
+            <button class="filter-chip" data-cat="bartenders">Bartenders</button>
+            <button class="filter-chip" data-cat="djs">DJs</button>
+            <button class="filter-chip" data-cat="hosts">Hosts</button>
+            <button class="filter-chip" data-cat="ambassadors">Ambassadors</button>
+        </div>
+        <div class="filter-dropdowns">
+            <select class="filter-select" id="filterLocation">
+                <option value="all">All Locations</option>
+                <option value="Port-au-Prince">Port-au-Prince</option>
+                <option value="Pétion-Ville">P&eacute;tion-Ville</option>
+                <option value="Cap-Haïtien">Cap-Ha&iuml;tien</option>
+                <option value="Les Cayes">Les Cayes</option>
+            </select>
+            <select class="filter-select" id="filterAvailability">
+                <option value="all">All</option>
+                <option value="available">Available Now</option>
+                <option value="part-time">Part-Time</option>
+                <option value="weekends">Weekends</option>
+            </select>
+        </div>
+        <span class="results-count" id="resultsCount">12 Talent</span>
+    </div>
+</section>
+
+<!-- TALENT GRID -->
+<section class="talent-section">
+    <div class="talent-grid" id="talentGrid"></div>
+    <div class="no-results" id="noResults">
+        <h3>No talent found</h3>
+        <p>Try adjusting your filters to see more results.</p>
+    </div>
+</section>
+
+<!-- PROFILE MODAL -->
+<div class="modal-overlay" id="profileModal">
+    <div class="modal" id="modalContent">
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+        <div id="modalBody"></div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <div class="footer-logo"><img src="img/boxtobox-logo.jpg" alt="Boxe To Boxe" style="height:50px;border-radius:4px;"></div>
+            <p class="footer-tagline">Box To Box & 48HoursReady.com Pr&eacute;sentent<br>Batay San Fwonty&egrave;<br><em>Combat. Culture. Connexion.</em></p>
+            <div class="footer-socials"><a href="#">IG</a><a href="#">FB</a><a href="#">YT</a></div>
+        </div>
+        <div><div class="footer-col-title">Navigation</div><ul class="footer-links"><li><a href="/">Accueil</a></li><li><a href="tickets.html">Tickets</a></li><li><a href="live.html">Livestream</a></li><li><a href="sponsors.html">Sponsors</a></li></ul></div>
+        <div><div class="footer-col-title">Informations</div><ul class="footer-links"><li><a href="media.html">Media</a></li><li><a href="about.html">&Agrave; Propos</a></li><li><a href="contact.html">Contact</a></li><li><a href="talent-directory.html">Talent</a></li></ul></div>
+        <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="#">WhatsApp</a></li><li><a href="#">Email</a></li><li><a href="#">Instagram</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+        <span>&copy; 2026 Box To Box. Tous droits r&eacute;serv&eacute;s.</span>
+        <span style="display:flex;align-items:center;gap:8px;">Powered by <a href="https://48hoursready.com"><img src="img/48hoursready-logo.jpg" alt="48HoursReady" style="height:28px;border-radius:3px;"></a></span>
+    </div>
+</footer>
+
+<script>
+const TALENT = [
+    { id: 1, name: 'Marie-Claire Joseph', category: 'models', location: 'Port-au-Prince', availability: 'available', rating: 4.9, events: 24, bio: 'Fashion and commercial model. Featured in Batay San Fwontye events.', initials: 'MJ', languages: 'French, Creole, English', memberSince: '2024' },
+    { id: 2, name: 'Jean-Pierre Augustin', category: 'bartenders', location: 'Pétion-Ville', availability: 'available', rating: 4.8, events: 31, bio: 'Expert mixologist. 5 years experience in VIP events.', initials: 'JA', languages: 'French, Creole', memberSince: '2023' },
+    { id: 3, name: 'Sophie Laurent', category: 'hosts', location: 'Port-au-Prince', availability: 'available', rating: 5.0, events: 42, bio: 'Bilingual MC and host. TV presenter experience.', initials: 'SL', languages: 'French, Creole, English', memberSince: '2023' },
+    { id: 4, name: 'DJ Kreyòl', category: 'djs', location: 'Port-au-Prince', availability: 'weekends', rating: 4.7, events: 56, bio: 'Haitian music specialist. Kompa, dancehall, afrobeat.', initials: 'DK', languages: 'French, Creole', memberSince: '2022' },
+    { id: 5, name: 'Ricardo Charles', category: 'waiters', location: 'Pétion-Ville', availability: 'available', rating: 4.6, events: 18, bio: 'Professional event server. VIP and corporate experience.', initials: 'RC', languages: 'French, Creole', memberSince: '2025' },
+    { id: 6, name: 'Nathalie Pierre', category: 'ambassadors', location: 'Cap-Haïtien', availability: 'available', rating: 4.9, events: 35, bio: 'Brand ambassador for international companies. Social media influencer.', initials: 'NP', languages: 'French, Creole, English, Spanish', memberSince: '2023' },
+    { id: 7, name: 'Fabienne Dessalines', category: 'models', location: 'Port-au-Prince', availability: 'part-time', rating: 4.8, events: 15, bio: 'Runway and editorial model. Fashion week experience.', initials: 'FD', languages: 'French, Creole', memberSince: '2024' },
+    { id: 8, name: 'Marcus Jean-Baptiste', category: 'bartenders', location: 'Port-au-Prince', availability: 'available', rating: 4.5, events: 22, bio: 'Cocktail specialist. Trained in international bar standards.', initials: 'MB', languages: 'French, Creole, English', memberSince: '2024' },
+    { id: 9, name: 'DJ Vibe Haiti', category: 'djs', location: 'Pétion-Ville', availability: 'available', rating: 4.9, events: 67, bio: 'Top event DJ. International festivals and fight nights.', initials: 'DV', languages: 'French, Creole, English', memberSince: '2022' },
+    { id: 10, name: 'Carline Beauvoir', category: 'hosts', location: 'Port-au-Prince', availability: 'available', rating: 4.7, events: 28, bio: 'Event host and brand presenter. French, Creole, English.', initials: 'CB', languages: 'French, Creole, English', memberSince: '2024' },
+    { id: 11, name: 'Alex Toussaint', category: 'waiters', location: 'Les Cayes', availability: 'weekends', rating: 4.4, events: 12, bio: 'Experienced gala and banquet server.', initials: 'AT', languages: 'French, Creole', memberSince: '2025' },
+    { id: 12, name: 'Vanessa Étienne', category: 'ambassadors', location: 'Port-au-Prince', availability: 'available', rating: 5.0, events: 40, bio: 'Top brand ambassador. Multilingual. Social media 50K+ followers.', initials: 'VE', languages: 'French, Creole, English, Spanish', memberSince: '2023' }
+];
+
+const categoryLabels = { models: 'Model', bartenders: 'Bartender', hosts: 'Host / MC', djs: 'DJ', waiters: 'Waiter', ambassadors: 'Ambassador' };
+const availabilityLabels = { available: 'Available', 'part-time': 'Part-Time', weekends: 'Weekends' };
+const availabilityClass = { available: 'badge-available', 'part-time': 'badge-part-time', weekends: 'badge-weekends' };
+
+let activeCategory = 'all';
+let activeLocation = 'all';
+let activeAvailability = 'all';
+
+// Read ?cat= URL param
+const urlParams = new URLSearchParams(window.location.search);
+const catParam = urlParams.get('cat');
+if (catParam && ['models','waiters','bartenders','djs','hosts','ambassadors'].includes(catParam)) {
+    activeCategory = catParam;
+}
+
+function renderStars(rating) {
+    const full = Math.floor(rating);
+    let html = '';
+    for (let i = 0; i < 5; i++) {
+        html += '<span class="star">' + (i < full ? '&#9733;' : '&#9734;') + '</span>';
+    }
+    return html;
+}
+
+function createCard(t) {
+    return '<div class="talent-card" data-id="' + t.id + '">' +
+        '<div class="talent-card-top">' +
+            '<div class="talent-avatar"><span>' + t.initials + '</span></div>' +
+            '<div class="talent-info">' +
+                '<div class="talent-name">' + t.name + '</div>' +
+                '<div class="talent-meta">' +
+                    '<span class="badge badge-category" data-cat="' + t.category + '">' + categoryLabels[t.category] + '</span>' +
+                    '<span class="badge ' + availabilityClass[t.availability] + '">' + availabilityLabels[t.availability] + '</span>' +
+                '</div>' +
+            '</div>' +
+        '</div>' +
+        '<div class="talent-location">' +
+            '<svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>' +
+            t.location +
+        '</div>' +
+        '<div class="talent-stats">' +
+            '<div class="talent-rating">' + renderStars(t.rating) + ' <strong>' + t.rating + '</strong></div>' +
+            '<span>' + t.events + ' events</span>' +
+        '</div>' +
+        '<div class="talent-bio">' + t.bio + '</div>' +
+        '<div class="talent-actions">' +
+            '<button class="btn btn-outline" onclick="openProfile(' + t.id + ')">View Profile</button>' +
+            '<a href="talent-booking.html?talent=' + t.id + '" class="btn btn-red">Book Now</a>' +
+        '</div>' +
+    '</div>';
+}
+
+function filterAndRender() {
+    const filtered = TALENT.filter(function(t) {
+        const catMatch = activeCategory === 'all' || t.category === activeCategory;
+        const locMatch = activeLocation === 'all' || t.location === activeLocation;
+        const availMatch = activeAvailability === 'all' || t.availability === activeAvailability;
+        return catMatch && locMatch && availMatch;
+    });
+
+    var grid = document.getElementById('talentGrid');
+    var noResults = document.getElementById('noResults');
+    var count = document.getElementById('resultsCount');
+
+    if (filtered.length === 0) {
+        grid.innerHTML = '';
+        noResults.style.display = 'block';
+    } else {
+        noResults.style.display = 'none';
+        grid.innerHTML = filtered.map(createCard).join('');
+    }
+    count.textContent = filtered.length + ' Talent';
+}
+
+// Category chips
+document.querySelectorAll('.filter-chip').forEach(function(chip) {
+    if (chip.dataset.cat === activeCategory) {
+        document.querySelector('.filter-chip.active').classList.remove('active');
+        chip.classList.add('active');
+    }
+    chip.addEventListener('click', function() {
+        document.querySelector('.filter-chip.active').classList.remove('active');
+        this.classList.add('active');
+        activeCategory = this.dataset.cat;
+        filterAndRender();
+    });
+});
+
+document.getElementById('filterLocation').addEventListener('change', function() {
+    activeLocation = this.value;
+    filterAndRender();
+});
+
+document.getElementById('filterAvailability').addEventListener('change', function() {
+    activeAvailability = this.value;
+    filterAndRender();
+});
+
+// Profile modal
+function openProfile(id) {
+    var t = TALENT.find(function(x) { return x.id === id; });
+    if (!t) return;
+
+    var html = '<div class="modal-avatar"><span>' + t.initials + '</span></div>' +
+        '<div class="modal-name">' + t.name + '</div>' +
+        '<div class="modal-badges">' +
+            '<span class="badge badge-category" data-cat="' + t.category + '">' + categoryLabels[t.category] + '</span>' +
+            '<span class="badge ' + availabilityClass[t.availability] + '">' + availabilityLabels[t.availability] + '</span>' +
+        '</div>' +
+        '<div class="modal-location">' + t.location + '</div>' +
+        '<div class="modal-bio">' + t.bio + '</div>' +
+        '<div class="modal-stats">' +
+            '<div class="modal-stat"><div class="modal-stat-value">' + t.events + '</div><div class="modal-stat-label">Events</div></div>' +
+            '<div class="modal-stat"><div class="modal-stat-value">' + t.rating + '</div><div class="modal-stat-label">Rating</div></div>' +
+            '<div class="modal-stat"><div class="modal-stat-value">' + t.memberSince + '</div><div class="modal-stat-label">Member Since</div></div>' +
+        '</div>' +
+        '<div class="modal-languages"><strong>Languages:</strong> ' + t.languages + '</div>' +
+        '<a href="talent-booking.html?talent=' + t.id + '" class="modal-book-btn">Book This Talent</a>';
+
+    document.getElementById('modalBody').innerHTML = html;
+    document.getElementById('profileModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    document.getElementById('profileModal').classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+document.getElementById('profileModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+});
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+});
+
+// Language switcher stub
+function setLang(l) {
+    document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
+    event.target.classList.add('active');
+}
+
+// Initial render
+filterAndRender();
+</script>
+</body>
+</html>
