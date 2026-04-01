@@ -965,6 +965,24 @@ body {
     </div>
 </div>
 
+<!-- TALENT CTA -->
+<section class="section talent-cta" style="background:linear-gradient(135deg, #1A1A1A 0%, #00247D 50%, #1A1A1A 100%);position:relative;overflow:hidden;">
+    <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:url('img/talent-hero.jpg') center/cover no-repeat;opacity:0.15;"></div>
+    <div class="section-inner" style="position:relative;z-index:1;text-align:center;">
+        <div class="reveal">
+            <img src="img/talent4peace-logo.jpg" alt="Talent 4 Peace" style="width:100px;height:100px;border-radius:50%;margin:0 auto 1.5rem;display:block;box-shadow:0 4px 20px rgba(212,168,67,0.5);border:3px solid var(--gold);">
+            <p class="section-label" style="color:var(--gold);" data-i18n="talent_label">Fight 4 Peace Talent</p>
+            <h2 class="section-title" style="color:var(--white);" data-i18n="talent_title">Modèles. Staff. DJs. Ambassadeurs.</h2>
+            <p class="section-subtitle" style="color:rgba(255,255,255,0.7);max-width:600px;margin:0 auto 2rem;" data-i18n="talent_sub">Rejoignez le réseau de talents leader en Haïti. Postulez pour participer à nos événements, activations de marques et expériences nocturnes. En partenariat avec Caramel Agency.</p>
+        </div>
+        <div class="reveal" style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;">
+            <a href="talent.html" class="btn" style="background:var(--gold);color:var(--black);font-family:var(--font-heading);font-size:1.1rem;padding:1rem 2.5rem;text-decoration:none;text-transform:uppercase;letter-spacing:1px;border-radius:4px;font-weight:700;" data-i18n="talent_explore">Explorer les Talents</a>
+            <a href="talent-apply.html" class="btn" style="background:var(--red);color:var(--white);font-family:var(--font-heading);font-size:1.1rem;padding:1rem 2.5rem;text-decoration:none;text-transform:uppercase;letter-spacing:1px;border-radius:4px;font-weight:700;" data-i18n="talent_apply">Postuler</a>
+            <a href="talent-booking.html" class="btn" style="border:2px solid var(--gold);color:var(--gold);font-family:var(--font-heading);font-size:1.1rem;padding:1rem 2.5rem;text-decoration:none;text-transform:uppercase;letter-spacing:1px;border-radius:4px;font-weight:700;background:transparent;" data-i18n="talent_book">Réserver pour votre Marque</a>
+        </div>
+    </div>
+</section>
+
 <!-- ABOUT -->
 <section class="section about">
     <div class="section-inner">
@@ -985,24 +1003,6 @@ body {
             <div class="about-visual reveal">
                 <img src="img/boxe-academy-48hours.jpg" alt="Boxe To Boxe Academy x 48 Hours Ready" style="width:100%;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,0.3);">
             </div>
-        </div>
-    </div>
-</section>
-
-<!-- TALENT CTA -->
-<section class="section talent-cta" style="background:linear-gradient(135deg, #1A1A1A 0%, #00247D 50%, #1A1A1A 100%);position:relative;overflow:hidden;">
-    <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:url('img/talent-hero.jpg') center/cover no-repeat;opacity:0.15;"></div>
-    <div class="section-inner" style="position:relative;z-index:1;text-align:center;">
-        <div class="reveal">
-            <img src="img/talent4peace-logo.jpg" alt="Talent 4 Peace" style="width:100px;height:100px;border-radius:50%;margin:0 auto 1.5rem;display:block;box-shadow:0 4px 20px rgba(212,168,67,0.5);border:3px solid var(--gold);">
-            <p class="section-label" style="color:var(--gold);">Fight 4 Peace Talent</p>
-            <h2 class="section-title" style="color:var(--white);">Models. Staff. DJs. Ambassadors.</h2>
-            <p class="section-subtitle" style="color:rgba(255,255,255,0.7);max-width:600px;margin:0 auto 2rem;">Join Haiti's leading talent network. Apply to be part of our events, brand activations, and nightlife experiences. In partnership with Caramel Agency.</p>
-        </div>
-        <div class="reveal" style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;">
-            <a href="talent.html" class="btn" style="background:var(--gold);color:var(--black);font-family:var(--font-heading);font-size:1.1rem;padding:1rem 2.5rem;text-decoration:none;text-transform:uppercase;letter-spacing:1px;border-radius:4px;font-weight:700;">Explore Talent</a>
-            <a href="talent-apply.html" class="btn" style="background:var(--red);color:var(--white);font-family:var(--font-heading);font-size:1.1rem;padding:1rem 2.5rem;text-decoration:none;text-transform:uppercase;letter-spacing:1px;border-radius:4px;font-weight:700;">Apply Now</a>
-            <a href="talent-booking.html" class="btn" style="border:2px solid var(--gold);color:var(--gold);font-family:var(--font-heading);font-size:1.1rem;padding:1rem 2.5rem;text-decoration:none;text-transform:uppercase;letter-spacing:1px;border-radius:4px;font-weight:700;background:transparent;">Book for Your Brand</a>
         </div>
     </div>
 </section>
@@ -1254,7 +1254,13 @@ const translations = {
         vision_title: 'La suite',
         vision_sub: "Batay San Fwonty\u00e8 n'est que le d\u00e9but d'un mouvement sportif ha\u00eftien.",
         countdown_heading: 'Le Combat Commence Dans',
-        cd_days: 'Jours', cd_hours: 'Heures', cd_mins: 'Minutes', cd_secs: 'Secondes'
+        cd_days: 'Jours', cd_hours: 'Heures', cd_mins: 'Minutes', cd_secs: 'Secondes',
+        talent_label: 'Fight 4 Peace Talent',
+        talent_title: 'Modèles. Staff. DJs. Ambassadeurs.',
+        talent_sub: 'Rejoignez le réseau de talents leader en Haïti. Postulez pour participer à nos événements, activations de marques et expériences nocturnes. En partenariat avec Caramel Agency.',
+        talent_explore: 'Explorer les Talents',
+        talent_apply: 'Postuler',
+        talent_book: 'Réserver pour votre Marque'
     },
     en: {
         nav_tickets: 'Buy Ticket',
@@ -1294,7 +1300,13 @@ const translations = {
         vision_title: "What's next",
         vision_sub: 'Batay San Fwonty\u00e8 is just the beginning of a Haitian sports movement.',
         countdown_heading: 'The Fight Starts In',
-        cd_days: 'Days', cd_hours: 'Hours', cd_mins: 'Minutes', cd_secs: 'Seconds'
+        cd_days: 'Days', cd_hours: 'Hours', cd_mins: 'Minutes', cd_secs: 'Seconds',
+        talent_label: 'Fight 4 Peace Talent',
+        talent_title: 'Models. Staff. DJs. Ambassadors.',
+        talent_sub: "Join Haiti's leading talent network. Apply to be part of our events, brand activations, and nightlife experiences. In partnership with Caramel Agency.",
+        talent_explore: 'Explore Talent',
+        talent_apply: 'Apply Now',
+        talent_book: 'Book for Your Brand'
     },
     kr: {
         nav_tickets: 'Achte Tikè',
@@ -1334,7 +1346,13 @@ const translations = {
         vision_title: 'Sa k ap vini',
         vision_sub: 'Batay San Fwontyè se sèlman kòmansman yon mouvman espòtif ayisyen.',
         countdown_heading: 'Batay la Kòmanse Nan',
-        cd_days: 'Jou', cd_hours: 'Èdtan', cd_mins: 'Minit', cd_secs: 'Segond'
+        cd_days: 'Jou', cd_hours: 'Èdtan', cd_mins: 'Minit', cd_secs: 'Segond',
+        talent_label: 'Fight 4 Peace Talent',
+        talent_title: 'Modèl. Staf. DJ. Anbasadè.',
+        talent_sub: 'Rejwenn rezo talan lidè nan Ayiti. Aplike pou patisipe nan evènman nou yo, aktivasyon mak ak eksperyans lannwit. An patenarya ak Caramel Agency.',
+        talent_explore: 'Eksplore Talan',
+        talent_apply: 'Aplike Kounye a',
+        talent_book: 'Rezève pou Mak Ou'
     },
     es: {
         nav_tickets: 'Comprar Boleto',
@@ -1374,7 +1392,13 @@ const translations = {
         vision_title: 'Lo que viene',
         vision_sub: 'Batay San Fwonty\u00e8 es solo el comienzo de un movimiento deportivo haitiano.',
         countdown_heading: 'La Pelea Comienza En',
-        cd_days: 'D\u00edas', cd_hours: 'Horas', cd_mins: 'Minutos', cd_secs: 'Segundos'
+        cd_days: 'D\u00edas', cd_hours: 'Horas', cd_mins: 'Minutos', cd_secs: 'Segundos',
+        talent_label: 'Fight 4 Peace Talent',
+        talent_title: 'Modelos. Staff. DJs. Embajadores.',
+        talent_sub: '\u00danete a la red de talentos l\u00edder en Hait\u00ed. Post\u00falate para participar en nuestros eventos, activaciones de marca y experiencias nocturnas. En asociaci\u00f3n con Caramel Agency.',
+        talent_explore: 'Explorar Talentos',
+        talent_apply: 'Postularse',
+        talent_book: 'Reservar para tu Marca'
     },
     pt: {
         nav_tickets: 'Comprar Ingresso',
@@ -1414,7 +1438,13 @@ const translations = {
         vision_title: 'O que vem a seguir',
         vision_sub: 'Batay San Fwonty\u00e8 \u00e9 apenas o come\u00e7o de um movimento esportivo haitiano.',
         countdown_heading: 'A Luta Come\u00e7a Em',
-        cd_days: 'Dias', cd_hours: 'Horas', cd_mins: 'Minutos', cd_secs: 'Segundos'
+        cd_days: 'Dias', cd_hours: 'Horas', cd_mins: 'Minutos', cd_secs: 'Segundos',
+        talent_label: 'Fight 4 Peace Talent',
+        talent_title: 'Modelos. Staff. DJs. Embaixadores.',
+        talent_sub: 'Junte-se \u00e0 principal rede de talentos do Haiti. Candidate-se para participar de nossos eventos, ativa\u00e7\u00f5es de marca e experi\u00eancias noturnas. Em parceria com Caramel Agency.',
+        talent_explore: 'Explorar Talentos',
+        talent_apply: 'Candidatar-se',
+        talent_book: 'Reservar para sua Marca'
     }
 };
 
